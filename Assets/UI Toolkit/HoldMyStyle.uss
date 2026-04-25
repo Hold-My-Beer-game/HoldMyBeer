@@ -1,0 +1,21 @@
+:root {
+    color: rgb(255, 255, 255);
+    -unity-text-outline-width: 1px;
+    -unity-text-outline-color: rgb(77, 77, 77);
+    text-shadow: 2px 2px 10px rgb(26, 26, 26);
+    font-size: 40px;
+}
+
+.bullet {
+    flex-grow: 0;
+    aspect-ratio: 1;
+    background-image: url("project://database/Assets/UI%20Toolkit/Sprites/shotshell.png?fileID=21300000&guid=926aaba88be6ec14e87b922d55a3a054&type=3#shotshell");
+    flex-shrink: 1;
+    background-repeat: space no-repeat;
+    height: 100%;
+    -unity-background-scale-mode: scale-to-fit;
+}
+
+
+
+
