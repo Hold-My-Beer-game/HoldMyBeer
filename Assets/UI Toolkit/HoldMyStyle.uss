@@ -14,8 +14,5 @@
     background-repeat: space no-repeat;
     height: 100%;
     -unity-background-scale-mode: scale-to-fit;
+    rotate: -20deg;
 }
-
-
-
-
