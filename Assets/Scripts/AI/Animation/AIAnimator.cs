@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace HoldMyBeer.AI {
     [RequireComponent(typeof(Animator))]
-    internal sealed class AIAnimator : MonoBehaviour {
+    public sealed class AIAnimator : MonoBehaviour {
         [SerializeField] [AnimatorParameter] private string locomotionSpeedParam;
         [SerializeField] private float locomotionSmoothTime;
 

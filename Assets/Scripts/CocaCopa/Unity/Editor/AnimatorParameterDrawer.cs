@@ -13,11 +13,11 @@ namespace CocaCopa.Unity.EditorUtils {
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label) {
             if (property.propertyType != SerializedPropertyType.String) { return EditorGUIUtility.singleLineHeight; }
 
-            bool shouldShowHelpBox = TryGetValidationMessage(property, out _);
-            if (!shouldShowHelpBox) { return EditorGUIUtility.singleLineHeight; }
+            float height = EditorGUIUtility.singleLineHeight * 2f;
 
-            float helpBoxHeight = EditorGUIUtility.singleLineHeight * 2f;
-            return EditorGUIUtility.singleLineHeight + HelpBoxSpacing + helpBoxHeight;
+            if (TryGetValidationMessage(property, out _)) { height += HelpBoxSpacing + EditorGUIUtility.singleLineHeight * 2f; }
+
+            return height;
         }
 
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label) {
@@ -29,13 +29,34 @@ namespace CocaCopa.Unity.EditorUtils {
                 return;
             }
 
-            var fieldRect = new Rect(position.x, position.y, position.width, EditorGUIUtility.singleLineHeight);
-            var helpRect = new Rect(position.x, fieldRect.yMax + HelpBoxSpacing, position.width, position.height - EditorGUIUtility.singleLineHeight - HelpBoxSpacing);
+            var attr = (AnimatorParameterAttribute)attribute;
+            Animator animator = AnimatorDrawerUtility.ResolveAnimator(property, attr.AnimatorFieldName, attr.HasAnimatorFieldName);
 
-            Animator animator = ResolveAnimator(property, (AnimatorParameterAttribute)attribute);
-            List<string> parameterNames = GetFilteredParameterNames(animator, (AnimatorParameterAttribute)attribute);
+            var fieldRect = new Rect(
+                position.x,
+                position.y,
+                position.width,
+                EditorGUIUtility.singleLineHeight
+            );
+
+            var controllerRect = new Rect(
+                position.x,
+                fieldRect.yMax,
+                position.width,
+                EditorGUIUtility.singleLineHeight
+            );
+
+            var helpRect = new Rect(
+                position.x,
+                controllerRect.yMax + HelpBoxSpacing,
+                position.width,
+                position.height - EditorGUIUtility.singleLineHeight * 2f - HelpBoxSpacing
+            );
+
+            List<string> parameterNames = GetFilteredParameterNames(animator, attr);
 
             DrawPopup(fieldRect, property, label, parameterNames);
+            AnimatorDrawerUtility.DrawControllerLabel(controllerRect, animator);
 
             if (TryGetValidationMessage(property, out string validationMessage)) { EditorGUI.HelpBox(helpRect, validationMessage, MessageType.Warning); }
 
@@ -57,26 +78,9 @@ namespace CocaCopa.Unity.EditorUtils {
 
             int newIndex = EditorGUI.Popup(rect, label.text, selectedIndex, options.ToArray());
 
-            if (newIndex == 0) {
-                property.stringValue = string.Empty;
-                return;
-            }
-
-            property.stringValue = options[newIndex];
-        }
-
-        private static Animator ResolveAnimator(SerializedProperty property, AnimatorParameterAttribute attr) {
-            UnityEngine.Object targetObject = property.serializedObject.targetObject;
-
-            if (targetObject is not Component component) { return null; }
-
-            if (attr.HasAnimatorFieldName) {
-                SerializedProperty animatorProperty = property.serializedObject.FindProperty(attr.AnimatorFieldName);
-
-                if (animatorProperty != null && animatorProperty.propertyType == SerializedPropertyType.ObjectReference) { return animatorProperty.objectReferenceValue as Animator; }
-            }
-
-            return component.GetComponent<Animator>();
+            property.stringValue = newIndex == 0
+                ? string.Empty
+                : options[newIndex];
         }
 
         private static List<string> GetFilteredParameterNames(Animator animator, AnimatorParameterAttribute attr) {
@@ -101,12 +105,12 @@ namespace CocaCopa.Unity.EditorUtils {
 
         private bool TryGetValidationMessage(SerializedProperty property, out string message) {
             var attr = (AnimatorParameterAttribute)attribute;
-            Animator animator = ResolveAnimator(property, attr);
+            Animator animator = AnimatorDrawerUtility.ResolveAnimator(property, attr.AnimatorFieldName, attr.HasAnimatorFieldName);
 
             if (!animator) {
                 message = attr.HasAnimatorFieldName
                     ? $"Could not find Animator from field '{attr.AnimatorFieldName}'."
-                    : "Could not find Animator on the same GameObject.";
+                    : "Could not find Animator on this GameObject or its children.";
                 return true;
             }
 
@@ -116,12 +120,14 @@ namespace CocaCopa.Unity.EditorUtils {
             }
 
             string currentValue = property.stringValue;
+
             if (string.IsNullOrWhiteSpace(currentValue)) {
                 message = string.Empty;
                 return false;
             }
 
             AnimatorControllerParameter[] parameters = animator.parameters;
+
             for (int i = 0; i < parameters.Length; i++) {
                 AnimatorControllerParameter parameter = parameters[i];
 

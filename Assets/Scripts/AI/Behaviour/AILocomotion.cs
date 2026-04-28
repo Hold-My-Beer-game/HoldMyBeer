@@ -1,4 +1,5 @@
 ﻿using System;
+using CocaCopa.Unity;
 using UnityEngine;
 
 namespace HoldMyBeer.AI {
