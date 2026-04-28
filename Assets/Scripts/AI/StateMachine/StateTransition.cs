@@ -1,4 +1,5 @@
 ﻿using System;
+using UnityEngine;
 
 namespace HoldMyBeer.AI {
     public sealed class StateTransition : IStateTransition {
@@ -13,8 +14,9 @@ namespace HoldMyBeer.AI {
             TargetState = targetState ?? throw new ArgumentNullException($"{ScriptName} {nameof(targetState)}");
         }
 
-        public bool CanTransition() {
-            return condition();
-        }
+        public bool CanTransition => condition();
+        public void OnSourceStateEnter() { }
+        public void Tick(float deltaTime) { }
+        public void OnSourceStateExit() { }
     }
 }

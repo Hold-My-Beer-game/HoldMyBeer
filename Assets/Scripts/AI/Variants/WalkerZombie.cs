@@ -15,10 +15,16 @@ namespace HoldMyBeer.AI {
 
             var idleState = new IdleMovementState(context);
             var chaseState = new ChaseTargetState(context, pathRefreshInterval, stopDistance);
-            var delayedSightTransition = new DelayedSightTransition(context.SightStimulus, targetCol, requiredSightTime, chaseState);
+            var searchState = new SearchTargetState(context, stopDistance);
 
-            brain.AddMovementTransition(idleState, delayedSightTransition);
-            brain.AddMovementTransition(chaseState, new StateTransition(() => !context.SightStimulus.CanSee(targetCol), idleState));
+            var idleToChase = new DelayedSightTransition(context.SightStimulus, targetCol, requiredSightTime, chaseState);
+            var chaseToSearch = new StateTransition(() => !context.SightStimulus.CanSee(targetCol), searchState);
+            var searchToIdle = new StateTransition(() => searchState.OnLastKnownPos, idleState);
+            var searchToChase = new StateTransition(() => context.SightStimulus.CanSee(targetCol), chaseState);
+
+            brain.AddMovementTransition(idleState, idleToChase);
+            brain.AddMovementTransition(chaseState, chaseToSearch);
+            brain.AddMovementTransition(searchState, searchToIdle, searchToChase);
 
             return new AIStateSetup(idleState, null);
         }

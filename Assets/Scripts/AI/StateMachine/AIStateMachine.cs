@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace HoldMyBeer.AI {
     public sealed class AIStateMachine {
@@ -10,7 +11,8 @@ namespace HoldMyBeer.AI {
 
         public void Init(IAIState initialState) {
             currentState = initialState ?? throw new NullReferenceException($"{ScriptName} {nameof(currentState)}");
-            currentState?.Enter();
+            currentState.Enter();
+            EnterAllStateTransitions(currentState);
         }
 
         public void AddTransition(IAIState state, params IStateTransition[] transitionRules) {
@@ -32,16 +34,41 @@ namespace HoldMyBeer.AI {
 
             for (int i = 0; i < transitions.Count; i++) {
                 IStateTransition transition = transitions[i];
-                if (!transition.CanTransition()) { continue; }
+                transition.Tick(deltaTime);
+
+                if (!transition.CanTransition) { continue; }
+
                 SwitchState(transition.TargetState);
                 break;
             }
         }
 
         private void SwitchState(IAIState nextState) {
+            ExitAllStateTransitions(currentState);
             currentState.Exit();
             currentState = nextState;
             currentState.Enter();
+            EnterAllStateTransitions(currentState);
+        }
+
+        private void ExitAllStateTransitions(IAIState state) {
+            if (state == null) { throw new ArgumentException($"{ScriptName} {nameof(state)}"); }
+            if (!stateTransitions.TryGetValue(state.Id, out List<IStateTransition> transitions)) { return; }
+
+            for (int i = 0; i < transitions.Count; i++) {
+                IStateTransition transition = transitions[i];
+                transition.OnSourceStateExit();
+            }
+        }
+
+        private void EnterAllStateTransitions(IAIState state) {
+            if (state == null) { throw new ArgumentException($"{ScriptName} {nameof(state)}"); }
+            if (!stateTransitions.TryGetValue(state.Id, out List<IStateTransition> transitions)) { return; }
+
+            for (int i = 0; i < transitions.Count; i++) {
+                IStateTransition transition = transitions[i];
+                transition.OnSourceStateEnter();
+            }
         }
     }
 }

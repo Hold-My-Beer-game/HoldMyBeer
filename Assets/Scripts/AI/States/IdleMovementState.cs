@@ -1,10 +1,10 @@
 ﻿namespace HoldMyBeer.AI {
     public sealed class IdleMovementState : IAIState {
-        private readonly AIContext context;
-
         public IdleMovementState(AIContext context) {
             this.context = context;
         }
+
+        private readonly AIContext context;
 
         public string Id => nameof(IdleMovementState);
 
