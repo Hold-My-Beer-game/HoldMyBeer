@@ -2,9 +2,11 @@
 
 namespace HoldMyBeer.AI {
     public class WalkerZombie : AIBehaviourComposer {
-        [Header("Movement Layer")]
+        [Header("Movement")]
         [SerializeField] [Min(0.01f)] private float pathRefreshInterval;
         [SerializeField] [Min(0.01f)] private float stopDistance;
+
+        [Header("Idle -> Chase")]
         [SerializeField] [Min(0f)] private float requiredSightTime;
 
         [Header("Combat Layer")]

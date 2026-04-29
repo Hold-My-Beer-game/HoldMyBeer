@@ -28,27 +28,22 @@ namespace HoldMyBeer.AI {
         }
 
         public void Exit() {
-            OnLastKnownPos = false;
             context.Animator.OnRootMotionDataUpdated -= Animator_OnRootMotionUpdated;
+            OnLastKnownPos = false;
         }
 
         private void Animator_OnRootMotionUpdated(RootMotionData data) {
-            context.Self.position += data.DeltaPosition;
+            context.Locomotion.ApplyRootMotionDelta(data.DeltaPosition);
         }
 
         private void MoveOnPath() {
             PathFollowData pathData = context.Path.EvaluatePathProgress(context.Self.position);
-            Vector3 cornerPos = pathData.CornerPoints[pathData.CurrCornerIndex];
+            context.Locomotion.SetTargetLookDir(pathData.DirToCorner);
 
-            if (!lastCornerPos.Equals(cornerPos)) {
-                lastCornerPos = cornerPos;
-                context.Locomotion.SetTargetLookDir(pathData.DirToCorner);
-            }
+            if (!pathData.IsAtFinalCorner || pathData.DistToCorner > stopDistance) { return; }
 
-            if (pathData.IsAtFinalCorner && pathData.DistToCorner <= stopDistance) {
-                OnLastKnownPos = true;
-                context.Animator.SetTargetLocomotionSpeed(0f);
-            }
+            context.Animator.SetTargetLocomotionSpeed(0f);
+            OnLastKnownPos = true;
         }
     }
 }

@@ -34,7 +34,7 @@ namespace HoldMyBeer.AI {
         }
 
         private void Animator_OnRootMotionUpdated(RootMotionData data) {
-            context.Self.position += data.DeltaPosition;
+            context.Locomotion.ApplyRootMotionDelta(data.DeltaPosition);
         }
 
         private void RecalculatePath(float deltaTime) {
