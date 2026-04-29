@@ -8,11 +8,6 @@ namespace HoldMyBeer.AI {
     /// Also exposes editor-only debug data for visualization.
     /// </summary>
     public class AISightStimulus : MonoBehaviour {
-        [Header("Origin")]
-        [Tooltip("Local-space offset used as the origin point for all sight checks.")]
-        [SerializeField] private Vector3 originOffset = Vector3.zero;
-
-        [Header("Sight")]
         [Tooltip("Maximum distance at which a target can be detected.")]
         [SerializeField] private float sightDistance = 10f;
         [Tooltip("Horizontal sight angle to the left of the forward direction, in degrees.")]
@@ -24,21 +19,18 @@ namespace HoldMyBeer.AI {
         [Tooltip("Vertical sight angle below the forward direction, in degrees.")]
         [SerializeField] private float downAngle = 30f;
 
-        [Header("Sight Box")]
-        [Tooltip("Depth of each box cast used to sample visibility.")]
-        [SerializeField] private float sightBoxDepth = 2f;
-        [Tooltip("Number of horizontal samples taken across the target collider.")]
-        [SerializeField] [Min(1)] private int horizontalCount = 1;
-        [Tooltip("Number of vertical samples taken across the target collider.")]
-        [SerializeField] [Min(1)] private int verticalCount = 1;
-        [Tooltip("Percentage size of each box cast relative to its sampled cell on the target.")]
-        [SerializeField] [Range(1, 100)] private float sightSize = 100f;
-
-        [Header("Raycast")]
+        [Tooltip("Local-space offset used as the origin point for all sight checks.")]
+        [SerializeField] private Vector3 originOffset = Vector3.zero;
         [Tooltip("Layer mask used to determine which objects block or receive sight checks.")]
         [SerializeField] private LayerMask sightMask = ~0;
         [Tooltip("Specifies whether trigger colliders should be considered during sight checks.")]
         [SerializeField] private QueryTriggerInteraction triggerInteraction = QueryTriggerInteraction.Ignore;
+        [Tooltip("Depth of each box cast used to sample visibility.")]
+        [SerializeField] private float visionDepth = 0.02f;
+        [Tooltip("Number of Horizontal (X) and Vertical (Y) samples taken across the target collider.")]
+        [SerializeField] private Vector2 visionPointsCount;
+        [Tooltip("Percentage size of each box cast relative to its sampled cell on the target.")]
+        [SerializeField] [Range(1, 100)] private float visionPointSize = 10f;
 
         private static readonly string ScriptName = $"[{nameof(AISightStimulus)}]";
 
@@ -86,17 +78,20 @@ namespace HoldMyBeer.AI {
             Vector3 relativeUp = targetCollider.transform.up;
             Vector3 targetSize = targetCollider.bounds.size;
 
-            float horizontalStep = targetSize.x / horizontalCount;
-            float verticalStep = targetSize.y / verticalCount;
+            float horizontalPoints = visionPointsCount.x;
+            float verticalPoints = visionPointsCount.y;
 
-            Vector3 size = new(horizontalStep * sightSize / 100f, verticalStep * sightSize / 100f, sightBoxDepth);
+            float horizontalStep = targetSize.x / horizontalPoints;
+            float verticalStep = targetSize.y / verticalPoints;
+
+            Vector3 size = new(horizontalStep * visionPointSize / 100f, verticalStep * visionPointSize / 100f, visionDepth);
             Vector3 startPos = targetCollider.bounds.center;
             startPos += relativeRight * (horizontalStep / 2f - targetSize.x / 2f);
             startPos += relativeUp * (targetSize.y / 2f - verticalStep / 2f);
 
-            for (int i = 0; i < verticalCount; i++) {
+            for (int i = 0; i < verticalPoints; i++) {
                 Vector3 rowStart = startPos - i * verticalStep * relativeUp;
-                for (int j = 0; j < horizontalCount; j++) {
+                for (int j = 0; j < horizontalPoints; j++) {
                     Vector3 onRowPos = rowStart + j * horizontalStep * relativeRight;
                     Vector3 toRowDir = (onRowPos - Origin).normalized;
 

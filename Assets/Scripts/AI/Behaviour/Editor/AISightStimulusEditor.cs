@@ -3,73 +3,76 @@ using UnityEditor;
 using UnityEngine;
 
 namespace HoldMyBeer.AI.Editor {
-    [CustomEditor(typeof(AISightStimulus))]
-    public sealed class AISightStimulusEditor : UnityEditor.Editor {
-        private const int HorizontalSegments = 32;
-        private const int VerticalSegments = 8;
-        private static readonly Color ConeColor = new(0f, 1f, 0f);
-        private static readonly Color NormalColor = Color.cyan;
-        private static readonly Color HitColor = Color.red;
+    public partial class AISightStimulusEditor : UnityEditor.Editor {
+        private SerializedProperty originOffset;
+        private SerializedProperty sightDistance;
+        private SerializedProperty leftAngle;
+        private SerializedProperty rightAngle;
+        private SerializedProperty upAngle;
+        private SerializedProperty downAngle;
+        private SerializedProperty visionDepth;
+        private SerializedProperty visionPointsCount;
+        private SerializedProperty visionPointSize;
+        private SerializedProperty sightMask;
+        private SerializedProperty triggerInteraction;
 
-        [DrawGizmo(GizmoType.NonSelected | GizmoType.Selected | GizmoType.Active)]
-        private static void DrawGizmos(AISightStimulus sightStimulus, GizmoType gizmoType) {
-            DrawSightCone(sightStimulus);
-            foreach (AISightStimulus.SightBoxCastDebugData boxCast in sightStimulus.DebugBoxCasts) { DrawBoxCast(boxCast); }
+        private void OnEnable() {
+            FindProperties();
         }
 
-        private static void DrawSightCone(AISightStimulus sightStimulus) {
-            Vector3 origin = sightStimulus.Origin;
-            Color previousColor = Gizmos.color;
-
-            Gizmos.color = ConeColor;
-            Gizmos.DrawSphere(origin, 0.08f);
-
-            int hSegments = Mathf.Max(2, HorizontalSegments);
-            int vSegments = Mathf.Max(2, VerticalSegments);
-            var points = new Vector3[hSegments + 1, vSegments + 1];
-
-            for (int h = 0; h <= hSegments; h++) {
-                float hT = h / (float)hSegments;
-                float yaw = Mathf.Lerp(-sightStimulus.LeftAngle, sightStimulus.RightAngle, hT);
-
-                for (int v = 0; v <= vSegments; v++) {
-                    float vT = v / (float)vSegments;
-                    float pitch = Mathf.Lerp(-sightStimulus.DownAngle, sightStimulus.UpAngle, vT);
-                    points[h, v] = sightStimulus.GetConeEndPoint(yaw, pitch);
-                }
-            }
-
-            for (int h = 0; h <= hSegments; h++) {
-                for (int v = 0; v <= vSegments; v++) {
-                    Vector3 point = points[h, v];
-                    if (h < hSegments) { Gizmos.DrawLine(point, points[h + 1, v]); }
-                    if (v < vSegments) { Gizmos.DrawLine(point, points[h, v + 1]); }
-                }
-            }
-            DrawEdge(origin, points, 0, 0, hSegments, vSegments);
-
-            Gizmos.color = previousColor;
+        private void FindProperties() {
+            originOffset = serializedObject.FindProperty(nameof(originOffset));
+            sightDistance = serializedObject.FindProperty(nameof(sightDistance));
+            leftAngle = serializedObject.FindProperty(nameof(leftAngle));
+            rightAngle = serializedObject.FindProperty(nameof(rightAngle));
+            upAngle = serializedObject.FindProperty(nameof(upAngle));
+            downAngle = serializedObject.FindProperty(nameof(downAngle));
+            visionDepth = serializedObject.FindProperty(nameof(visionDepth));
+            visionPointsCount = serializedObject.FindProperty(nameof(visionPointsCount));
+            visionPointSize = serializedObject.FindProperty(nameof(visionPointSize));
+            sightMask = serializedObject.FindProperty(nameof(sightMask));
+            triggerInteraction = serializedObject.FindProperty(nameof(triggerInteraction));
         }
 
-        private static void DrawEdge(Vector3 origin, Vector3[,] points, int minH, int minV, int maxH, int maxV) {
-            Gizmos.DrawLine(origin, points[minH, minV]);
-            Gizmos.DrawLine(origin, points[minH, maxV]);
-            Gizmos.DrawLine(origin, points[maxH, minV]);
-            Gizmos.DrawLine(origin, points[maxH, maxV]);
+        public override void OnInspectorGUI() {
+            serializedObject.Update();
+            DrawScriptField();
+            DrawSightConeProperties();
+            DrawVisionProperties();
+            serializedObject.ApplyModifiedProperties();
         }
 
-        private static void DrawBoxCast(AISightStimulus.SightBoxCastDebugData boxCast) {
-            Color previousColor = Gizmos.color;
-            Matrix4x4 previousMatrix = Gizmos.matrix;
+        private void DrawSightConeProperties() {
+            EditorGUILayout.LabelField("Sight Cone", EditorStyles.boldLabel);
+            EditorGUILayout.PropertyField(sightDistance, new GUIContent("Max Distance"));
+            DrawSightRangeSlider("Horizontal Angles", leftAngle, rightAngle);
+            DrawSightRangeSlider("Vertical Angles", downAngle, upAngle);
+            EditorGUILayout.Space(10f);
+        }
 
-            Gizmos.color = boxCast.HitTarget ? HitColor : NormalColor;
-            Gizmos.DrawLine(boxCast.Origin, boxCast.EndCenter);
+        private void DrawVisionProperties() {
+            EditorGUILayout.BeginVertical(EditorStyles.helpBox);
 
-            Gizmos.matrix = Matrix4x4.TRS(boxCast.EndCenter, boxCast.Rotation, Vector3.one);
-            Gizmos.DrawWireCube(Vector3.zero, boxCast.HalfExtents * 2f);
+            EditorGUILayout.Space(2f);
+            EditorGUILayout.LabelField("Vision", EditorStyles.boldLabel);
 
-            Gizmos.matrix = previousMatrix;
-            Gizmos.color = previousColor;
+            EditorGUILayout.Space(4f);
+
+            DrawSubGroup("Detection", () => {
+                EditorGUILayout.PropertyField(originOffset, new GUIContent("Origin Offset"));
+                EditorGUILayout.PropertyField(sightMask, new GUIContent("Layer Mask"));
+                EditorGUILayout.PropertyField(triggerInteraction);
+            });
+
+            EditorGUILayout.Space(6f);
+
+            DrawSubGroup("Sampling", () => {
+                EditorGUILayout.PropertyField(visionDepth, new GUIContent("Depth"));
+                EditorGUILayout.PropertyField(visionPointsCount, new GUIContent("Grid"));
+                EditorGUILayout.PropertyField(visionPointSize, new GUIContent("Size (%)"));
+            });
+
+            EditorGUILayout.EndVertical();
         }
     }
 }
