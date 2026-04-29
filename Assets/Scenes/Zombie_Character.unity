@@ -262,129 +262,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1703804380}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &378050774
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 378050779}
-  - component: {fileID: 378050778}
-  - component: {fileID: 378050777}
-  - component: {fileID: 378050776}
-  - component: {fileID: 378050775}
-  - component: {fileID: 378050780}
-  m_Layer: 0
-  m_Name: Zombie
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &378050775
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 378050774}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15bb2e39abc643adbc8825a195a2daa7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: HoldMyBeer.AI::HoldMyBeer.AI.AILocomotion
-  rotationSpeed: 2.5
---- !u!114 &378050776
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 378050774}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d26887a45a8e47d49d86cc37c70d4c25, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: HoldMyBeer.AI::HoldMyBeer.AI.AIBrain
---- !u!114 &378050777
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 378050774}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1973766163cc4b5096fb48e07f523e9c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: HoldMyBeer.AI::HoldMyBeer.AI.AIBootstrap
-  pathConfig: {fileID: 11400000, guid: 7592658355892e34eb636a0a90e135ea, type: 2}
-  target: {fileID: 2109807070}
---- !u!114 &378050778
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 378050774}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8dbc56f9d1e4a30ba1f6c8055debb2c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: HoldMyBeer.AI::HoldMyBeer.AI.WalkerZombie
-  pathRefreshInterval: 0.2
-  stopDistance: 1.5
-  patrolPoints:
-  - {fileID: 1247628271}
-  - {fileID: 1146918875}
-  - {fileID: 882880163}
-  - {fileID: 644477375}
-  - {fileID: 223378405}
-  requiredSightTime: 0.75
-  attackTriggerRange: 0
---- !u!4 &378050779
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 378050774}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.652, y: 0, z: -7.56}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 955631523}
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &378050780
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 378050774}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f70f13c746284983917fed901c6e0d3b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: HoldMyBeer.AI::HoldMyBeer.AI.AIStimulus
-  sightDistance: 7
-  leftAngle: 60
-  rightAngle: 60
-  upAngle: 10
-  downAngle: 10
-  originOffset: {x: 0, y: 1.64, z: 0.04}
-  sightMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  triggerInteraction: 1
-  visionDepth: 0.02
-  visionPointsCount: {x: 10, y: 10}
-  visionPointSize: 10
 --- !u!1 &530351138
 GameObject:
   m_ObjectHideFlags: 0
@@ -717,37 +594,6 @@ MonoBehaviour:
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: 80177a271042e604c808ce4db915c01f, type: 2}
   m_BuildHeightMesh: 0
---- !u!1 &699084863
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 699084864}
-  m_Layer: 0
-  m_Name: AttackPoint
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &699084864
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 699084863}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.00174, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1723007307}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -876,52 +722,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1703804380}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &955631522 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: c8f62e3aeb9fc974ab18968795c89677, type: 3}
-  m_PrefabInstance: {fileID: 1769960382}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &955631523 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c8f62e3aeb9fc974ab18968795c89677, type: 3}
-  m_PrefabInstance: {fileID: 1769960382}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &955631524
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 955631522}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: c8f62e3aeb9fc974ab18968795c89677, type: 3}
-  m_Controller: {fileID: 9100000, guid: e5bdb71f3d607ae429cb4d2e950ca670, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
---- !u!114 &955631525
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 955631522}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94e263d5607e2234487c4eb7af2db601, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: HoldMyBeer.AI::HoldMyBeer.AI.AIAnimator
-  locomotionSpeedParam: LocomotionSpeed
-  locomotionSmoothTime: 0.45
 --- !u!1 &961935684
 GameObject:
   m_ObjectHideFlags: 0
@@ -1456,8 +1256,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1703804379}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.652, y: 0, z: 7.56}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1466,7 +1266,7 @@ Transform:
   - {fileID: 882880163}
   - {fileID: 644477375}
   - {fileID: 223378405}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 5541099831968815527}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1722394303
 GameObject:
@@ -1580,93 +1380,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 647040533}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
---- !u!4 &1723007307 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3922896252092258153, guid: c8f62e3aeb9fc974ab18968795c89677, type: 3}
-  m_PrefabInstance: {fileID: 1769960382}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &1769960382
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 378050779}
-    m_Modifications:
-    - target: {fileID: -8679921383154817045, guid: c8f62e3aeb9fc974ab18968795c89677, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.37
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: c8f62e3aeb9fc974ab18968795c89677, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.37
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: c8f62e3aeb9fc974ab18968795c89677, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.37
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: c8f62e3aeb9fc974ab18968795c89677, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: c8f62e3aeb9fc974ab18968795c89677, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: c8f62e3aeb9fc974ab18968795c89677, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: c8f62e3aeb9fc974ab18968795c89677, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: c8f62e3aeb9fc974ab18968795c89677, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: c8f62e3aeb9fc974ab18968795c89677, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: c8f62e3aeb9fc974ab18968795c89677, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: c8f62e3aeb9fc974ab18968795c89677, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: c8f62e3aeb9fc974ab18968795c89677, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: c8f62e3aeb9fc974ab18968795c89677, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: c8f62e3aeb9fc974ab18968795c89677, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: c8f62e3aeb9fc974ab18968795c89677, type: 3}
-      propertyPath: m_Name
-      value: zombie with dismemberd head
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 3922896252092258153, guid: c8f62e3aeb9fc974ab18968795c89677, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 699084864}
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c8f62e3aeb9fc974ab18968795c89677, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 955631524}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c8f62e3aeb9fc974ab18968795c89677, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 955631525}
-  m_SourcePrefab: {fileID: 100100000, guid: c8f62e3aeb9fc974ab18968795c89677, type: 3}
 --- !u!1 &1812349359
 GameObject:
   m_ObjectHideFlags: 0
@@ -1835,6 +1548,294 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!1 &217522308483595867
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8129805491272445852}
+  m_Layer: 0
+  m_Name: AttackPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &2831862272113466059
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5541099831968815527}
+  - component: {fileID: 7991898533113537408}
+  - component: {fileID: 6553025088636479690}
+  - component: {fileID: 3427042451784754410}
+  - component: {fileID: 8114874492030117233}
+  - component: {fileID: 3542897373835531091}
+  m_Layer: 0
+  m_Name: Zombie
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &3427042451784754410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2831862272113466059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d26887a45a8e47d49d86cc37c70d4c25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: HoldMyBeer.AI::HoldMyBeer.AI.AIBrain
+--- !u!114 &3542897373835531091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2831862272113466059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f70f13c746284983917fed901c6e0d3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: HoldMyBeer.AI::HoldMyBeer.AI.AIStimulus
+  sightDistance: 7
+  leftAngle: 60
+  rightAngle: 60
+  upAngle: 10
+  downAngle: 10
+  originOffset: {x: 0, y: 1.64, z: 0.04}
+  sightMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  triggerInteraction: 1
+  visionDepth: 0.02
+  visionPointsCount: {x: 10, y: 10}
+  visionPointSize: 10
+--- !u!1001 &4709735227900965949
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 5541099831968815527}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: c8f62e3aeb9fc974ab18968795c89677, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.37
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c8f62e3aeb9fc974ab18968795c89677, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.37
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c8f62e3aeb9fc974ab18968795c89677, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.37
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c8f62e3aeb9fc974ab18968795c89677, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c8f62e3aeb9fc974ab18968795c89677, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c8f62e3aeb9fc974ab18968795c89677, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c8f62e3aeb9fc974ab18968795c89677, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c8f62e3aeb9fc974ab18968795c89677, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c8f62e3aeb9fc974ab18968795c89677, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c8f62e3aeb9fc974ab18968795c89677, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c8f62e3aeb9fc974ab18968795c89677, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c8f62e3aeb9fc974ab18968795c89677, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c8f62e3aeb9fc974ab18968795c89677, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c8f62e3aeb9fc974ab18968795c89677, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c8f62e3aeb9fc974ab18968795c89677, type: 3}
+      propertyPath: m_Name
+      value: zombie with dismemberd head
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 3922896252092258153, guid: c8f62e3aeb9fc974ab18968795c89677, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8129805491272445852}
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c8f62e3aeb9fc974ab18968795c89677, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5035768709138474942}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c8f62e3aeb9fc974ab18968795c89677, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7542452705694463914}
+  m_SourcePrefab: {fileID: 100100000, guid: c8f62e3aeb9fc974ab18968795c89677, type: 3}
+--- !u!95 &5035768709138474942
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5592695501656099180}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: c8f62e3aeb9fc974ab18968795c89677, type: 3}
+  m_Controller: {fileID: 9100000, guid: e5bdb71f3d607ae429cb4d2e950ca670, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!4 &5104529194697839574 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c8f62e3aeb9fc974ab18968795c89677, type: 3}
+  m_PrefabInstance: {fileID: 4709735227900965949}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &5541099831968815527
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2831862272113466059}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.652, y: 0, z: -7.56}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 5104529194697839574}
+  - {fileID: 1703804380}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5592695501656099180 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: c8f62e3aeb9fc974ab18968795c89677, type: 3}
+  m_PrefabInstance: {fileID: 4709735227900965949}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6553025088636479690
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2831862272113466059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1973766163cc4b5096fb48e07f523e9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: HoldMyBeer.AI::HoldMyBeer.AI.AIBootstrap
+  pathConfig: {fileID: 11400000, guid: 7592658355892e34eb636a0a90e135ea, type: 2}
+  target: {fileID: 2109807070}
+--- !u!114 &7542452705694463914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5592695501656099180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94e263d5607e2234487c4eb7af2db601, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: HoldMyBeer.AI::HoldMyBeer.AI.AIAnimator
+  locomotionSpeedParam: LocomotionSpeed
+  locomotionSmoothTime: 0.45
+--- !u!114 &7991898533113537408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2831862272113466059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8dbc56f9d1e4a30ba1f6c8055debb2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: HoldMyBeer.AI::HoldMyBeer.AI.WalkerZombie
+  pathRefreshInterval: 0.2
+  stopDistance: 1.5
+  patrolPoints:
+  - {fileID: 1247628271}
+  - {fileID: 1146918875}
+  - {fileID: 882880163}
+  - {fileID: 644477375}
+  - {fileID: 223378405}
+  requiredSightTime: 0.75
+  attackTriggerRange: 0
+--- !u!114 &8114874492030117233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2831862272113466059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15bb2e39abc643adbc8825a195a2daa7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: HoldMyBeer.AI::HoldMyBeer.AI.AILocomotion
+  rotationSpeed: 2.5
+--- !u!4 &8129805491272445852
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 217522308483595867}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.00174, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8587443544548287316}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &8587443544548287316 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3922896252092258153, guid: c8f62e3aeb9fc974ab18968795c89677, type: 3}
+  m_PrefabInstance: {fileID: 4709735227900965949}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -1844,6 +1845,5 @@ SceneRoots:
   - {fileID: 1304880257}
   - {fileID: 1356201598}
   - {fileID: 647040533}
-  - {fileID: 1703804380}
-  - {fileID: 378050779}
+  - {fileID: 5541099831968815527}
   - {fileID: 2109807070}
