@@ -1,20 +1,31 @@
 ﻿using System;
 using System.Collections.Generic;
-using UnityEngine;
 
 namespace HoldMyBeer.AI {
+    /// <summary>
+    /// Runs a single AI state and evaluates its configured transition rules.
+    /// </summary>
     public sealed class AIStateMachine {
         private static readonly string ScriptName = $"[{nameof(AIStateMachine)}]";
         private Dictionary<string, List<IStateTransition>> stateTransitions = new();
 
         private IAIState currentState;
 
+        /// <summary>
+        /// Initializes the state machine with the first active state.
+        /// </summary>
+        /// <param name="initialState">State to enter when the state machine starts.</param>
         public void Init(IAIState initialState) {
             currentState = initialState ?? throw new NullReferenceException($"{ScriptName} {nameof(currentState)}");
             currentState.Enter();
             EnterAllStateTransitions(currentState);
         }
 
+        /// <summary>
+        /// Adds transition rules that can be evaluated while the given state is active.
+        /// </summary>
+        /// <param name="state">Source state these transitions belong to.</param>
+        /// <param name="transitionRules">Transition rules to evaluate for the source state.</param>
         public void AddTransition(IAIState state, params IStateTransition[] transitionRules) {
             stateTransitions ??= new Dictionary<string, List<IStateTransition>>();
 
@@ -25,6 +36,10 @@ namespace HoldMyBeer.AI {
             }
         }
 
+        /// <summary>
+        /// Updates the current state and evaluates its transition rules.
+        /// </summary>
+        /// <param name="deltaTime">Elapsed time since the previous update.</param>
         public void Tick(float deltaTime) {
             if (currentState == null) { return; }
 
@@ -43,6 +58,10 @@ namespace HoldMyBeer.AI {
             }
         }
 
+        /// <summary>
+        /// Exits the current state and enters the next state.
+        /// </summary>
+        /// <param name="nextState">State to switch into.</param>
         private void SwitchState(IAIState nextState) {
             ExitAllStateTransitions(currentState);
             currentState.Exit();
@@ -51,6 +70,10 @@ namespace HoldMyBeer.AI {
             EnterAllStateTransitions(currentState);
         }
 
+        /// <summary>
+        /// Notifies all transitions assigned to the given state that their source state has exited.
+        /// </summary>
+        /// <param name="state">Source state whose transitions should be notified.</param>
         private void ExitAllStateTransitions(IAIState state) {
             if (state == null) { throw new ArgumentException($"{ScriptName} {nameof(state)}"); }
             if (!stateTransitions.TryGetValue(state.Id, out List<IStateTransition> transitions)) { return; }
@@ -61,6 +84,10 @@ namespace HoldMyBeer.AI {
             }
         }
 
+        /// <summary>
+        /// Notifies all transitions assigned to the given state that their source state has entered.
+        /// </summary>
+        /// <param name="state">Source state whose transitions should be notified.</param>
         private void EnterAllStateTransitions(IAIState state) {
             if (state == null) { throw new ArgumentException($"{ScriptName} {nameof(state)}"); }
             if (!stateTransitions.TryGetValue(state.Id, out List<IStateTransition> transitions)) { return; }

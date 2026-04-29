@@ -5,8 +5,10 @@ using UnityEngine;
 namespace HoldMyBeer.AI {
     [RequireComponent(typeof(Animator))]
     public sealed class AIAnimator : MonoBehaviour {
+        [Tooltip("Animator float parameter used to drive the locomotion blend tree value.")]
         [SerializeField] [AnimatorParameter] private string locomotionSpeedParam;
-        [SerializeField] private float locomotionSmoothTime;
+        [Tooltip("Time used to smooth changes to the locomotion speed animator parameter.")]
+        [SerializeField] [Min(0f)] private float locomotionSmoothTime;
 
         private Animator animator;
         private float currentAnimSpeed;
@@ -20,6 +22,9 @@ namespace HoldMyBeer.AI {
             animator = GetComponent<Animator>();
         }
 
+        /// <summary>
+        /// Sets the desired locomotion speed value that will be smoothed into the animator parameter.
+        /// </summary>
         internal void SetTargetLocomotionSpeed(float value) {
             targetLocomotionSpeed = value;
         }

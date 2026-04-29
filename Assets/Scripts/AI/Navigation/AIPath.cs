@@ -2,6 +2,9 @@
 using UnityEngine.AI;
 
 namespace HoldMyBeer.AI {
+    /// <summary>
+    /// Calculates and tracks traversal progress along a NavMesh path.
+    /// </summary>
     public class AIPath {
         private readonly NavMeshPath path;
         private readonly AIPathConfig pathConfig;
@@ -9,6 +12,9 @@ namespace HoldMyBeer.AI {
         private int currentCornerIndex;
         private bool hasValidPath;
 
+        /// <summary>
+        /// Creates a new AI path evaluator using the provided path configuration.
+        /// </summary>
         public AIPath(AIPathConfig pathConfig) {
             path = new NavMeshPath();
             this.pathConfig = pathConfig;
@@ -70,6 +76,11 @@ namespace HoldMyBeer.AI {
             return toNextCorner / distanceToCorner;
         }
 
+        /// <summary>
+        /// Updates path corner traversal based on the given position and returns detailed path-following data.
+        /// </summary>
+        /// <param name="currentPosition">The current world-space position of the agent.</param>
+        /// <returns>Path-following data containing corners, current corner index, movement direction, and distance to the current corner.</returns>
         public PathFollowData EvaluatePathProgress(Vector3 currentPosition) {
             if (!hasValidPath || path.corners.Length < 2) {
                 return new PathFollowData(
