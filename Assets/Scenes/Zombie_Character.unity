@@ -1577,6 +1577,7 @@ GameObject:
   - component: {fileID: 6553025088636479690}
   - component: {fileID: 3427042451784754410}
   - component: {fileID: 8114874492030117233}
+  - component: {fileID: 8114874492030117234}
   - component: {fileID: 3542897373835531091}
   m_Layer: 0
   m_Name: Zombie
@@ -1779,6 +1780,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94e263d5607e2234487c4eb7af2db601, type: 3}
   m_Name: 
   m_EditorClassIdentifier: HoldMyBeer.AI::HoldMyBeer.AI.AIAnimator
+  normalAttackState: Upper Body.Attack - Normal
   locomotionSpeedParam: LocomotionSpeed
   locomotionSmoothTime: 0.45
 --- !u!114 &7991898533113537408
@@ -1802,7 +1804,8 @@ MonoBehaviour:
   - {fileID: 644477375}
   - {fileID: 223378405}
   requiredSightTime: 0.75
-  attackTriggerRange: 0
+  normalAttackCooldown: 5
+  normalAttackTriggerRange: 1.8
 --- !u!114 &8114874492030117233
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1816,6 +1819,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: HoldMyBeer.AI::HoldMyBeer.AI.AILocomotion
   rotationSpeed: 2.5
+--- !u!114 &8114874492030117234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2831862272113466059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dae11e041e1643e197ce8bb73ac31e23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: HoldMyBeer.AI::HoldMyBeer.AI.AIAttack
+  attackPoint: {fileID: 8129805491272445852}
+  hitboxRadius: 0.3
 --- !u!4 &8129805491272445852
 Transform:
   m_ObjectHideFlags: 0

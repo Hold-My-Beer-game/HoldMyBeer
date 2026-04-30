@@ -2,38 +2,79 @@
 
 namespace HoldMyBeer.AI {
     public class WalkerZombie : AIBehaviourComposer {
-        [Header("Movement")]
+        [Header("General")]
         [SerializeField] [Min(0.01f)] private float pathRefreshInterval;
         [SerializeField] [Min(0.01f)] private float stopDistance;
+
+        [Header("Patrol")]
         [SerializeField] private Transform[] patrolPoints = new Transform[5];
 
         [Header("Idle -> Chase")]
         [SerializeField] [Min(0f)] private float requiredSightTime;
 
-        [Header("Combat Layer")]
-        [SerializeField] private float attackTriggerRange;
+        [Header("Normal Attack")]
+        [SerializeField] private float normalAttackCooldown;
+        [SerializeField] private float normalAttackTriggerRange;
+
+        private Collider targetCol;
+        private Vector3[] patrolVectorPoints;
 
         public override AIStateSetup Compose(AIContext context, AIBrain brain) {
-            Vector3[] patrolVectorPoints = TransformsToVectors(patrolPoints);
-            var targetCol = context.Target.GetComponent<Collider>();
+            patrolVectorPoints = TransformsToVectors(patrolPoints);
+            targetCol = context.Target.GetComponent<Collider>();
 
+            IAIState defaultMovementState = MovementLayer(context, brain);
+            // IAIState defaultCombatState = CombatLayer(context, brain);
+
+            // return new AIStateSetup(defaultMovementState, defaultCombatState);
+            return new AIStateSetup(defaultMovementState, null);
+        }
+
+        /// <summary>
+        /// Composes the movement layer of the AI character
+        /// </summary>
+        /// <returns>The entry (default) state for the movement layer</returns>
+        private IAIState MovementLayer(AIContext context, AIBrain brain) {
             var idleState = new IdleMovementState(context);
             var patrolState = new PatrolAreaState(context, patrolVectorPoints, 0f, 3f, stopDistance);
             var chaseState = new ChaseTargetState(context, pathRefreshInterval, stopDistance);
             var searchState = new SearchTargetState(context, stopDistance);
 
-            var idleToChase = new DelayedSightTransition(context.SightStimulus, targetCol, requiredSightTime, chaseState);
+            var delayedSeenToChase = new DelayedSightTransition(context.SightStimulus, targetCol, requiredSightTime, chaseState);
+            var instantSeenToChase = new StateTransition(() => context.SightStimulus.CanSee(targetCol), chaseState);
+
             var chaseToSearch = new StateTransition(() => !context.SightStimulus.CanSee(targetCol), searchState);
             var searchToPatrol = new StateTransition(() => searchState.OnLastKnownPos, patrolState);
-            var searchToChase = new StateTransition(() => context.SightStimulus.CanSee(targetCol), chaseState);
-            var patrolToChase = new DelayedSightTransition(context.SightStimulus, targetCol, requiredSightTime, chaseState);
 
-            brain.AddMovementTransition(patrolState, patrolToChase);
-            brain.AddMovementTransition(idleState, idleToChase);
+            brain.AddMovementTransition(patrolState, delayedSeenToChase);
+            brain.AddMovementTransition(idleState, delayedSeenToChase);
             brain.AddMovementTransition(chaseState, chaseToSearch);
-            brain.AddMovementTransition(searchState, searchToPatrol, searchToChase);
+            brain.AddMovementTransition(searchState, searchToPatrol, instantSeenToChase);
 
-            return new AIStateSetup(patrolState, null);
+            return patrolState;
+        }
+
+        /// <summary>
+        /// Composes the combat layer of the AI character
+        /// </summary>
+        /// <returns>The entry (default) state for the combat layer</returns>
+        private IAIState CombatLayer(AIContext context, AIBrain brain) {
+            var idleCombatState = new IdleCombatState();
+            var normalAttackState = new NormalAttackState(context, targetCol, normalAttackCooldown);
+
+            var toNormalAttack = new StateTransition(IsNormalAttackValid, normalAttackState);
+            var normalAttackToIdle = new StateTransition(() => !IsNormalAttackValid(), normalAttackState);
+
+            brain.AddCombatTransition(idleCombatState, toNormalAttack);
+            brain.AddCombatTransition(normalAttackState, normalAttackToIdle);
+
+            return idleCombatState;
+
+            bool IsNormalAttackValid() {
+                float distToPlayer = Vector3.Distance(context.Self.position, context.Target.localPosition);
+                bool canSeePlayer = context.SightStimulus.CanSee(targetCol);
+                return canSeePlayer && distToPlayer <= normalAttackTriggerRange;
+            }
         }
 
         private static Vector3[] TransformsToVectors(Transform[] transforms) {
