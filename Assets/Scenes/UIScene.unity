@@ -515,6 +515,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HUDTester
   controller: {fileID: 1967497340}
+  health: 1
+  drunkness: 1
+  goalText: Reach the club
+  interactVisible: 0
+  interactText: Press E
+  ammo: 6
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
