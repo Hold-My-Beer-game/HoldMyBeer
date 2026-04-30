@@ -1,7 +1,10 @@
-﻿using UnityEngine;
+﻿using System;
+using HoldMyBeer.Zombies.Contracts;
+using UnityEngine;
 
 namespace HoldMyBeer.Zombies.Unity {
     public sealed class AIAttack : MonoBehaviour {
+        [SerializeField] private float damageAmount = 20f;
         [SerializeField] private Transform attackPoint;
         [SerializeField] private float hitboxRadius;
 
@@ -17,11 +20,9 @@ namespace HoldMyBeer.Zombies.Unity {
                 Collider result = attackResultsBuffer[i];
                 if (!ReferenceEquals(result, target)) { continue; }
 
-                // if (!result.TryGetComponent(out MeshRenderer rend)) { throw new NullReferenceException($"{ScriptName} Could not fetch 'ComponentName' from target collider"); }
+                if (!result.TryGetComponent(out ITarget player)) { throw new NullReferenceException($"{ScriptName} Could not fetch '{nameof(ITarget)}' from target collider"); }
 
-                if (!result.name.Contains("Target")) { continue; }
-                Vector3 dir = (result.transform.position - transform.position).normalized;
-                result.transform.position += dir;
+                player.TakeDamage(damageAmount);
             }
         }
 

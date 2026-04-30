@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: HoldMyBeer.Zombie::HoldMyBeer.Zombie.AIPathConfig
   config:
     waypointReachDistance: 0.15
-    navSampleDistance: 1.5
+    navSampleDistance: 10
     areaMask: -1

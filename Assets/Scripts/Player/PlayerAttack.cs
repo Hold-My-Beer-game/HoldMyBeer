@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -16,6 +17,8 @@ public class PlayerAttack : MonoBehaviour
     public bool showRaycast = true;
     public Color raycastColor = Color.red;
     public float raycastDuration = 0.1f;
+    public GameObject[] muzzleFlashObjects;
+    public float muzzleDuration;
 
     [Header("Ammo")]
     public int magazineSize = 2;
@@ -52,6 +55,20 @@ public class PlayerAttack : MonoBehaviour
         if (isReloading || isShootingBlocked) return;
 
         TryShoot();
+        StartCoroutine(MuzzleFlashRoutine());
+    }
+
+    private IEnumerator MuzzleFlashRoutine() {
+        EnableMuzzleFlash(true);
+        yield return new WaitForSeconds(muzzleDuration);
+        EnableMuzzleFlash(false);
+    }
+
+    private void EnableMuzzleFlash(bool enable) {
+        for (int i = 0; i < muzzleFlashObjects.Length; i++) {
+            GameObject flash = muzzleFlashObjects[i];
+            flash.SetActive(enable);
+        }
     }
 
     private void TryShoot()
