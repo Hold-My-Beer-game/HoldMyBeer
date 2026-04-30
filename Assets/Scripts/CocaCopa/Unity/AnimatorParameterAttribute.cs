@@ -14,22 +14,22 @@ namespace CocaCopa.Unity {
             ParameterType = default;
         }
 
-        // public AnimatorParameterAttribute(AnimatorControllerParameterType parameterType) {
-        //     AnimatorFieldName = null;
-        //     FilterByType = true;
-        //     ParameterType = parameterType;
-        // }
-        //
-        // public AnimatorParameterAttribute(string animatorFieldName) {
-        //     AnimatorFieldName = animatorFieldName;
-        //     FilterByType = false;
-        //     ParameterType = default;
-        // }
-        //
-        // public AnimatorParameterAttribute(string animatorFieldName, AnimatorControllerParameterType parameterType) {
-        //     AnimatorFieldName = animatorFieldName;
-        //     FilterByType = true;
-        //     ParameterType = parameterType;
-        // }
+        public AnimatorParameterAttribute(AnimatorControllerParameterType parameterType) {
+            AnimatorFieldName = null;
+            FilterByType = true;
+            ParameterType = parameterType;
+        }
+
+        public AnimatorParameterAttribute(string animatorFieldName) {
+            AnimatorFieldName = animatorFieldName;
+            FilterByType = false;
+            ParameterType = default;
+        }
+
+        public AnimatorParameterAttribute(string animatorFieldName, AnimatorControllerParameterType parameterType) {
+            AnimatorFieldName = animatorFieldName;
+            FilterByType = true;
+            ParameterType = parameterType;
+        }
     }
 }
