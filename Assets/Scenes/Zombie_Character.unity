@@ -1843,7 +1843,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 420636cb34fa41ebaecf806e595a1799, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CocaCopa.StateMachine.ZombieContext
-  target: {fileID: 2109807070}
+  target: {fileID: 0}
   pathConfig: {fileID: 11400000, guid: 7592658355892e34eb636a0a90e135ea, type: 2}
 --- !u!4 &8129805491272445852
 Transform:
