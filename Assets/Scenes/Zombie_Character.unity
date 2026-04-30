@@ -1257,7 +1257,7 @@ Transform:
   m_GameObject: {fileID: 1703804379}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.652, y: 0, z: 7.56}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1266,7 +1266,7 @@ Transform:
   - {fileID: 882880163}
   - {fileID: 644477375}
   - {fileID: 223378405}
-  m_Father: {fileID: 5541099831968815527}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1722394303
 GameObject:
@@ -1502,6 +1502,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2109807070}
   - component: {fileID: 2109807071}
+  - component: {fileID: 2109807072}
   m_Layer: 0
   m_Name: TestTarget
   m_TagString: Untagged
@@ -1548,6 +1549,18 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &2109807072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2109807069}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63e9505bbb1a983409399ec5d7abda96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TestPlayer
 --- !u!1 &217522308483595867
 GameObject:
   m_ObjectHideFlags: 0
@@ -1573,8 +1586,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5541099831968815527}
+  - component: {fileID: 8114874492030117235}
   - component: {fileID: 7991898533113537408}
-  - component: {fileID: 6553025088636479690}
   - component: {fileID: 3427042451784754410}
   - component: {fileID: 8114874492030117233}
   - component: {fileID: 8114874492030117234}
@@ -1746,7 +1759,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5104529194697839574}
-  - {fileID: 1703804380}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5592695501656099180 stripped
@@ -1754,20 +1766,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: c8f62e3aeb9fc974ab18968795c89677, type: 3}
   m_PrefabInstance: {fileID: 4709735227900965949}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &6553025088636479690
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2831862272113466059}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1973766163cc4b5096fb48e07f523e9c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: HoldMyBeer.AI::HoldMyBeer.AI.AIBootstrap
-  pathConfig: {fileID: 11400000, guid: 7592658355892e34eb636a0a90e135ea, type: 2}
-  target: {fileID: 2109807070}
 --- !u!114 &7542452705694463914
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1833,6 +1831,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: HoldMyBeer.AI::HoldMyBeer.AI.AIAttack
   attackPoint: {fileID: 8129805491272445852}
   hitboxRadius: 0.3
+--- !u!114 &8114874492030117235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2831862272113466059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 420636cb34fa41ebaecf806e595a1799, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CocaCopa.StateMachine.ZombieContext
+  target: {fileID: 2109807070}
+  pathConfig: {fileID: 11400000, guid: 7592658355892e34eb636a0a90e135ea, type: 2}
 --- !u!4 &8129805491272445852
 Transform:
   m_ObjectHideFlags: 0
@@ -1862,5 +1874,6 @@ SceneRoots:
   - {fileID: 1304880257}
   - {fileID: 1356201598}
   - {fileID: 647040533}
+  - {fileID: 1703804380}
   - {fileID: 5541099831968815527}
   - {fileID: 2109807070}

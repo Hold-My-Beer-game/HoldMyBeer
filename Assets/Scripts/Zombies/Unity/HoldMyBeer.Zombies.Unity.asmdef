@@ -1,0 +1,19 @@
+{
+  "name": "HoldMyBeer.Zombies.Unity",
+  "rootNamespace": "HoldMyBeer.Zombies.Unity",
+  "references": [
+    "CocaCopa.Unity",
+    "CocaCopa.StateMachine.Contracts",
+    "CocaCopa.StateMachine.AIModules",
+    "HoldMyBeer.Zombies.Contracts"
+  ],
+  "includePlatforms": [],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": true,
+  "precompiledReferences": [],
+  "autoReferenced": false,
+  "defineConstraints": [],
+  "versionDefines": [],
+  "noEngineReferences": false
+}
