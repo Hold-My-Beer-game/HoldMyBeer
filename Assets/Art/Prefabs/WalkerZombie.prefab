@@ -62,7 +62,7 @@ Transform:
   m_GameObject: {fileID: 8990217873573674736}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.652, y: 0, z: -7.56}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -143,6 +143,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dae11e041e1643e197ce8bb73ac31e23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: HoldMyBeer.AI::HoldMyBeer.AI.AIAttack
+  damageAmount: 20
   attackPoint: {fileID: 8851437666667082929}
   hitboxRadius: 0.3
 --- !u!114 &8326859986795956565
