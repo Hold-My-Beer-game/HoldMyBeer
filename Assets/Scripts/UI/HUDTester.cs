@@ -2,45 +2,56 @@ using UnityEngine;
 
 namespace HoldMyBeer.UI {
     /// <summary>
-    /// Inspector-driven HUD tester.
-    /// Values set in Inspector are immediately pushed to HUDController.
+    /// Editor/runtime state injector for HUD debugging.
+    /// Directly mutates HUDState to validate UI rendering.
     /// </summary>
     [ExecuteAlways]
     internal class HUDTester : MonoBehaviour {
-        [SerializeField] private HUDController controller;
-    
+        private HUDState state;
+
         [Header("Vitals")]
-        [Range(0, 1)] public float health =1f;
-        [Range(0, 1)] public float drunkness = 1f;
-    
+        [Range(0f, 1f)] public float health = 1f;
+
+        [Range(0f, 1f)] public float drunkness = 0f;
+
         [Header("Goal")]
-        public string goalText = "Reach the club";
+        public string goalText = "Reach the objective";
 
         [Header("Interact")]
-        public bool interactVisible = false;
+        public bool interactVisible;
+
         public string interactText = "Press E";
 
         [Header("Ammo")]
         public int ammo = 6;
 
-        private void OnValidate() {
-            if (controller == null) return;
+        public void SetState(HUDState shared) {
+            state = shared;
+            Apply();
+        }
 
+        private void OnValidate() {
             Apply();
         }
 
         private void OnEnable() {
-            if (controller == null) return;
-
             Apply();
         }
 
         private void Apply() {
-            controller.SetHealth(health);
-            controller.SetDrunkness(drunkness);
-            controller.SetGoal(goalText);
-            controller.SetInteract(interactVisible, interactText);
-            controller.SetAmmo(ammo);
+            if (state == null)
+                return;
+
+            state.Health = health;
+            state.Drunkness = drunkness;
+
+            state.GoalText = goalText;
+            state.InteractVisible = interactVisible;
+            state.InteractText = interactText;
+
+            state.Ammo = ammo;
+
+            state.Notify();
         }
     }
 }

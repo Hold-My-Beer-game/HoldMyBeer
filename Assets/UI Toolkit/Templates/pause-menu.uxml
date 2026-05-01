@@ -1,9 +1,0 @@
-<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <Style src="project://database/Assets/UI%20Toolkit/HoldMyStyle.uss?fileID=7433441132597879392&amp;guid=d9d9ea3cedfdfa0409e472d927d34c51&amp;type=3"/>
-    <ui:GroupBox name="pause-menu" style="background-image: url(&quot;project://database/Assets/UI%20Toolkit/Sprites/battle_skill_tips.png?fileID=21300000&amp;guid=3e20c3366b703cb40ac37bd3abf7d37e&amp;type=3#battle_skill_tips&quot;); -unity-background-image-tint-color: rgba(0, 0, 0, 0.7); -unity-slice-left: 1; -unity-slice-top: 1; -unity-slice-right: 1; -unity-slice-bottom: 1; flex-grow: 1; flex-shrink: 1; margin-top: 0%; margin-right: 0%; margin-bottom: 0%; margin-left: 0%; padding-top: 0%; padding-right: 0%; padding-bottom: 0%; padding-left: 0%; align-self: stretch; align-items: stretch; aspect-ratio: auto; justify-content: space-between;">
-        <ui:Button text="Restart" name="reload-btn" class="pause-menu-btn" style="flex-shrink: 1;"/>
-        <ui:Button text="Main Menu" name="mainmenu-btn" class="pause-menu-btn" style="flex-shrink: 1;"/>
-        <ui:Button text="Settings" name="settings-btn" class="pause-menu-btn"/>
-        <ui:Button text="Quit" name="quit-btn" class="pause-menu-btn"/>
-    </ui:GroupBox>
-</ui:UXML>

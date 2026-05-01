@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: edccb77e4cef5a248bd44a5fb3d8467f
+guid: cfa71ea6a352f0f4fbfb917a1934840e
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,7 +9,7 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - Londrina Solid
+  - Shadows Into Light
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0

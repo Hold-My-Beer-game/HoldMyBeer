@@ -1,0 +1,7 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI%20Toolkit/HoldMyStyle.uss?fileID=7433441132597879392&amp;guid=d9d9ea3cedfdfa0409e472d927d34c51&amp;type=3#HoldMyStyle"/>
+    <ui:GroupBox text="Credits" name="credits-groupbox" class="credits-groupbox" style="-unity-text-align: middle-center; -unity-text-generator: advanced; -unity-text-auto-size: best-fit 10px 100px;">
+        <ui:Label text="Label" class="credits-element" style="flex-wrap: wrap; -unity-text-auto-size: none; -unity-text-generator: standard;"/>
+    </ui:GroupBox>
+    <ui:Button text="" name="credits-exit-btn" class="menu-exit-btn" style="position: absolute; align-self: flex-end; top: 2%; right: 2%;"/>
+</ui:UXML>
