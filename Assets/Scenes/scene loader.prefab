@@ -46,3 +46,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SceneTimerLoader
   delay: 46
   sceneName: Gameplay
+  jumpAction: {fileID: -2099379676528639254, guid: e97a869835f9a3240af1ef8f89972d40, type: 3}
