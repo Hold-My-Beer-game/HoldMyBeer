@@ -17,6 +17,7 @@ namespace HoldMyBeer.Zombies.Unity {
         /// <param name="dir">Target direction in world space.</param>
         internal void SetTargetLookDir(Vector3 dir) {
             targetLookDir = dir;
+            targetLookDir.y = 0;
         }
 
         /// <summary>
@@ -25,6 +26,17 @@ namespace HoldMyBeer.Zombies.Unity {
         /// <param name="delta">World-space movement delta.</param>
         internal void ApplyRootMotionDelta(Vector3 delta) {
             transform.position += delta;
+            Vector3 pos = transform.position;
+            pos.y = GroundHeight();
+            transform.position = pos;
+        }
+
+        private float GroundHeight() {
+            Vector3 origin = transform.position + Vector3.up * 0.25f;
+            Vector3 dir = Vector3.down;
+            const float dist = 10f;
+            if (Physics.Raycast(origin, dir, out RaycastHit hit, dist)) { return hit.point.y; }
+            return -1f;
         }
 
         private void Update() {
