@@ -1,17 +1,15 @@
-using UnityEngine;
-
 namespace HoldMyBeer.UI {
     /// <summary>
     /// Converts gameplay systems into HUD state mutations.
     /// </summary>
-    public class HUDController : MonoBehaviour {
-        [SerializeField] private HUDView view;
-    
-        private readonly HUDState state =  new HUDState();
+    internal class HUDController {
+        private readonly HUDState state;
+        
+        // todo HUD interface
         // private IPlayerStateRead playerStateRead;
         //
         // public void Install(IPlayerStateRead playerStateReadRef) {
-            // playerStateRead = playerStateReadRef;
+        //     playerStateRead = playerStateReadRef;
         // }
 
         // public void Init() {
@@ -22,19 +20,21 @@ namespace HoldMyBeer.UI {
         //     playerStateRead.OnInteract += SetInteract;  
         //     playerStateRead.OnAmmoChange += SetAmmo;  
         // }
-        
-        private void Awake() {
-            view.Bind(state);
+
+        public HUDController(HUDState state) {
+            this.state = state;
         }
-    
+        
         // Gameplay API
-        internal void SetHealth(float v) {
-            state.Health = Mathf.Clamp01(v);
+        internal void SetHealth(float value) {
+            // state.Health = Mathf.Clamp01(v);
+            state.Health = value;
             state.Notify();
         }
-    
-        internal void SetDrunkness(float v) {
-            state.Drunkness = Mathf.Clamp01(v);
+
+        internal void SetDrunkness(float value) {
+            // state.Drunkness = Mathf.Clamp01(v);
+            state.Drunkness = value;
             state.Notify();
         }
 
@@ -48,7 +48,7 @@ namespace HoldMyBeer.UI {
             state.InteractText = text;
             state.Notify();
         }
-    
+
         internal void SetAmmo(int current) {
             state.Ammo = current;
             state.Notify();

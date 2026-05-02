@@ -1,13 +1,15 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UI%20Toolkit/HoldMyStyle.uss?fileID=7433441132597879392&amp;guid=d9d9ea3cedfdfa0409e472d927d34c51&amp;type=3#HoldMyStyle"/>
-    <ui:VisualElement name="GameBG" style="flex-grow: 1; position: absolute; width: 100%; background-image: url(&quot;project://database/Assets/UI%20Toolkit/2026-04-27_133741.png?fileID=2800000&amp;guid=236bbccb31d006749b49818bbe7f94fc&amp;type=3#2026-04-27_133741&quot;); height: 100%;"/>
-    <ui:VisualElement name="menuBG" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/UI%20Toolkit/menu_bg.png?fileID=21300000&amp;guid=e247eba24b8e99340a559f88060f9cea&amp;type=3#menu_bg&quot;); -unity-background-scale-mode: scale-to-fit; background-position-y: top 0; background-position-x: left 0; -unity-background-image-tint-color: rgba(255, 99, 71, 0.71);">
-        <ui:Label text="hold my beer" name="GameTitle"/>
-        <ui:VisualElement name="menu" style="flex-grow: 1; background-image: none; -unity-background-scale-mode: scale-to-fit; background-position-y: top 0; background-position-x: left 0; display: flex; -unity-background-image-tint-color: rgba(0, 0, 0, 0.7); align-items: flex-start; justify-content: space-around; padding-top: 5%; padding-right: 2%; padding-bottom: 7%; padding-left: 2%;">
-            <ui:Button text="New Game" name="btn-NewGame" class="main-menu-btn"/>
-            <ui:Button text="Settings" name="btn-Settings" class="main-menu-btn"/>
-            <ui:Button text="About" name="btn-About" class="main-menu-btn"/>
-            <ui:Button text="Quit" name="btn-Quit" class="main-menu-btn"/>
+    <ui:VisualElement name="MainMenu" style="flex-grow: 1;">
+        <ui:VisualElement name="GameBG" style="flex-grow: 1; position: absolute; width: 100%; background-image: url(&quot;project://database/Assets/UI%20Toolkit/2026-04-27_133741.png?fileID=2800000&amp;guid=236bbccb31d006749b49818bbe7f94fc&amp;type=3#2026-04-27_133741&quot;); height: 100%;"/>
+        <ui:VisualElement name="menuBG" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/UI%20Toolkit/Sprites/menu_bg.png?fileID=21300000&amp;guid=e247eba24b8e99340a559f88060f9cea&amp;type=3#menu_bg&quot;); -unity-background-scale-mode: scale-to-fit; background-position-y: top 0; background-position-x: left 0; -unity-background-image-tint-color: rgba(95, 119, 67, 0.25);">
+            <ui:Label text="buzzed n&apos; brainless" name="GameTitle" style="text-shadow: 2px 4px 0 rgb(102, 16, 0); -unity-text-outline-color: rgb(0, 0, 0); -unity-text-outline-width: 0.5px; color: rgb(95, 119, 67); -unity-text-align: middle-left; -unity-paragraph-spacing: -38px; -unity-text-auto-size: none; -unity-text-generator: standard; font-size: 200px; margin-top: 2%; margin-right: 0%; margin-bottom: 0%; margin-left: 0%; padding-top: 0%; height: 40%; -unity-font-definition: url(&quot;project://database/Assets/UI%20Toolkit/Fonts/JollyLodger-Regular.ttf?fileID=12800000&amp;guid=7097a33f1aead7b41b011973ac539ae2&amp;type=3#JollyLodger-Regular&quot;); word-spacing: 0; letter-spacing: 5px; background-image: url(&quot;project://database/Assets/UI%20Toolkit/Sprites/battle_end_bg.png?fileID=21300000&amp;guid=bf92ab47995e16544817ecf36c63b342&amp;type=3#battle_end_bg&quot;); -unity-background-image-tint-color: rgba(31, 0, 0, 0.74);"/>
+            <ui:VisualElement name="menu" style="flex-grow: 1; background-image: none; -unity-background-scale-mode: scale-to-fit; background-position-y: top 0; background-position-x: left 0; display: flex; -unity-background-image-tint-color: rgba(0, 0, 0, 0.7); align-items: flex-start; justify-content: space-between; padding-top: 2%; padding-right: 2%; padding-bottom: 5%; padding-left: 2%;">
+                <ui:Button text="New Game" name="btn-NewGame" class="main-menu-btn"/>
+                <ui:Button text="Settings" name="btn-Settings" class="main-menu-btn"/>
+                <ui:Button text="About" name="btn-About" class="main-menu-btn"/>
+                <ui:Button text="Quit" name="btn-Quit" class="main-menu-btn"/>
+            </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

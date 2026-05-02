@@ -10,7 +10,10 @@ namespace HoldMyBeer.UI {
     /// </summary>
     internal class HUDView : MonoBehaviour {
         [SerializeField] private UIDocument document;
-
+        
+        private HUDState state;
+        private bool initialized;
+        
         private VisualElement root;
 
         // UI references cache
@@ -22,24 +25,26 @@ namespace HoldMyBeer.UI {
 
         // Ammo cache
         private readonly List<VisualElement> bullets = new();
-
-        private HUDState state;
-
+        
         private const float FLICKER_THRESHOLD = 0.25f;
         private const float FLICKER_FREQ = 10f;
         private const float FLICKER_AMP = 0.2f;
 
         public void Bind(HUDState newState) {
+            if (initialized) { return; }
+            initialized = true;
+            
             state = newState;
-
             root = document.rootVisualElement;
+            VisualElement hudRoot = root.Q<VisualElement>("HUD");
+            if (hudRoot == null) { throw new Exception("HUDRoot is null"); }
 
             // Cache UI elements once 
-            bottle = root.Q<VisualElement>("Bottle")?? throw new NullReferenceException("Bottle");
-            blood = root.Q<VisualElement>("Blood")?? throw new NullReferenceException("Blood");
-            goalLabel = root.Q<Label>("GoalLabel")?? throw new NullReferenceException("GoalLabel");
-            interactLabel = root.Q<Label>("InteractLabel")?? throw new NullReferenceException("InteractLabel");
-            ammoContainer = root.Q<VisualElement>("AmmoContainer")?? throw new NullReferenceException("AmmoContainer");
+            bottle = hudRoot.Q<VisualElement>("Bottle")?? throw new NullReferenceException("Bottle");
+            blood = hudRoot.Q<VisualElement>("Blood")?? throw new NullReferenceException("Blood");
+            goalLabel = hudRoot.Q<Label>("GoalLabel")?? throw new NullReferenceException("GoalLabel");
+            interactLabel = hudRoot.Q<Label>("InteractLabel")?? throw new NullReferenceException("InteractLabel");
+            ammoContainer = hudRoot.Q<VisualElement>("AmmoContainer")?? throw new NullReferenceException("AmmoContainer");
 
             BuildAmmoVisuals();
 
@@ -51,11 +56,14 @@ namespace HoldMyBeer.UI {
             if (state != null) { state.OnChanged -= Refresh; }
         }
 
+        private void Update() {
+            UpdateVitals();
+        }
+
         // ---------------------
         // FULL UI UPDATE ENTRY
         // ---------------------
         private void Refresh() {
-            UpdateVitals();
             UpdateText();
             UpdateInteract();
             UpdateAmmo();
