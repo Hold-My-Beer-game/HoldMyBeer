@@ -11204,7 +11204,11 @@ PrefabInstance:
       objectReference: {fileID: 1991603938}
     - target: {fileID: 3987935492977684769, guid: a240a1bf919e7194f90d01371e67011c, type: 3}
       propertyPath: upAngle
-      value: 14.910179
+      value: 62.335335
+      objectReference: {fileID: 0}
+    - target: {fileID: 3987935492977684769, guid: a240a1bf919e7194f90d01371e67011c, type: 3}
+      propertyPath: downAngle
+      value: 41.856285
       objectReference: {fileID: 0}
     - target: {fileID: 3987935492977684769, guid: a240a1bf919e7194f90d01371e67011c, type: 3}
       propertyPath: leftAngle
@@ -17665,7 +17669,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1205864442
 Transform:
   m_ObjectHideFlags: 0
@@ -21609,6 +21613,14 @@ PrefabInstance:
       propertyPath: hidePoint
       value: 
       objectReference: {fileID: 1622531226}
+    - target: {fileID: 3987935492977684769, guid: a240a1bf919e7194f90d01371e67011c, type: 3}
+      propertyPath: upAngle
+      value: 66.646706
+      objectReference: {fileID: 0}
+    - target: {fileID: 3987935492977684769, guid: a240a1bf919e7194f90d01371e67011c, type: 3}
+      propertyPath: downAngle
+      value: 69.88024
+      objectReference: {fileID: 0}
     - target: {fileID: 7924361410937531655, guid: a240a1bf919e7194f90d01371e67011c, type: 3}
       propertyPath: m_Name
       value: ScreamerZombie_1
@@ -24323,7 +24335,11 @@ PrefabInstance:
       objectReference: {fileID: 680692550}
     - target: {fileID: 3987935492977684769, guid: a240a1bf919e7194f90d01371e67011c, type: 3}
       propertyPath: upAngle
-      value: 19.221556
+      value: 68.80239
+      objectReference: {fileID: 0}
+    - target: {fileID: 3987935492977684769, guid: a240a1bf919e7194f90d01371e67011c, type: 3}
+      propertyPath: downAngle
+      value: 50.479042
       objectReference: {fileID: 0}
     - target: {fileID: 3987935492977684769, guid: a240a1bf919e7194f90d01371e67011c, type: 3}
       propertyPath: leftAngle
@@ -25596,7 +25612,11 @@ PrefabInstance:
       objectReference: {fileID: 965104145}
     - target: {fileID: 3987935492977684769, guid: a240a1bf919e7194f90d01371e67011c, type: 3}
       propertyPath: upAngle
-      value: 17.06587
+      value: 49.401207
+      objectReference: {fileID: 0}
+    - target: {fileID: 3987935492977684769, guid: a240a1bf919e7194f90d01371e67011c, type: 3}
+      propertyPath: downAngle
+      value: 72.03593
       objectReference: {fileID: 0}
     - target: {fileID: 3987935492977684769, guid: a240a1bf919e7194f90d01371e67011c, type: 3}
       propertyPath: leftAngle
@@ -26482,6 +26502,14 @@ PrefabInstance:
       propertyPath: hidePoint
       value: 
       objectReference: {fileID: 1797788991}
+    - target: {fileID: 3987935492977684769, guid: a240a1bf919e7194f90d01371e67011c, type: 3}
+      propertyPath: upAngle
+      value: 32.155693
+      objectReference: {fileID: 0}
+    - target: {fileID: 3987935492977684769, guid: a240a1bf919e7194f90d01371e67011c, type: 3}
+      propertyPath: downAngle
+      value: 52.634727
+      objectReference: {fileID: 0}
     - target: {fileID: 3987935492977684769, guid: a240a1bf919e7194f90d01371e67011c, type: 3}
       propertyPath: leftAngle
       value: 29.640717
