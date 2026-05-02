@@ -1,3 +1,6 @@
+using UnityEngine;
+using CocaCopa.SceneManagement;
+
 namespace HoldMyBeer.UI {
     public class MainMenuController {
         private readonly UINavigation nav;
@@ -8,6 +11,7 @@ namespace HoldMyBeer.UI {
 
         public void StartGame() {
             // TODO: call IAppActions.StartGame()
+            SceneTransitionApi.TransitionToScene(1, LoadMode.Single);
         }
 
         public void OpenSettings() {
@@ -20,6 +24,7 @@ namespace HoldMyBeer.UI {
 
         public void Quit() {
             // TODO: call IAppActions.Quit()
+            Application.Quit();
         }
     }
 }

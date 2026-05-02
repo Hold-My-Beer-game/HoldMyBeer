@@ -1,40 +1,43 @@
+using UnityEngine;
+
 namespace HoldMyBeer.UI {
     /// <summary>
     /// Converts gameplay systems into HUD state mutations.
     /// </summary>
     internal class HUDController {
         private readonly HUDState state;
-        
+
         // todo HUD interface
-        // private IPlayerStateRead playerStateRead;
-        //
-        // public void Install(IPlayerStateRead playerStateReadRef) {
-        //     playerStateRead = playerStateReadRef;
-        // }
+        private IPlayerStateRead playerStateRead;
 
-        // public void Init() {
-        //     view.Bind(state);
-        //     playerStateRead.OnHealthChange += SetHealth;  
-        //     playerStateRead.OnDrunknessChange += SetDrunkness;  
-        //     playerStateRead.OnGoalChange += SetGoal;  
-        //     playerStateRead.OnInteract += SetInteract;  
-        //     playerStateRead.OnAmmoChange += SetAmmo;  
-        // }
+        public void Init() {
+            // view.Bind(state);
 
-        public HUDController(HUDState state) {
-            this.state = state;
+            if (playerStateRead == null) { return; }
+            playerStateRead.OnHealthChange += SetHealth;
+            playerStateRead.OnAlcoholChange += SetDrunkness;
+            playerStateRead.OnGoalChange += SetGoal;
+            playerStateRead.OnInteract += SetInteract;
+            playerStateRead.OnAmmoChange += SetAmmo;
         }
-        
+
+        public HUDController(HUDState state, IPlayerStateRead playerStateReadRef) {
+            this.state = state;
+            playerStateRead = playerStateReadRef;
+        }
+
         // Gameplay API
         internal void SetHealth(float value) {
             // state.Health = Mathf.Clamp01(v);
-            state.Health = value;
+            state.Health = value / 100f;
             state.Notify();
         }
 
         internal void SetDrunkness(float value) {
             // state.Drunkness = Mathf.Clamp01(v);
-            state.Drunkness = value;
+            const int maxSteps = 8;
+            if (value > maxSteps) { value = maxSteps; }
+            state.Drunkness = value / maxSteps;
             state.Notify();
         }
 
