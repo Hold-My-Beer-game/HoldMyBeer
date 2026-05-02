@@ -1,12 +1,11 @@
-using System;
+#if UNITY_EDITOR
+using HoldMyBeer.Zombies.Unity;
 using UnityEditor;
 using UnityEngine;
 
-#if UNITY_EDITOR
-
-namespace HoldMyBeer.Zombies.Unity {
+namespace HoldMyBeer.Zombies.Editor {
     [CustomEditor(typeof(AIHealth))]
-    internal sealed class AIHealthEditor : Editor {
+    internal sealed class AIHealthEditor : UnityEditor.Editor {
         private SerializedProperty maxHealth;
         private SerializedProperty currentHealth;
 

@@ -1669,6 +1669,7 @@ GameObject:
   - component: {fileID: 8142213629731562640}
   - component: {fileID: 7187594103393514673}
   - component: {fileID: 7867386555976524210}
+  - component: {fileID: 2512218828551797872}
   - component: {fileID: 3115154455460407890}
   - component: {fileID: 7752177087658608780}
   - component: {fileID: 8654213478443349989}
@@ -1758,6 +1759,18 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &2512218828551797872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3156082598107055817}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab07a03a8f5a47eb9572bfe72c0c25df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Player.PlayerController
 --- !u!114 &3115154455460407890
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1780,6 +1793,8 @@ MonoBehaviour:
   showRaycast: 1
   raycastColor: {r: 1, g: 0, b: 0, a: 1}
   raycastDuration: 0.1
+  muzzleFlashObjects: []
+  muzzleDuration: 0
   magazineSize: 2
   reloadTime: 1
 --- !u!114 &7752177087658608780

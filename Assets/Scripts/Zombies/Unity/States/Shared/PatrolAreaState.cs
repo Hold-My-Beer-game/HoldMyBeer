@@ -5,9 +5,8 @@ using Random = UnityEngine.Random;
 
 namespace HoldMyBeer.Zombies.Unity {
     internal sealed class PatrolAreaState : IState {
-        internal PatrolAreaState(CommonContext context, Vector3[] patrolPoints, MoveMode patrolMode, float timeBeforeMoving, float stopDistance) {
+        internal PatrolAreaState(CommonContext context, MoveMode patrolMode, float timeBeforeMoving, float stopDistance) {
             this.context = context;
-            this.patrolPoints = patrolPoints;
             this.patrolMode = patrolMode;
             this.timeBeforeMoving = timeBeforeMoving;
             this.stopDistance = stopDistance;
@@ -16,13 +15,12 @@ namespace HoldMyBeer.Zombies.Unity {
         private static readonly string ScriptName = $"[{nameof(PatrolAreaState)}]";
 
         private readonly CommonContext context;
-        private readonly Vector3[] patrolPoints;
         private readonly MoveMode patrolMode;
         private readonly float timeBeforeMoving;
         private readonly float stopDistance;
 
         private float moveTimer;
-        private int currentPatrolIndex;
+        private Transform currPatrolPoint;
 
         public string Id => nameof(PatrolAreaState);
 
@@ -40,7 +38,7 @@ namespace HoldMyBeer.Zombies.Unity {
             if (!MoveOnPath()) { return; }
 
             moveTimer = timeBeforeMoving;
-            CalculatePatrolPath(currentPatrolIndex);
+            CalculatePatrolPath();
         }
 
         public void Exit() {
@@ -66,20 +64,11 @@ namespace HoldMyBeer.Zombies.Unity {
             return true;
         }
 
-        private void CalculatePatrolPath(int excludePatrolIndex = -1) {
-            currentPatrolIndex = GetRandomPatrolIndex(patrolPoints, excludePatrolIndex);
+        private void CalculatePatrolPath() {
+            if (context.PatrolArea.IsOccupied(currPatrolPoint)) { context.PatrolArea.ReturnPatrolPoint(currPatrolPoint); }
             Vector3 selfPos = context.Self.position;
-            Vector3 patrolPos = patrolPoints[currentPatrolIndex];
-            context.Path.CalculatePath(selfPos, patrolPos);
-        }
-
-        private static int GetRandomPatrolIndex(Vector3[] points, int excludeIndex = -1) {
-            int random = Random.Range(0, points.Length);
-            if (excludeIndex >= 0 && random == excludeIndex) {
-                random++;
-                if (random >= points.Length) { random = 0; }
-            }
-            return random;
+            currPatrolPoint = context.PatrolArea.GetPatrolPoint();
+            context.Path.CalculatePath(selfPos, currPatrolPoint.position);
         }
     }
 }

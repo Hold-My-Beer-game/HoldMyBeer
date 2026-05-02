@@ -11,7 +11,6 @@ namespace HoldMyBeer.Zombies.Unity {
         [SerializeField] [Min(0.01f)] private float stopDistance;
 
         [Header("Patrol")]
-        [SerializeField] private Transform[] patrolPoints = new Transform[5];
         [SerializeField] private float timeBeforeMoving = 3f;
 
         [Header("Idle -> Chase")]
@@ -26,12 +25,9 @@ namespace HoldMyBeer.Zombies.Unity {
         private SearchTargetState searchState;
         private WalkerDeathState deathState;
 
-        private Vector3[] patrolVectorPoints;
-
         public StateSetup Compose(IStateMachineBrain brainRef) {
             brain = brainRef;
             CreateAndInitContext();
-            patrolVectorPoints = TransformsToVectors(patrolPoints);
 
             IState defaultMovementState = MovementLayer();
             IState defaultCombatState = CombatLayer();
@@ -50,7 +46,7 @@ namespace HoldMyBeer.Zombies.Unity {
         /// <returns>The entry (default) state for the movement layer</returns>
         private IState MovementLayer() {
             var idleState = new IdleMovementState(context);
-            var patrolState = new PatrolAreaState(context, patrolVectorPoints, MoveMode.Walk, timeBeforeMoving, stopDistance);
+            var patrolState = new PatrolAreaState(context, MoveMode.Walk, timeBeforeMoving, stopDistance);
             var chaseState = new ChaseTargetState(context, MoveMode.Walk, pathRefreshInterval, stopDistance);
             searchState = new SearchTargetState(context, MoveMode.Walk, stopDistance);
             deathState = new WalkerDeathState(context);
@@ -92,30 +88,14 @@ namespace HoldMyBeer.Zombies.Unity {
             }
         }
 
-        private static Vector3[] TransformsToVectors(Transform[] transforms) {
-            var vectors = new Vector3[transforms.Length];
-            for (int i = 0; i < vectors.Length; i++) {
-                Vector3 pos = transforms[i].position;
-                vectors[i] = pos;
-            }
-            return vectors;
-        }
-
         public void TakeDamage(float value) {
             context.Health.TakeDamage(value);
             if (context.Health.CurrentHealth.Equals(0f)) {
+                brain.RemoveAllTransitions();
                 context.Animator.PlayDeath();
                 brain.ForceMovementState(deathState);
             }
             context.Animator.PlayHit();
-        }
-
-        public bool damage;
-
-        private void Update() {
-            if (!damage) { return; }
-            damage = false;
-            TakeDamage(35f);
         }
 
         public void React(Vector3 screamPos, Vector3 targetPos) {

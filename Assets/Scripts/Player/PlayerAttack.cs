@@ -1,4 +1,5 @@
 using System.Collections;
+using HoldMyBeer.Zombies.Contracts;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -55,20 +56,6 @@ public class PlayerAttack : MonoBehaviour
         if (isReloading || isShootingBlocked) return;
 
         TryShoot();
-        StartCoroutine(MuzzleFlashRoutine());
-    }
-
-    private IEnumerator MuzzleFlashRoutine() {
-        EnableMuzzleFlash(true);
-        yield return new WaitForSeconds(muzzleDuration);
-        EnableMuzzleFlash(false);
-    }
-
-    private void EnableMuzzleFlash(bool enable) {
-        for (int i = 0; i < muzzleFlashObjects.Length; i++) {
-            GameObject flash = muzzleFlashObjects[i];
-            flash.SetActive(enable);
-        }
     }
 
     private void TryShoot()
@@ -92,6 +79,20 @@ public class PlayerAttack : MonoBehaviour
             return;
         }
         Shoot();
+        StartCoroutine(MuzzleFlashRoutine());
+    }
+
+    private IEnumerator MuzzleFlashRoutine() {
+        EnableMuzzleFlash(true);
+        yield return new WaitForSeconds(muzzleDuration);
+        EnableMuzzleFlash(false);
+    }
+
+    private void EnableMuzzleFlash(bool enable) {
+        for (int i = 0; i < muzzleFlashObjects.Length; i++) {
+            GameObject flash = muzzleFlashObjects[i];
+            flash.SetActive(enable);
+        }
     }
 
     private void Shoot()
@@ -122,11 +123,9 @@ public class PlayerAttack : MonoBehaviour
                 Debug.Log($"Hit: {hit.collider.gameObject.name} at distance: {hit.distance}");
             }
 
-            ZombieHealth zombie = hit.collider.GetComponent<ZombieHealth>();
-
-            if (zombie != null)
+            if (hit.transform.TryGetComponent(out IEnemy enemy))
             {
-                zombie.TakeDamage((int)damage);
+                enemy.TakeDamage(damage);    
             }
         }
         else

@@ -5,7 +5,7 @@ namespace CocaCopa.StateMachine {
     /// <summary>
     /// Runs a single AI state and evaluates its configured transition rules.
     /// </summary>
-    public sealed class StateMachine {
+    internal sealed class StateMachine {
         private static readonly string ScriptName = $"[{nameof(StateMachine)}]";
         private Dictionary<string, List<IStateTransition>> stateTransitions = new();
 
@@ -21,7 +21,7 @@ namespace CocaCopa.StateMachine {
         /// Initializes the state machine with the first active state.
         /// </summary>
         /// <param name="initialState">State to enter when the state machine starts.</param>
-        public void Init(IState initialState) {
+        internal void Init(IState initialState) {
             currentState = initialState ?? throw new NullReferenceException($"{ScriptName} {nameof(currentState)}");
             currentState.Enter();
             EnterAllStateTransitions(currentState);
@@ -32,7 +32,7 @@ namespace CocaCopa.StateMachine {
         /// </summary>
         /// <param name="state">Source state these transitions belong to.</param>
         /// <param name="transitionRules">Transition rules to evaluate for the source state.</param>
-        public void AddTransition(IState state, params IStateTransition[] transitionRules) {
+        internal void AddTransition(IState state, params IStateTransition[] transitionRules) {
             stateTransitions ??= new Dictionary<string, List<IStateTransition>>();
 
             for (int i = 0; i < transitionRules.Length; i++) {
@@ -43,10 +43,62 @@ namespace CocaCopa.StateMachine {
         }
 
         /// <summary>
+        /// Removes a specific transition rule from the given source state.
+        /// If the source state is currently active, the transition is notified via <see cref="IStateTransition.OnSourceStateExit"/> before removal.
+        /// </summary>
+        /// <param name="state">The source state that owns the transition.</param>
+        /// <param name="transitionToRemove">The transition to remove.</param>
+        internal void RemoveTransition(IState state, IStateTransition transitionToRemove) {
+            if (state == null) { throw new ArgumentException($"{ScriptName} {nameof(state)}"); }
+            if (transitionToRemove == null) { throw new ArgumentException($"{ScriptName} {nameof(transitionToRemove)}"); }
+
+            if (!stateTransitions.TryGetValue(state.Id, out List<IStateTransition> transitions)) { return; }
+
+            bool removingFromCurrentState = currentState != null && currentState.Id == state.Id;
+
+            if (removingFromCurrentState && transitions.Contains(transitionToRemove)) { transitionToRemove.OnSourceStateExit(); }
+
+            transitions.Remove(transitionToRemove);
+
+            if (transitions.Count == 0) { stateTransitions.Remove(state.Id); }
+        }
+
+        /// <summary>
+        /// Removes all transition rules associated with the given source state.
+        /// If the state is currently active, all its transitions are notified via <see cref="IStateTransition.OnSourceStateExit"/> before removal.
+        /// </summary>
+        /// <param name="state">The source state whose transitions should be removed.</param>
+        internal void RemoveAllTransitions(IState state) {
+            if (state == null) { throw new ArgumentException($"{ScriptName} {nameof(state)}"); }
+
+            if (!stateTransitions.TryGetValue(state.Id, out List<IStateTransition> transitions)) { return; }
+
+            bool removingFromCurrentState = currentState != null && currentState.Id == state.Id;
+
+            if (removingFromCurrentState) {
+                for (int i = 0; i < transitions.Count; i++) { transitions[i].OnSourceStateExit(); }
+            }
+
+            stateTransitions.Remove(state.Id);
+        }
+
+        /// <summary>
+        /// Removes all transitions from the state machine.
+        /// Only transitions belonging to the currently active state are notified via <see cref="IStateTransition.OnSourceStateExit"/> before clearing.
+        /// </summary>
+        internal void RemoveAllTransitions() {
+            if (currentState != null && stateTransitions.TryGetValue(currentState.Id, out List<IStateTransition> currentTransitions)) {
+                for (int i = 0; i < currentTransitions.Count; i++) { currentTransitions[i].OnSourceStateExit(); }
+            }
+
+            stateTransitions.Clear();
+        }
+
+        /// <summary>
         /// Updates the current state and evaluates its transition rules.
         /// </summary>
         /// <param name="deltaTime">Elapsed time since the previous update.</param>
-        public void Tick(float deltaTime) {
+        internal void Tick(float deltaTime) {
             if (currentState == null) { return; }
 
             currentState.Tick(deltaTime);

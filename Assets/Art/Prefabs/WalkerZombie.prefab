@@ -48,6 +48,7 @@ GameObject:
   - component: {fileID: 45718859732596099}
   - component: {fileID: 693661273884667930}
   - component: {fileID: 8326859986795956565}
+  - component: {fileID: 7175304502590755468}
   m_Layer: 7
   m_Name: WalkerZombie
   m_TagString: Untagged
@@ -90,10 +91,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 1.7
+  m_Radius: 0.75
+  m_Height: 4.8
   m_Direction: 1
-  m_Center: {x: 0, y: 0.9, z: 0}
+  m_Center: {x: 0, y: 2.4, z: 0}
 --- !u!114 &8659325656756132543
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -121,18 +122,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: HoldMyBeer.AI::HoldMyBeer.AI.WalkerZombie
   pathRefreshInterval: 0.2
-  stopDistance: 1.5
-  patrolPoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  stopDistance: 2.5
   timeBeforeMoving: 3
   requiredSightTime: 0.75
-  normalAttackCooldown: 2.75
-  normalAttackTriggerRange: 1.8
-  damage: 0
+  normalAttackCooldown: 3
+  normalAttackTriggerRange: 4.5
 --- !u!114 &3712787430532406960
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -186,7 +180,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: HoldMyBeer.AI::HoldMyBeer.AI.AIAttack
   damageAmount: 20
   attackPoint: {fileID: 8851437666667082929}
-  hitboxRadius: 0.3
+  hitboxRadius: 0.8
 --- !u!114 &8326859986795956565
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -199,12 +193,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f70f13c746284983917fed901c6e0d3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: HoldMyBeer.AI::HoldMyBeer.AI.AIStimulus
-  sightDistance: 7
+  sightDistance: 20.02
   leftAngle: 60
   rightAngle: 60
-  upAngle: 10
-  downAngle: 10
-  originOffset: {x: 0, y: 1.64, z: 0.04}
+  upAngle: 15
+  downAngle: 15
+  originOffset: {x: 0, y: 4.47, z: 0.04}
   sightMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -212,6 +206,22 @@ MonoBehaviour:
   visionDepth: 0.02
   visionPointsCount: {x: 10, y: 10}
   visionPointSize: 10
+--- !u!208 &7175304502590755468
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8990217873573674736}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 0
+  m_Extents: {x: 1.55, y: 1, z: 1.55}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 0
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1001 &5099502548363036273
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -220,18 +230,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1463828788590573006}
     m_Modifications:
-    - target: {fileID: -8679921383154817045, guid: c8f62e3aeb9fc974ab18968795c89677, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.37
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: c8f62e3aeb9fc974ab18968795c89677, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.37
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: c8f62e3aeb9fc974ab18968795c89677, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.37
-      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c8f62e3aeb9fc974ab18968795c89677, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -271,10 +269,6 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: c8f62e3aeb9fc974ab18968795c89677, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: c8f62e3aeb9fc974ab18968795c89677, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: c8f62e3aeb9fc974ab18968795c89677, type: 3}
       propertyPath: m_Name
