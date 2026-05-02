@@ -35,9 +35,10 @@ public class PlayerAttack : MonoBehaviour
     {
         inventory = GetComponent<PlayerInventory>();
 
-        int loadAmount = Mathf.Min(magazineSize, inventory.currentAmmo);
+        int loadAmount = Mathf.Min(magazineSize, inventory.CurrentAmmo);
         currentAmmoInMagazine = loadAmount;
-        inventory.currentAmmo -= loadAmount;
+        // inventory.CurrentAmmo -= loadAmount;
+        inventory.RemoveAmmo(loadAmount);
     }
 
     // Update is called once per frame
@@ -62,7 +63,7 @@ public class PlayerAttack : MonoBehaviour
     {
         if (currentAmmoInMagazine <= 0)
         {
-            if (inventory.currentAmmo > 0)
+            if (inventory.CurrentAmmo > 0)
             {
                 StartReload();
             }
@@ -138,9 +139,9 @@ public class PlayerAttack : MonoBehaviour
             }
         }
 
-        Debug.Log($"Shot fired. In magazine: {currentAmmoInMagazine}, Reserve: {inventory.currentAmmo}");
+        Debug.Log($"Shot fired. In magazine: {currentAmmoInMagazine}, Reserve: {inventory.CurrentAmmo}");
 
-        if (currentAmmoInMagazine <= 0 && inventory.currentAmmo > 0)
+        if (currentAmmoInMagazine <= 0 && inventory.CurrentAmmo > 0)
         {
             StartReload();
         }
@@ -150,7 +151,7 @@ public class PlayerAttack : MonoBehaviour
     {
         if (isReloading) return;
 
-        if (inventory.currentAmmo <= 0) return;
+        if (inventory.CurrentAmmo <= 0) return;
         isReloading = true;
         isShootingBlocked = true;
 
@@ -170,10 +171,11 @@ public class PlayerAttack : MonoBehaviour
         yield return new WaitForSeconds(reloadTime);
 
         int needed = magazineSize - currentAmmoInMagazine;
-        int toLoad = Mathf.Min(needed, inventory.currentAmmo);
+        int toLoad = Mathf.Min(needed, inventory.CurrentAmmo);
 
         currentAmmoInMagazine += toLoad;
-        inventory.currentAmmo -= toLoad;
+        // inventory.CurrentAmmo -= toLoad;
+        inventory.RemoveAmmo(toLoad);
 
         isReloading = false;
         isShootingBlocked = false;
@@ -184,7 +186,7 @@ public class PlayerAttack : MonoBehaviour
             animator.Play("reload_finish", -1, 0f);
         }
 
-        Debug.Log($"Reload complete. In magazine: {currentAmmoInMagazine}, Reserve: {inventory.currentAmmo}");
+        Debug.Log($"Reload complete. In magazine: {currentAmmoInMagazine}, Reserve: {inventory.CurrentAmmo}");
     }
 
     // Optional: Method to see raycast in Game view with a line renderer

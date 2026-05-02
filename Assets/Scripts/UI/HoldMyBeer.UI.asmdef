@@ -1,13 +1,15 @@
 {
     "name": "HoldMyBeer.UI",
     "rootNamespace": "HoldMyBeer.UI",
-    "references": [],
+    "references": [
+        "CocaCopa.SceneManagement.Unity"
+    ],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": false,
     "precompiledReferences": [],
-    "autoReferenced": false,
+    "autoReferenced": true,
     "defineConstraints": [],
     "versionDefines": [],
     "noEngineReferences": false

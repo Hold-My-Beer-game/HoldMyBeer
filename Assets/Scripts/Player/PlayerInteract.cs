@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -9,6 +10,10 @@ public class PlayerInteract : MonoBehaviour
 
     private PickupItem currentPickup;
 
+    public event Action<bool, string> OnPlayerInteract;
+
+    private PickupItem lastPickup;
+
     void Update()
     {
         DetectPickup();
@@ -16,21 +21,26 @@ public class PlayerInteract : MonoBehaviour
 
     void DetectPickup()
     {
-        currentPickup = null;
-
         Ray ray = new Ray(playerCamera.transform.position, playerCamera.transform.forward);
         RaycastHit hit;
 
-        if (Physics.Raycast(ray, out hit, interactDistance))
-        {
-            PickupItem pickup = hit.collider.GetComponent<PickupItem>();
-
-            if (pickup != null)
-            {
-                currentPickup = pickup;
-                // Later: show UI prompt "Press E to pick up"
+        if (Physics.Raycast(ray, out hit, interactDistance)) {
+            if (!hit.transform.TryGetComponent(out PickupItem pickup)) {
+                if (currentPickup) { currentPickup = null; } 
+                return;
             }
+
+            currentPickup = pickup;
         }
+        else if (currentPickup) { currentPickup = null; } 
+
+        if (currentPickup != lastPickup) {
+            bool canInteract = currentPickup != null;
+            string interactMsg = canInteract ? "Pickup E" : string.Empty;
+            OnPlayerInteract?.Invoke(canInteract, interactMsg);
+        }
+        
+        lastPickup = currentPickup;
     }
 
     public void OnInteract(InputValue value)
@@ -43,4 +53,3 @@ public class PlayerInteract : MonoBehaviour
         }
     }
 }
-

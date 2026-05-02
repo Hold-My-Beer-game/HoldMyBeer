@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
@@ -6,9 +7,12 @@ public class PlayerHealth : MonoBehaviour
     public float maxHealth = 100f;
     public float currentHealth;
     
+    public event Action<float> OnHealthChange;
+    
     void Start()
     {
         currentHealth = maxHealth;
+        OnHealthChange?.Invoke(currentHealth);
     }
     
 
@@ -16,6 +20,7 @@ public class PlayerHealth : MonoBehaviour
     {
         currentHealth -= damage;
         currentHealth = Mathf.Clamp(currentHealth, 0f, maxHealth);
+        OnHealthChange?.Invoke(currentHealth);
         
         Debug.Log("Player took damage. Health: " + currentHealth);
 

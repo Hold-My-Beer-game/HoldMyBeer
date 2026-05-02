@@ -10,14 +10,17 @@ namespace HoldMyBeer.UI {
         [SerializeField] private UIScreen startScreen;
         [SerializeField] private HUDView hudView;
         [SerializeField] private HUDTester tester;
+        [SerializeField] private Transform player;
 
         private UINavigation nav;
+        private IPlayerStateRead playerReadState;
         
         private HUDState hudState;
         internal HUDState HUDState => hudState;
 
         private void Awake() {
             registry.Init();
+            playerReadState = player.GetComponent<IPlayerStateRead>();
             
             nav = new UINavigation(registry.Map, startScreen);
 
@@ -42,7 +45,8 @@ namespace HoldMyBeer.UI {
                 GameFlowController flow = new GameFlowController(nav);
 
                 hudState = new HUDState();
-                HUDController hud = new HUDController(hudState);
+                HUDController hud = new HUDController(hudState, playerReadState);
+                hud.Init();
                 hudView.Bind(hudState);
                 if (tester != null) { tester.SetState(hudState); }
                 

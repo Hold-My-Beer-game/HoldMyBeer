@@ -31,7 +31,7 @@ public class PlayerDrink : MonoBehaviour
 
     private void TryDrink()
     {
-        if (inventory.currentAlcohol <= 0)
+        if (inventory.CurrentAlcohol <= 0)
         {
             Debug.Log("No alcohol to drink!");
 
@@ -64,9 +64,9 @@ public class PlayerDrink : MonoBehaviour
         health.Heal(healAmount);
 
         // Consume one alcohol bottle
-        inventory.currentAlcohol--;
+        inventory.RemoveAlcohol(inventory.CurrentAlcohol-1);
 
-        Debug.Log($"Drank alcohol. Healed {healAmount} health. Remaining bottles: {inventory.currentAlcohol}");
+        Debug.Log($"Drank alcohol. Healed {healAmount} health. Remaining bottles: {inventory.CurrentAlcohol}");
 
         // Optional: Play drink finish animation
         if (animator != null)

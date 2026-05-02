@@ -4,31 +4,28 @@ namespace HoldMyBeer.UI {
     /// </summary>
     internal class HUDController {
         private readonly HUDState state;
-        
+
         // todo HUD interface
-        // private IPlayerStateRead playerStateRead;
-        //
-        // public void Install(IPlayerStateRead playerStateReadRef) {
-        //     playerStateRead = playerStateReadRef;
-        // }
+        private IPlayerStateRead playerStateRead;
 
-        // public void Init() {
-        //     view.Bind(state);
-        //     playerStateRead.OnHealthChange += SetHealth;  
-        //     playerStateRead.OnDrunknessChange += SetDrunkness;  
-        //     playerStateRead.OnGoalChange += SetGoal;  
-        //     playerStateRead.OnInteract += SetInteract;  
-        //     playerStateRead.OnAmmoChange += SetAmmo;  
-        // }
-
-        public HUDController(HUDState state) {
-            this.state = state;
+        public void Init() {
+            // view.Bind(state);
+            playerStateRead.OnHealthChange += SetHealth;
+            playerStateRead.OnAlcoholChange += SetDrunkness;
+            playerStateRead.OnGoalChange += SetGoal;
+            playerStateRead.OnInteract += SetInteract;
+            playerStateRead.OnAmmoChange += SetAmmo;
         }
-        
+
+        public HUDController(HUDState state, IPlayerStateRead playerStateReadRef) {
+            this.state = state;
+            playerStateRead = playerStateReadRef;
+        }
+
         // Gameplay API
         internal void SetHealth(float value) {
             // state.Health = Mathf.Clamp01(v);
-            state.Health = value;
+            state.Health = value / 100;
             state.Notify();
         }
 
