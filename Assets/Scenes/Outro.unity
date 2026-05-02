@@ -270,11 +270,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6599008667957999847, guid: 14b7276bfb611934f9c3f6ab20729d78, type: 3}
       propertyPath: delay
-      value: 95
+      value: 65
       objectReference: {fileID: 0}
     - target: {fileID: 6599008667957999847, guid: 14b7276bfb611934f9c3f6ab20729d78, type: 3}
       propertyPath: sceneName
-      value: MainMenu
+      value: StartScene
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -402,7 +402,7 @@ VideoPlayer:
   m_TargetAudioSources:
   - {fileID: 0}
   m_DirectAudioVolumes:
-  - 0.548
+  - 0.067
   m_Url: 
   m_EnabledAudioTracks: 01
   m_DirectAudioMutes: 00
