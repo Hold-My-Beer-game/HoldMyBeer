@@ -1,3 +1,5 @@
+using UnityEngine;
+
 namespace HoldMyBeer.UI {
     /// <summary>
     /// Converts gameplay systems into HUD state mutations.
@@ -10,6 +12,8 @@ namespace HoldMyBeer.UI {
 
         public void Init() {
             // view.Bind(state);
+
+            if (playerStateRead == null) { return; }
             playerStateRead.OnHealthChange += SetHealth;
             playerStateRead.OnAlcoholChange += SetDrunkness;
             playerStateRead.OnGoalChange += SetGoal;
@@ -25,13 +29,15 @@ namespace HoldMyBeer.UI {
         // Gameplay API
         internal void SetHealth(float value) {
             // state.Health = Mathf.Clamp01(v);
-            state.Health = value / 100;
+            state.Health = value / 100f;
             state.Notify();
         }
 
         internal void SetDrunkness(float value) {
             // state.Drunkness = Mathf.Clamp01(v);
-            state.Drunkness = value;
+            const int maxSteps = 8;
+            if (value > maxSteps) { value = maxSteps; }
+            state.Drunkness = value / maxSteps;
             state.Notify();
         }
 

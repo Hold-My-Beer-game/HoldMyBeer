@@ -71,10 +71,10 @@ public class PlayerAttack : MonoBehaviour
             {
                 Debug.Log("No more ammo");
                 // Play dry fire animation by name
-                if (animator != null)
-                {
-                    animator.Play("dry_fire", -1, 0f);
-                }
+                // if (animator != null)
+                // {
+                //     animator.Play("dry_fire", -1, 0f);
+                // }
             }
 
             return;

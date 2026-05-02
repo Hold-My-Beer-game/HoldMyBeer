@@ -2315,6 +2315,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 53052532790263810, guid: 3689297e53f863a469987b7266dc82d6, type: 3}
+      propertyPath: m_Actions
+      value: 
+      objectReference: {fileID: -944628639613478452, guid: e97a869835f9a3240af1ef8f89972d40, type: 3}
+    - target: {fileID: 53052532790263810, guid: 3689297e53f863a469987b7266dc82d6, type: 3}
+      propertyPath: m_DefaultActionMap
+      value: df70fa95-8a34-4494-b137-73ab6b9c7d37
+      objectReference: {fileID: 0}
     - target: {fileID: 879852852337787818, guid: 3689297e53f863a469987b7266dc82d6, type: 3}
       propertyPath: m_CastShadows
       value: 0

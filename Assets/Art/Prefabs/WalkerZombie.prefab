@@ -126,7 +126,7 @@ MonoBehaviour:
   timeBeforeMoving: 3
   requiredSightTime: 0.75
   normalAttackCooldown: 3
-  normalAttackTriggerRange: 4.5
+  normalAttackTriggerRange: 6
 --- !u!114 &3712787430532406960
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -16,7 +16,12 @@ public class PlayerInventory : MonoBehaviour
 
     public event Action<float> OnAlcoholChange;
     public event Action<float> OnAmmoChange;
-    
+
+    private void Start() {
+        OnAmmoChange?.Invoke(currentAmmo);
+        OnAlcoholChange?.Invoke(currentAlcohol);
+    }
+
     public void AddAmmo(int amount)
     {
         currentAmmo = Mathf.Clamp(currentAmmo + amount, 0, maxAmmo);
@@ -39,7 +44,7 @@ public class PlayerInventory : MonoBehaviour
 
     public void RemoveAlcohol(int amount) {
         currentAlcohol -= amount;
-        currentAlcohol = Mathf.Max(currentAlcohol, 0);
+        currentAlcohol = Mathf.Max(0, currentAlcohol);
         OnAlcoholChange?.Invoke(currentAlcohol);
     }
 }

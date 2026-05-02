@@ -34,14 +34,10 @@ public class PlayerDrink : MonoBehaviour
         if (inventory.CurrentAlcohol <= 0)
         {
             Debug.Log("No alcohol to drink!");
-
-            // Optional: Play dry drink animation or error animation
-            if (animator != null)
-            {
-                animator.Play("drink_empty", -1, 0f);
-            }
             return;
         }
+
+        if (health.currentHealth >= health.maxHealth) { return; }
 
         StartCoroutine(DrinkRoutine());
     }
@@ -64,15 +60,15 @@ public class PlayerDrink : MonoBehaviour
         health.Heal(healAmount);
 
         // Consume one alcohol bottle
-        inventory.RemoveAlcohol(inventory.CurrentAlcohol-1);
+        inventory.RemoveAlcohol(1);
 
         Debug.Log($"Drank alcohol. Healed {healAmount} health. Remaining bottles: {inventory.CurrentAlcohol}");
 
         // Optional: Play drink finish animation
-        if (animator != null)
-        {
-            animator.Play("drink_finish", -1, 0f);
-        }
+        // if (animator != null)
+        // {
+        //     animator.Play("drink_finish", -1, 0f);
+        // }
 
         isDrinking = false;
     }

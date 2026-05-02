@@ -30,10 +30,10 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-    public void Heal(float heal)
-    {
+    public void Heal(float heal) {
         currentHealth += heal;
         currentHealth = Mathf.Clamp(currentHealth, 0f, maxHealth);
+        OnHealthChange?.Invoke(currentHealth);
         
         Debug.Log("Player healed. Health: " + currentHealth);
     }

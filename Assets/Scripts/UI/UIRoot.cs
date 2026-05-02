@@ -20,7 +20,6 @@ namespace HoldMyBeer.UI {
 
         private void Awake() {
             registry.Init();
-            playerReadState = player.GetComponent<IPlayerStateRead>();
             
             nav = new UINavigation(registry.Map, startScreen);
 
@@ -45,6 +44,7 @@ namespace HoldMyBeer.UI {
                 GameFlowController flow = new GameFlowController(nav);
 
                 hudState = new HUDState();
+                playerReadState = player.GetComponent<IPlayerStateRead>();
                 HUDController hud = new HUDController(hudState, playerReadState);
                 hud.Init();
                 hudView.Bind(hudState);
