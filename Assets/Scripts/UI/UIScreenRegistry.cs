@@ -22,7 +22,7 @@ namespace HoldMyBeer.UI {
         public Dictionary<UIScreen, VisualElement> Map => map;
         public VisualElement Root => document.rootVisualElement;
 
-        private void Awake() {
+        public void Init() {
             map = new Dictionary<UIScreen, VisualElement>();
 
             VisualElement root = document.rootVisualElement;

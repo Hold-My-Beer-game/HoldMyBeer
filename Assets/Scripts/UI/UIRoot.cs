@@ -17,6 +17,8 @@ namespace HoldMyBeer.UI {
         internal HUDState HUDState => hudState;
 
         private void Awake() {
+            registry.Init();
+            
             nav = new UINavigation(registry.Map, startScreen);
 
             VisualElement root = registry.Root;

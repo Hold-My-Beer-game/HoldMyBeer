@@ -48,9 +48,8 @@ namespace HoldMyBeer.UI {
 
         public static void BindAbout(VisualElement root, CreditsController c) {
             VisualElement view = root.Q("About");
-            if (view == null) return;
-            
-            view.Q<Button>("credits-exit-btn")?.RegisterCallback<ClickEvent>(_ => c.Back());
+
+            view?.Q<Button>("credits-exit-btn")?.RegisterCallback<ClickEvent>(_ => c.Back());
             
         }
     }
