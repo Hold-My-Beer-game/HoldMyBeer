@@ -271,7 +271,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15bb2e39abc643adbc8825a195a2daa7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: HoldMyBeer.Zombies.Unity::HoldMyBeer.Zombies.Unity.AILocomotion
-  rotationSpeed: 40
+  rotationSpeed: 120
 --- !u!114 &3987935492977684769
 MonoBehaviour:
   m_ObjectHideFlags: 0
