@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 30fa1ade0eab4b9f88b71e8f88fc9a6c, type: 3}
-  m_Name: ZombiePath
+  m_Name: ScreamerPath
   m_EditorClassIdentifier: HoldMyBeer.Zombie::HoldMyBeer.Zombie.AIPathConfig
   config:
-    waypointReachDistance: 0.15
+    waypointReachDistance: 2.5
     navSampleDistance: 10
     areaMask: -1

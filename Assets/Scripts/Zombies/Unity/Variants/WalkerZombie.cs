@@ -24,6 +24,7 @@ namespace HoldMyBeer.Zombies.Unity {
         private WalkerContext context;
         private SearchTargetState searchState;
         private WalkerDeathState deathState;
+        private IdleCombatState idleCombatState;
 
         public StateSetup Compose(IStateMachineBrain brainRef) {
             brain = brainRef;
@@ -70,7 +71,7 @@ namespace HoldMyBeer.Zombies.Unity {
         /// </summary>
         /// <returns>The entry (default) state for the combat layer</returns>
         private IState CombatLayer() {
-            var idleCombatState = new IdleCombatState();
+            idleCombatState = new IdleCombatState();
             var normalAttackState = new WalkerNormalAttackState(context, normalAttackCooldown);
 
             var toNormalAttack = new StateTransition(IsNormalAttackValid, normalAttackState);
@@ -93,6 +94,7 @@ namespace HoldMyBeer.Zombies.Unity {
             if (context.Health.CurrentHealth.Equals(0f)) {
                 brain.RemoveAllTransitions();
                 context.Animator.PlayDeath();
+                brain.ForceCombatState(idleCombatState);
                 brain.ForceMovementState(deathState);
             }
             context.Animator.PlayHit();

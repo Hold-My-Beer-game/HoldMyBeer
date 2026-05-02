@@ -1,3 +1,4 @@
+using System;
 using CocaCopa.StateMachine;
 using HoldMyBeer.Zombies.Contracts;
 using UnityEngine;
@@ -12,10 +13,11 @@ namespace HoldMyBeer.Zombies.Unity {
         [SerializeField] private float screamRange;
 
         [Header("General")]
-        [SerializeField] private Transform[] hideSpots;
+        [SerializeField] private Transform hidePoint;
         [SerializeField] private float stopDistance = 5f;
 
         private ScreamerContext context;
+        private ScreamerHideState hideState;
 
         public StateSetup Compose(IStateMachineBrain brain) {
             context = GetComponent<ScreamerContext>();
@@ -23,7 +25,7 @@ namespace HoldMyBeer.Zombies.Unity {
 
             var idleMovementState = new IdleMovementState(context);
             var standUpState = new ScreamerAlertState(context, screamAnimPlayPercentage, screamOrigin.position, screamRange, screamMask);
-            var hideState = new SearchTargetState(context, MoveMode.Run, stopDistance);
+            hideState = new ScreamerHideState(context, hidePoint.position, stopDistance);
 
             var toAlertState = new StateTransition(() => context.SightStimulus.CanSee(context.Target.Col), standUpState);
             var toHideState = new StateTransition(() => standUpState.ScreamCompleted, hideState);
@@ -34,8 +36,24 @@ namespace HoldMyBeer.Zombies.Unity {
             return new StateSetup(idleMovementState, null);
         }
 
+        private void Update() {
+            Despawn();
+        }
+
+        private void Despawn() {
+            if (!hideState.OnHidePos) { return; }
+
+            enabled = true;
+            gameObject.SetActive(false);
+        }
+
         public void TakeDamage(float value) {
             context.Health.TakeDamage(value);
+        }
+
+        private void OnDrawGizmos() {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(screamOrigin.position, screamRange);
         }
     }
 }

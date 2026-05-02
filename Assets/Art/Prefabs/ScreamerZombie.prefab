@@ -230,9 +230,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   screamAnimPlayPercentage: 0.82
-  screamRange: 75
-  hideSpots: []
-  stopDistance: 5
+  screamRange: 120
+  hidePoint: {fileID: 0}
+  stopDistance: 1.5
 --- !u!114 &1889233054658907574
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -271,7 +271,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15bb2e39abc643adbc8825a195a2daa7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: HoldMyBeer.Zombies.Unity::HoldMyBeer.Zombies.Unity.AILocomotion
-  rotationSpeed: 2.5
+  rotationSpeed: 40
 --- !u!114 &3987935492977684769
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -284,11 +284,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f70f13c746284983917fed901c6e0d3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: CocaCopa.StateMachine.AIModules::CocaCopa.StateMachine.AISightStimulus
-  sightDistance: 10
-  leftAngle: 45
-  rightAngle: 45
-  upAngle: 30
-  downAngle: 30
+  sightDistance: 48
+  leftAngle: 90
+  rightAngle: 34.221558
+  upAngle: 6.287424
+  downAngle: 13.8323345
   originOffset: {x: 0, y: 1.64, z: 0.04}
   sightMask:
     serializedVersion: 2
@@ -376,15 +376,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: c8f62e3aeb9fc974ab18968795c89677, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.37
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c8f62e3aeb9fc974ab18968795c89677, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.37
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c8f62e3aeb9fc974ab18968795c89677, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.37
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c8f62e3aeb9fc974ab18968795c89677, type: 3}
       propertyPath: m_LocalPosition.x

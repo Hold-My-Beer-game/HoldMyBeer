@@ -4,7 +4,6 @@ namespace HoldMyBeer.Zombies.Unity {
     internal sealed class ScreamerContext : CommonContext {
         private static readonly string ScriptName = $"[{nameof(ScreamerContext)}]";
 
-        internal AIAttack Attack { get; private set; }
         internal ScreamerAnimator Animator { get; private set; }
 
         protected override void CreateContext() {
