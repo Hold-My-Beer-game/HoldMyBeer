@@ -1,14 +1,19 @@
-﻿using CocaCopa.StateMachine;
+﻿using System;
+using CocaCopa.StateMachine;
 using UnityEngine;
 
 namespace HoldMyBeer.Zombies.Unity {
-    public class SearchTargetState : IState {
-        public SearchTargetState(ZombieContext context, float stopDistance) {
+    internal sealed class SearchTargetState : IState {
+        internal SearchTargetState(CommonContext context, MoveMode searchMode, float stopDistance) {
             this.context = context;
+            this.searchMode = searchMode;
             this.stopDistance = stopDistance;
         }
 
-        private readonly ZombieContext context;
+        private static readonly string ScriptName = $"[{nameof(SearchTargetState)}]";
+
+        private readonly CommonContext context;
+        private readonly MoveMode searchMode;
         private readonly float stopDistance;
 
         private Vector3 lastCornerPos;
@@ -20,8 +25,12 @@ namespace HoldMyBeer.Zombies.Unity {
             Vector3 selfPos = context.Self.position;
             Vector3 targetPos = context.Target.Col.transform.position;
             context.Path.CalculatePath(selfPos, targetPos);
-            context.Animator.SetTargetLocomotionSpeed(1f);
-            context.Animator.OnRootMotionDataUpdated += Animator_OnRootMotionUpdated;
+            switch (searchMode) {
+                case MoveMode.Walk: context.AnimatorBase.PlayWalk(); break;
+                case MoveMode.Run: context.AnimatorBase.PlayRun(); break;
+                default: throw new ArgumentOutOfRangeException($"{ScriptName} {nameof(searchMode)}");
+            }
+            context.AnimatorBase.OnRootMotionDataUpdated += Animator_OnRootMotionUpdated;
         }
 
         public void Tick(float deltaTime) {
@@ -29,7 +38,7 @@ namespace HoldMyBeer.Zombies.Unity {
         }
 
         public void Exit() {
-            context.Animator.OnRootMotionDataUpdated -= Animator_OnRootMotionUpdated;
+            context.AnimatorBase.OnRootMotionDataUpdated -= Animator_OnRootMotionUpdated;
             OnLastKnownPos = false;
         }
 
@@ -43,7 +52,7 @@ namespace HoldMyBeer.Zombies.Unity {
 
             if (!pathData.IsAtFinalCorner || pathData.DistToCorner > stopDistance) { return; }
 
-            context.Animator.SetTargetLocomotionSpeed(0f);
+            context.AnimatorBase.PlayIdle();
             OnLastKnownPos = true;
         }
     }

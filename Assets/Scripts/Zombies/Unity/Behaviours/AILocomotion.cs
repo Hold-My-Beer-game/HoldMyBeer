@@ -5,7 +5,7 @@ namespace HoldMyBeer.Zombies.Unity {
     /// Handles character rotation and movement application using externally provided root motion.<br/>
     /// Responsible only for transforming the GameObject, not deciding movement logic.
     /// </summary>
-    public class AILocomotion : MonoBehaviour {
+    internal sealed class AILocomotion : MonoBehaviour {
         [Tooltip("Speed at which the character rotates toward the target look direction.")]
         [SerializeField] private float rotationSpeed;
 
@@ -15,7 +15,7 @@ namespace HoldMyBeer.Zombies.Unity {
         /// Sets the desired world-space direction the character should rotate toward.
         /// </summary>
         /// <param name="dir">Target direction in world space.</param>
-        public void SetTargetLookDir(Vector3 dir) {
+        internal void SetTargetLookDir(Vector3 dir) {
             targetLookDir = dir;
         }
 
@@ -23,7 +23,7 @@ namespace HoldMyBeer.Zombies.Unity {
         /// Applies positional root motion delta to the transform.
         /// </summary>
         /// <param name="delta">World-space movement delta.</param>
-        public void ApplyRootMotionDelta(Vector3 delta) {
+        internal void ApplyRootMotionDelta(Vector3 delta) {
             transform.position += delta;
         }
 

@@ -28,7 +28,7 @@ namespace CocaCopa.StateMachine {
         [Tooltip("Depth of each box cast used to sample visibility.")]
         [SerializeField] private float visionDepth = 0.02f;
         [Tooltip("Number of Horizontal (X) and Vertical (Y) samples taken across the target collider.")]
-        [SerializeField] private Vector2 visionPointsCount;
+        [SerializeField] private Vector2Int visionPointsCount;
         [Tooltip("Percentage size of each box cast relative to its sampled cell on the target.")]
         [SerializeField] [Range(1, 100)] private float visionPointSize = 10f;
 

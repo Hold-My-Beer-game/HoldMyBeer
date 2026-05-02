@@ -1,19 +1,23 @@
-﻿using CocaCopa.StateMachine;
+﻿using System;
+using CocaCopa.StateMachine;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace HoldMyBeer.Zombies.Unity {
-    public class PatrolAreaState : IState {
-        public PatrolAreaState(ZombieContext context, Vector3[] patrolPoints, float rotationSpeed, float timeBeforeMoving, float stopDistance) {
+    internal sealed class PatrolAreaState : IState {
+        internal PatrolAreaState(CommonContext context, Vector3[] patrolPoints, MoveMode patrolMode, float timeBeforeMoving, float stopDistance) {
             this.context = context;
             this.patrolPoints = patrolPoints;
-            this.rotationSpeed = rotationSpeed;
+            this.patrolMode = patrolMode;
             this.timeBeforeMoving = timeBeforeMoving;
             this.stopDistance = stopDistance;
         }
 
-        private readonly ZombieContext context;
+        private static readonly string ScriptName = $"[{nameof(PatrolAreaState)}]";
+
+        private readonly CommonContext context;
         private readonly Vector3[] patrolPoints;
-        private readonly float rotationSpeed;
+        private readonly MoveMode patrolMode;
         private readonly float timeBeforeMoving;
         private readonly float stopDistance;
 
@@ -23,7 +27,7 @@ namespace HoldMyBeer.Zombies.Unity {
         public string Id => nameof(PatrolAreaState);
 
         public void Enter() {
-            context.Animator.OnRootMotionDataUpdated += Animator_OnRootMotionUpdated;
+            context.AnimatorBase.OnRootMotionDataUpdated += Animator_OnRootMotionUpdated;
             moveTimer = timeBeforeMoving;
             CalculatePatrolPath();
         }
@@ -40,7 +44,7 @@ namespace HoldMyBeer.Zombies.Unity {
         }
 
         public void Exit() {
-            context.Animator.OnRootMotionDataUpdated -= Animator_OnRootMotionUpdated;
+            context.AnimatorBase.OnRootMotionDataUpdated -= Animator_OnRootMotionUpdated;
         }
 
         private void Animator_OnRootMotionUpdated(RootMotionData data) {
@@ -48,13 +52,17 @@ namespace HoldMyBeer.Zombies.Unity {
         }
 
         private bool MoveOnPath() {
-            context.Animator.SetTargetLocomotionSpeed(1f);
+            switch (patrolMode) {
+                case MoveMode.Walk: context.AnimatorBase.PlayWalk(); break;
+                case MoveMode.Run: context.AnimatorBase.PlayRun(); break;
+                default: throw new ArgumentOutOfRangeException($"{ScriptName} {nameof(patrolMode)}");
+            }
             PathFollowData pathData = context.Path.EvaluatePathProgress(context.Self.position);
             context.Locomotion.SetTargetLookDir(pathData.DirToCorner);
 
             if (!pathData.IsAtFinalCorner || pathData.DistToCorner > stopDistance) { return false; }
 
-            context.Animator.SetTargetLocomotionSpeed(0f);
+            context.AnimatorBase.PlayIdle();
             return true;
         }
 

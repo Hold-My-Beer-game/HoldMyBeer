@@ -13,7 +13,15 @@ namespace CocaCopa.StateMachine {
         public string CurrentMovementStateID => movementMachine.StateID;
         public string CurrentCombatStateID => combatMachine.StateID;
 
-        private void Awake() {
+        public void ForceMovementState(IState state) {
+            movementMachine.ForceState(state);
+        }
+
+        public void ForceCombatState(IState state) {
+            combatMachine.ForceState(state);
+        }
+
+        private void Start() {
             var composer = GetComponent<IStateMachineComposer>();
             StateSetup setup = composer.Compose(this);
             Init(setup.MovementState, setup.CombatState);

@@ -11,7 +11,11 @@ namespace CocaCopa.StateMachine {
 
         private IState currentState;
 
-        internal string StateID => currentState.Id;
+        internal string StateID => currentState?.Id ?? "Null";
+
+        internal void ForceState(IState stateId) {
+            SwitchState(stateId);
+        }
 
         /// <summary>
         /// Initializes the state machine with the first active state.

@@ -1561,6 +1561,71 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63e9505bbb1a983409399ec5d7abda96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TestPlayer
+--- !u!1001 &250685367133277220
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1007576884815770465, guid: a240a1bf919e7194f90d01371e67011c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -6.36
+      objectReference: {fileID: 0}
+    - target: {fileID: 1007576884815770465, guid: a240a1bf919e7194f90d01371e67011c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1007576884815770465, guid: a240a1bf919e7194f90d01371e67011c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -14.63
+      objectReference: {fileID: 0}
+    - target: {fileID: 1007576884815770465, guid: a240a1bf919e7194f90d01371e67011c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1007576884815770465, guid: a240a1bf919e7194f90d01371e67011c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1007576884815770465, guid: a240a1bf919e7194f90d01371e67011c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1007576884815770465, guid: a240a1bf919e7194f90d01371e67011c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1007576884815770465, guid: a240a1bf919e7194f90d01371e67011c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1007576884815770465, guid: a240a1bf919e7194f90d01371e67011c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1007576884815770465, guid: a240a1bf919e7194f90d01371e67011c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2844170922249532221, guid: a240a1bf919e7194f90d01371e67011c, type: 3}
+      propertyPath: hideSpot
+      value: 
+      objectReference: {fileID: 1247628271}
+    - target: {fileID: 7731485435405425942, guid: a240a1bf919e7194f90d01371e67011c, type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 2109807070}
+    - target: {fileID: 7924361410937531655, guid: a240a1bf919e7194f90d01371e67011c, type: 3}
+      propertyPath: m_Name
+      value: ScreamerZombie
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a240a1bf919e7194f90d01371e67011c, type: 3}
 --- !u!1001 &8277113114656341525
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1571,7 +1636,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1463828788590573006, guid: 0d3a77bc8723ee34a82e3e07b3756937, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.652
+      value: 10.8
       objectReference: {fileID: 0}
     - target: {fileID: 1463828788590573006, guid: 0d3a77bc8723ee34a82e3e07b3756937, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1579,7 +1644,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1463828788590573006, guid: 0d3a77bc8723ee34a82e3e07b3756937, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -7.56
+      value: -3.2
       objectReference: {fileID: 0}
     - target: {fileID: 1463828788590573006, guid: 0d3a77bc8723ee34a82e3e07b3756937, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1629,9 +1694,13 @@ PrefabInstance:
       propertyPath: 'patrolPoints.Array.data[4]'
       value: 
       objectReference: {fileID: 223378405}
+    - target: {fileID: 8659325656756132543, guid: 0d3a77bc8723ee34a82e3e07b3756937, type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 2109807070}
     - target: {fileID: 8990217873573674736, guid: 0d3a77bc8723ee34a82e3e07b3756937, type: 3}
       propertyPath: m_Name
-      value: Zombie
+      value: WalkerZombie
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1649,4 +1718,5 @@ SceneRoots:
   - {fileID: 647040533}
   - {fileID: 1703804380}
   - {fileID: 8277113114656341525}
+  - {fileID: 250685367133277220}
   - {fileID: 2109807070}

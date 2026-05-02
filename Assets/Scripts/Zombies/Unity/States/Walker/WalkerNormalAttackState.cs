@@ -2,18 +2,18 @@
 using UnityEngine;
 
 namespace HoldMyBeer.Zombies.Unity {
-    public class NormalAttackState : IState {
-        public NormalAttackState(ZombieContext context, float cooldown) {
+    internal sealed class WalkerNormalAttackState : IState {
+        internal WalkerNormalAttackState(WalkerContext context, float cooldown) {
             this.context = context;
             this.cooldown = cooldown;
         }
 
-        private readonly ZombieContext context;
+        private readonly WalkerContext context;
         private readonly float cooldown;
 
         private float cooldownTimer;
 
-        public string Id => nameof(NormalAttackState);
+        public string Id => nameof(WalkerNormalAttackState);
 
         public void Enter() {
             cooldownTimer = 0f;

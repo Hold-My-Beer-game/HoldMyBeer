@@ -3,7 +3,6 @@ using UnityEditor;
 using UnityEngine;
 
 namespace CocaCopa.StateMachine.Editor {
-    [CustomEditor(typeof(AISightStimulus))]
     public sealed partial class AISightStimulusEditor {
         private const int HorizontalSegments = 32;
         private const int VerticalSegments = 8;
