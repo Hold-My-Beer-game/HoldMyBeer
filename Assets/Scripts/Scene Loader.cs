@@ -10,8 +10,11 @@ public class SceneTimerLoader : MonoBehaviour
     [Header("Scene Settings")]
     public string sceneName;
 
+    [Header("Mouse Settings")]
+    public bool unlockMouseOnLoad = true; // Toggle in Inspector
+
     [Header("Input")]
-    public InputActionReference jumpAction; // Assign your Jump action here
+    public InputActionReference jumpAction;
 
     private bool hasLoaded = false;
 
@@ -40,13 +43,25 @@ public class SceneTimerLoader : MonoBehaviour
 
     private void OnJumpPressed(InputAction.CallbackContext context)
     {
-        LoadScene(); // Skip timer if player presses jump
+        LoadScene();
     }
 
     void LoadScene()
     {
-        if (hasLoaded) return; // Prevent double loading
+        if (hasLoaded) return;
         hasLoaded = true;
+
+        // Apply mouse state based on toggle
+        if (unlockMouseOnLoad)
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
 
         if (!string.IsNullOrEmpty(sceneName))
         {
