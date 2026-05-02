@@ -226,16 +226,6 @@
     flex-grow: 1;
 }
 
-#credits-groupbox {
-    flex-grow: 1;
-    background-color: rgba(0, 0, 0, 0.9);
-    flex-basis: -1px;
-    flex-shrink: 1;
-}
-
-.credits-element {
-}
-
 .template-container {
     position: absolute;
     flex-grow: 1;
@@ -264,4 +254,55 @@
 
 .menu-exit-btn:active {
     opacity: 0.7;
+}
+
+
+
+.credits-title {
+    -unity-font-definition: url("project://database/Assets/UI%20Toolkit/Fonts/Butcherman-Regular.ttf?fileID=12800000&guid=6cee90d00cf06594fa86a9689cb0d43b&type=3#Butcherman-Regular");
+    -unity-font-style: bold;
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+    -unity-text-auto-size: none;
+    font-size: 110px;
+    text-shadow: 3px 3px 0 rgb(149, 180, 95);
+    -unity-text-outline-width: 2px;
+    -unity-text-outline-color: rgb(61, 61, 61);
+}
+
+.credits-header {
+    flex-wrap: wrap;
+    -unity-text-auto-size: none;
+    -unity-text-generator: advanced;
+    flex-grow: 0;
+    -unity-font-definition: url("project://database/Assets/UI%20Toolkit/Fonts/Butcherman-Regular.ttf?fileID=12800000&guid=6cee90d00cf06594fa86a9689cb0d43b&type=3#Butcherman-Regular");
+    -unity-font-style: normal;
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+    font-size: 69px;
+    color: rgb(203, 255, 144);
+    text-shadow: 2px 2px 0 rgb(243, 255, 0);
+}
+
+.credits-element {
+    font-size: 44px;
+    -unity-text-outline-width: 0;
+    -unity-font-style: bold;
+    -unity-text-outline-color: rgb(136, 255, 0);
+    flex-grow: 1;
+    -unity-text-generator: advanced;
+    -unity-text-auto-size: best-fit 10px 51px;
+    text-shadow: 0 0 0 rgb(93, 93, 93);
 }
