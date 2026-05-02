@@ -11,7 +11,7 @@ namespace HoldMyBeer.UI {
         public float Health;
 
         // todo goal visibility?
-        public string GoalText ="Survive";
+        public string GoalText ="Reach the Club";
         public bool InteractVisible;
         public string InteractText;
 
