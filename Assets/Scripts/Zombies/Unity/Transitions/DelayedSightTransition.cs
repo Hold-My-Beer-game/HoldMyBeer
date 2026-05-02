@@ -3,18 +3,8 @@ using CocaCopa.StateMachine;
 using UnityEngine;
 
 namespace HoldMyBeer.Zombies.Unity {
-    public sealed class DelayedSightTransition : IStateTransition {
-        private static readonly string ScriptName = $"[{nameof(DelayedSightTransition)}]";
-
-        private readonly ZombieContext context;
-        private readonly float requiredSightTime;
-
-        private float remainingSightTime;
-
-        public bool CanTransition { get; private set; }
-        public IState TargetState { get; }
-
-        public DelayedSightTransition(ZombieContext context, float requiredSightTime, IState targetState) {
+    internal sealed class DelayedSightTransition : IStateTransition {
+        internal DelayedSightTransition(CommonContext context, float requiredSightTime, IState targetState) {
             this.context = context;
             this.requiredSightTime = Mathf.Max(0f, requiredSightTime);
 
@@ -23,6 +13,16 @@ namespace HoldMyBeer.Zombies.Unity {
             remainingSightTime = this.requiredSightTime;
             CanTransition = false;
         }
+
+        private static readonly string ScriptName = $"[{nameof(DelayedSightTransition)}]";
+
+        private readonly CommonContext context;
+        private readonly float requiredSightTime;
+
+        private float remainingSightTime;
+
+        public bool CanTransition { get; private set; }
+        public IState TargetState { get; }
 
         public void OnSourceStateEnter() { }
 

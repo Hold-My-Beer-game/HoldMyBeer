@@ -1,15 +1,17 @@
-﻿using CocaCopa.StateMachine;
+﻿using System;
+using CocaCopa.StateMachine;
 using HoldMyBeer.Zombies.Contracts;
 using UnityEngine;
 
 namespace HoldMyBeer.Zombies.Unity {
-    public class WalkerZombie : MonoBehaviour, IStateMachineComposer, IEnemy {
-        [Header("General")]
+    [RequireComponent(typeof(WalkerContext))]
+    internal class WalkerZombie : MonoBehaviour, IStateMachineComposer, IEnemy, IScreamAffected {
+        [Header("Pathing")]
         [SerializeField] [Min(0.01f)] private float pathRefreshInterval;
         [SerializeField] [Min(0.01f)] private float stopDistance;
 
         [Header("Patrol")]
-        [SerializeField] private Transform[] patrolPoints = new Transform[5];
+        [SerializeField] private float timeBeforeMoving = 3f;
 
         [Header("Idle -> Chase")]
         [SerializeField] [Min(0f)] private float requiredSightTime;
@@ -18,34 +20,36 @@ namespace HoldMyBeer.Zombies.Unity {
         [SerializeField] private float normalAttackCooldown;
         [SerializeField] private float normalAttackTriggerRange;
 
-        private Vector3[] patrolVectorPoints;
+        private IStateMachineBrain brain;
+        private WalkerContext context;
+        private SearchTargetState searchState;
+        private WalkerDeathState deathState;
 
-        public StateSetup Compose(IStateMachineBrain brain) {
-            ZombieContext zombieContext = CreateAndInitContext();
-            patrolVectorPoints = TransformsToVectors(patrolPoints);
+        public StateSetup Compose(IStateMachineBrain brainRef) {
+            brain = brainRef;
+            CreateAndInitContext();
 
-            IState defaultMovementState = MovementLayer(zombieContext, brain);
-            IState defaultCombatState = CombatLayer(zombieContext, brain);
+            IState defaultMovementState = MovementLayer();
+            IState defaultCombatState = CombatLayer();
 
             return new StateSetup(defaultMovementState, defaultCombatState);
-            // return new StateSetup(defaultMovementState, null);
         }
 
-        private ZombieContext CreateAndInitContext() {
-            var context = GetComponent<ZombieContext>();
+        private void CreateAndInitContext() {
+            context = GetComponent<WalkerContext>();
             context.Create();
-            return context;
         }
 
         /// <summary>
         /// Composes the movement layer of the AI character
         /// </summary>
         /// <returns>The entry (default) state for the movement layer</returns>
-        private IState MovementLayer(ZombieContext context, IStateMachineBrain brain) {
+        private IState MovementLayer() {
             var idleState = new IdleMovementState(context);
-            var patrolState = new PatrolAreaState(context, patrolVectorPoints, 0f, 3f, stopDistance);
-            var chaseState = new ChaseTargetState(context, pathRefreshInterval, stopDistance);
-            var searchState = new SearchTargetState(context, stopDistance);
+            var patrolState = new PatrolAreaState(context, MoveMode.Walk, timeBeforeMoving, stopDistance);
+            var chaseState = new ChaseTargetState(context, MoveMode.Walk, pathRefreshInterval, stopDistance);
+            searchState = new SearchTargetState(context, MoveMode.Walk, stopDistance);
+            deathState = new WalkerDeathState(context);
 
             var delayedSeenToChase = new DelayedSightTransition(context, requiredSightTime, chaseState);
             var instantSeenToChase = new StateTransition(() => context.SightStimulus.CanSee(context.Target.Col), chaseState);
@@ -65,9 +69,9 @@ namespace HoldMyBeer.Zombies.Unity {
         /// Composes the combat layer of the AI character
         /// </summary>
         /// <returns>The entry (default) state for the combat layer</returns>
-        private IState CombatLayer(ZombieContext context, IStateMachineBrain brain) {
+        private IState CombatLayer() {
             var idleCombatState = new IdleCombatState();
-            var normalAttackState = new NormalAttackState(context, normalAttackCooldown);
+            var normalAttackState = new WalkerNormalAttackState(context, normalAttackCooldown);
 
             var toNormalAttack = new StateTransition(IsNormalAttackValid, normalAttackState);
             var normalAttackToIdle = new StateTransition(() => !IsNormalAttackValid(), idleCombatState);
@@ -84,17 +88,18 @@ namespace HoldMyBeer.Zombies.Unity {
             }
         }
 
-        private static Vector3[] TransformsToVectors(Transform[] transforms) {
-            var vectors = new Vector3[transforms.Length];
-            for (int i = 0; i < vectors.Length; i++) {
-                Vector3 pos = transforms[i].position;
-                vectors[i] = pos;
+        public void TakeDamage(float value) {
+            context.Health.TakeDamage(value);
+            if (context.Health.CurrentHealth.Equals(0f)) {
+                brain.RemoveAllTransitions();
+                context.Animator.PlayDeath();
+                brain.ForceMovementState(deathState);
             }
-            return vectors;
+            context.Animator.PlayHit();
         }
 
-        public void TakeDamage(float value) {
-            //
+        public void React(Vector3 screamPos, Vector3 targetPos) {
+            brain.ForceMovementState(searchState);
         }
     }
 }

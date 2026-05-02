@@ -15,7 +15,7 @@ public class PickupItem : MonoBehaviour
     public void Pickup()
     {
         
-        PlayerInventory inventory = FindObjectOfType<PlayerInventory>();
+        PlayerInventory inventory = FindAnyObjectByType<PlayerInventory>();
 
         if (inventory == null)
         {

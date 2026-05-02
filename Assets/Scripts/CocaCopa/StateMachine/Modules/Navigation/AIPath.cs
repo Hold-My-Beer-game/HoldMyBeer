@@ -82,7 +82,7 @@ namespace CocaCopa.StateMachine {
         /// <param name="currentPosition">The current world-space position of the agent.</param>
         /// <returns>Path-following data containing corners, current corner index, movement direction, and distance to the current corner.</returns>
         public PathFollowData EvaluatePathProgress(Vector3 currentPosition) {
-            if (!hasValidPath || path.corners.Length < 2) {
+            if (!hasValidPath || path.corners.Length < 1) {
                 return new PathFollowData(
                     path.corners, -1, Vector3.zero, 0f
                 );
@@ -99,7 +99,7 @@ namespace CocaCopa.StateMachine {
 
             if (currentCornerIndex >= path.corners.Length) {
                 return new PathFollowData(
-                    path.corners, currentCornerIndex, Vector3.zero, 0f
+                    path.corners, path.corners.Length - 1, Vector3.zero, 0f
                 );
             }
 

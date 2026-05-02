@@ -5,6 +5,7 @@ public class ZombieHealth : MonoBehaviour
     [Header("Health Settings")]
     public int maxHealth = 100;
     private int currentHealth;
+    public float delayBeforeDeactivating = 1f;
 
     [Header("Effects")]
     public GameObject deathEffect;
@@ -129,13 +130,12 @@ public class ZombieHealth : MonoBehaviour
     private System.Collections.IEnumerator DeactivateAfterDelay()
     {
         // Wait for death sound to finish or a short delay
-        float delay = 1f;
         if (deathSound != null)
         {
-            delay = deathSound.length;
+            delayBeforeDeactivating = deathSound.length;
         }
 
-        yield return new WaitForSeconds(delay);
+        yield return new WaitForSeconds(delayBeforeDeactivating);
 
         // Deactivate the game object instead of destroying it
         gameObject.SetActive(false);

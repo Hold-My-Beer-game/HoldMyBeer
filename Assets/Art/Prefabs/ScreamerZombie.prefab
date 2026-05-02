@@ -1,0 +1,277 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2713976115078168783
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1853495616374875902}
+  m_Layer: 0
+  m_Name: ScreamOrigin
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1853495616374875902
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2713976115078168783}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1007576884815770465}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7924361410937531655
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1007576884815770465}
+  - component: {fileID: 7731485435405425942}
+  - component: {fileID: 2844170922249532221}
+  - component: {fileID: 1889233054658907574}
+  - component: {fileID: 2706833612798104543}
+  - component: {fileID: 3695601791362839121}
+  - component: {fileID: 3987935492977684769}
+  m_Layer: 0
+  m_Name: ScreamerZombie
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1007576884815770465
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7924361410937531655}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 7366095749391139619}
+  - {fileID: 1853495616374875902}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7731485435405425942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7924361410937531655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8da30adc83fc4962822e2f7c2b426123, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: HoldMyBeer.Zombies.Unity::HoldMyBeer.Zombies.Unity.ScreamerContext
+  target: {fileID: 0}
+  pathConfig: {fileID: 11400000, guid: 7592658355892e34eb636a0a90e135ea, type: 2}
+--- !u!114 &2844170922249532221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7924361410937531655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cb8f21636b04d33aebcfaa88803f30f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: HoldMyBeer.Zombies.Unity::HoldMyBeer.Zombies.Unity.ScreamerZombie
+  screamOrigin: {fileID: 1853495616374875902}
+  screamMask:
+    serializedVersion: 2
+    m_Bits: 128
+  screamAnimPlayPercentage: 0.82
+  screamRange: 75
+  hideSpot: {fileID: 0}
+  stopDistance: 5
+--- !u!114 &1889233054658907574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7924361410937531655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d26887a45a8e47d49d86cc37c70d4c25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: CocaCopa.StateMachine.Core::CocaCopa.StateMachine.StateMachineBrain
+--- !u!114 &2706833612798104543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7924361410937531655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89ccf2d65df14bcaaccacb8a5015e852, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: HoldMyBeer.Zombies.Unity::HoldMyBeer.Zombies.Unity.AIHealth
+  maxHealth: 1
+  currentHealth: 0
+--- !u!114 &3695601791362839121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7924361410937531655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15bb2e39abc643adbc8825a195a2daa7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: HoldMyBeer.Zombies.Unity::HoldMyBeer.Zombies.Unity.AILocomotion
+  rotationSpeed: 2.5
+--- !u!114 &3987935492977684769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7924361410937531655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f70f13c746284983917fed901c6e0d3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: CocaCopa.StateMachine.AIModules::CocaCopa.StateMachine.AISightStimulus
+  sightDistance: 10
+  leftAngle: 45
+  rightAngle: 45
+  upAngle: 30
+  downAngle: 30
+  originOffset: {x: 0, y: 1.64, z: 0.04}
+  sightMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  triggerInteraction: 1
+  visionDepth: 0.02
+  visionPointsCount: {x: 10, y: 10}
+  visionPointSize: 10
+--- !u!1001 &7039997528825406664
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1007576884815770465}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: c8f62e3aeb9fc974ab18968795c89677, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.37
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c8f62e3aeb9fc974ab18968795c89677, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.37
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c8f62e3aeb9fc974ab18968795c89677, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.37
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c8f62e3aeb9fc974ab18968795c89677, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c8f62e3aeb9fc974ab18968795c89677, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c8f62e3aeb9fc974ab18968795c89677, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c8f62e3aeb9fc974ab18968795c89677, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c8f62e3aeb9fc974ab18968795c89677, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c8f62e3aeb9fc974ab18968795c89677, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c8f62e3aeb9fc974ab18968795c89677, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c8f62e3aeb9fc974ab18968795c89677, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c8f62e3aeb9fc974ab18968795c89677, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c8f62e3aeb9fc974ab18968795c89677, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c8f62e3aeb9fc974ab18968795c89677, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c8f62e3aeb9fc974ab18968795c89677, type: 3}
+      propertyPath: m_Name
+      value: zombie with dismemberd head
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: c8f62e3aeb9fc974ab18968795c89677, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 0727fb31e2697554baab646380829ed3, type: 2}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c8f62e3aeb9fc974ab18968795c89677, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1659427103598668029}
+  m_SourcePrefab: {fileID: 100100000, guid: c8f62e3aeb9fc974ab18968795c89677, type: 3}
+--- !u!4 &7366095749391139619 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c8f62e3aeb9fc974ab18968795c89677, type: 3}
+  m_PrefabInstance: {fileID: 7039997528825406664}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7886490838367803801 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: c8f62e3aeb9fc974ab18968795c89677, type: 3}
+  m_PrefabInstance: {fileID: 7039997528825406664}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1659427103598668029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7886490838367803801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b600f8a84bc41c4adf53e5b7ec0fb98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: HoldMyBeer.Zombies.Unity::HoldMyBeer.Zombies.Unity.ScreamerAnimator
+  screamState: Base Layer.Scream
+  runState: Base Layer.Run
+  takeDamageState: Upper Body.Take Damage
+  deathState: Base Layer.Death - Forwards
+  standUpTrigger: StandUp

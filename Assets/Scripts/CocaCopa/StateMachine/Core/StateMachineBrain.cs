@@ -13,41 +13,65 @@ namespace CocaCopa.StateMachine {
         public string CurrentMovementStateID => movementMachine.StateID;
         public string CurrentCombatStateID => combatMachine.StateID;
 
-        private void Awake() {
+        private void Start() {
             var composer = GetComponent<IStateMachineComposer>();
             StateSetup setup = composer.Compose(this);
             Init(setup.MovementState, setup.CombatState);
         }
 
-        /// <summary>
-        /// Initializes the AI brain with optional starting states for movement and combat.
-        /// </summary>
+        private void Update() {
+            movementMachine.Tick(Time.deltaTime);
+            combatMachine.Tick(Time.deltaTime);
+        }
+
+        public void ForceMovementState(IState state) {
+            movementMachine.ForceState(state);
+        }
+
+        public void ForceCombatState(IState state) {
+            combatMachine.ForceState(state);
+        }
+
         private void Init(IState initialMovementState, IState initialCombatState) {
             if (initialMovementState != null) { movementMachine.Init(initialMovementState); }
             if (initialCombatState != null) { combatMachine.Init(initialCombatState); }
         }
 
-        /// <summary>
-        /// Adds transition rules to the movement state machine.
-        /// </summary>
-        /// <param name="fromState">Source movement state.</param>
-        /// <param name="transitions">Transitions evaluated while the source state is active.</param>
         public void AddMovementTransition(IState fromState, params IStateTransition[] transitions) {
             movementMachine.AddTransition(fromState, transitions);
         }
 
-        /// <summary>
-        /// Adds transition rules to the combat state machine.
-        /// </summary>
-        /// <param name="fromState">Source combat state.</param>
-        /// <param name="transitions">Transitions evaluated while the source state is active.</param>
         public void AddCombatTransition(IState fromState, params IStateTransition[] transitions) {
             combatMachine.AddTransition(fromState, transitions);
         }
 
-        private void Update() {
-            movementMachine.Tick(Time.deltaTime);
-            combatMachine.Tick(Time.deltaTime);
+        public void RemoveMovementTransition(IState state, IStateTransition transition) {
+            movementMachine.RemoveTransition(state, transition);
+        }
+
+        public void RemoveMovementTransitions(IState state) {
+            movementMachine.RemoveAllTransitions(state);
+        }
+
+        public void RemoveAllMovementTransitions() {
+            movementMachine.RemoveAllTransitions();
+        }
+
+        public void RemoveCombatTransition(IState state, IStateTransition transition) {
+            combatMachine.RemoveTransition(state, transition);
+        }
+
+        public void RemoveCombatTransitions(IState state) {
+            combatMachine.RemoveAllTransitions(state);
+        }
+
+        public void RemoveAllCombatTransitions() {
+            combatMachine.RemoveAllTransitions();
+        }
+
+        public void RemoveAllTransitions() {
+            movementMachine.RemoveAllTransitions();
+            combatMachine.RemoveAllTransitions();
         }
     }
 }

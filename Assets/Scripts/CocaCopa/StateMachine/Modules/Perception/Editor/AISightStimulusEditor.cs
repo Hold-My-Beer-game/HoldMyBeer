@@ -3,6 +3,7 @@ using UnityEditor;
 using UnityEngine;
 
 namespace CocaCopa.StateMachine.Editor {
+    [CustomEditor(typeof(AISightStimulus))]
     public partial class AISightStimulusEditor : UnityEditor.Editor {
         private SerializedProperty originOffset;
         private SerializedProperty sightDistance;
@@ -69,6 +70,11 @@ namespace CocaCopa.StateMachine.Editor {
             DrawSubGroup("Sampling", () => {
                 EditorGUILayout.PropertyField(visionDepth, new GUIContent("Depth"));
                 EditorGUILayout.PropertyField(visionPointsCount, new GUIContent("Grid"));
+                Vector2Int grid = visionPointsCount.vector2IntValue;
+                grid.x = Mathf.Max(1, grid.x);
+                grid.y = Mathf.Max(1, grid.y);
+                visionPointsCount.vector2IntValue = grid;
+
                 EditorGUILayout.PropertyField(visionPointSize, new GUIContent("Size (%)"));
             });
 
