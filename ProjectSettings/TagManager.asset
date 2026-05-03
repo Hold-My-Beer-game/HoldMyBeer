@@ -12,9 +12,9 @@ TagManager:
   - Water
   - UI
   - NavMesh_Walk
-  - ScreamAffected
-  - Ground
-  - 
+  - Player
+  - ScreamerZombie
+  - WalkerZombie
   - 
   - 
   - 
