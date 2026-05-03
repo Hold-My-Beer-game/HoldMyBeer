@@ -175,6 +175,7 @@ GameObject:
   - component: {fileID: 2706833612798104543}
   - component: {fileID: 3695601791362839121}
   - component: {fileID: 3987935492977684769}
+  - component: {fileID: 4635686603072751390}
   m_Layer: 0
   m_Name: ScreamerZombie
   m_TagString: Untagged
@@ -228,7 +229,7 @@ MonoBehaviour:
   screamOrigin: {fileID: 1853495616374875902}
   screamMask:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 512
   screamAnimPlayPercentage: 0.82
   screamRange: 120
   hidePoint: {fileID: 0}
@@ -289,14 +290,35 @@ MonoBehaviour:
   rightAngle: 34.221558
   upAngle: 6.287424
   downAngle: 13.8323345
-  originOffset: {x: 0, y: 1.64, z: 0.04}
+  originOffset: {x: 0, y: 4.47, z: 0.04}
   sightMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 759
   triggerInteraction: 1
   visionDepth: 0.02
   visionPointsCount: {x: 10, y: 10}
   visionPointSize: 10
+--- !u!65 &4635686603072751390
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7924361410937531655}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.7112536, y: 3.47624, z: 1}
+  m_Center: {x: -0.02851471, y: 1.2381202, z: 6.9574846e-10}
 --- !u!1001 &4097320492833118295
 PrefabInstance:
   m_ObjectHideFlags: 0

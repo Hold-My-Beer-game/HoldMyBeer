@@ -23,7 +23,7 @@ namespace HoldMyBeer.Zombies.Unity {
         private IStateMachineBrain brain;
         private WalkerContext context;
         private SearchTargetState searchState;
-        private WalkerDeathState deathState;
+        private DeathState deathState;
         private IdleCombatState idleCombatState;
 
         public StateSetup Compose(IStateMachineBrain brainRef) {
@@ -50,7 +50,7 @@ namespace HoldMyBeer.Zombies.Unity {
             var patrolState = new PatrolAreaState(context, MoveMode.Walk, timeBeforeMoving, stopDistance);
             var chaseState = new ChaseTargetState(context, MoveMode.Walk, pathRefreshInterval, stopDistance);
             searchState = new SearchTargetState(context, MoveMode.Walk, stopDistance);
-            deathState = new WalkerDeathState(context);
+            deathState = new DeathState(context);
 
             var delayedSeenToChase = new DelayedSightTransition(context, requiredSightTime, chaseState);
             var instantSeenToChase = new StateTransition(() => context.SightStimulus.CanSee(context.Target.Col), chaseState);

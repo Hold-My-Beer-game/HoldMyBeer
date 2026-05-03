@@ -16,16 +16,20 @@ namespace HoldMyBeer.Zombies.Unity {
         [SerializeField] private Transform hidePoint;
         [SerializeField] private float stopDistance = 5f;
 
+        private IStateMachineBrain brain;
         private ScreamerContext context;
         private ScreamerHideState hideState;
+        private DeathState deathState;
 
-        public StateSetup Compose(IStateMachineBrain brain) {
+        public StateSetup Compose(IStateMachineBrain brainRef) {
+            brain = brainRef;
             context = GetComponent<ScreamerContext>();
             context.Create();
 
             var idleMovementState = new IdleMovementState(context);
             var standUpState = new ScreamerAlertState(context, screamAnimPlayPercentage, screamOrigin.position, screamRange, screamMask);
             hideState = new ScreamerHideState(context, hidePoint.position, stopDistance);
+            deathState = new DeathState(context);
 
             var toAlertState = new StateTransition(() => context.SightStimulus.CanSee(context.Target.Col), standUpState);
             var toHideState = new StateTransition(() => standUpState.ScreamCompleted, hideState);
@@ -33,7 +37,9 @@ namespace HoldMyBeer.Zombies.Unity {
             brain.AddMovementTransition(idleMovementState, toAlertState);
             brain.AddMovementTransition(standUpState, toHideState);
 
-            return new StateSetup(idleMovementState, null);
+            Debug.Log($"Composed | Target Col Null: {context.Target.Col == null}");
+
+            return new StateSetup(idleMovementState, new IdleCombatState());
         }
 
         private void Update() {
@@ -41,7 +47,7 @@ namespace HoldMyBeer.Zombies.Unity {
         }
 
         private void Despawn() {
-            if (!hideState.OnHidePos) { return; }
+            if (hideState == null || !hideState.OnHidePos) { return; }
 
             enabled = true;
             gameObject.SetActive(false);
@@ -49,6 +55,10 @@ namespace HoldMyBeer.Zombies.Unity {
 
         public void TakeDamage(float value) {
             context.Health.TakeDamage(value);
+            if (context.Health.CurrentHealth <= 0f) {
+                brain.RemoveAllTransitions();
+                brain.ForceMovementState(deathState);
+            }
         }
 
         private void OnDrawGizmos() {
