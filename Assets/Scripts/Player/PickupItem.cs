@@ -26,8 +26,16 @@ public class PickupItem : MonoBehaviour
         switch (itemType)
         {
             case ItemType.Ammo:
+                // Don't pick up ammo if already full
+                if (inventory.HasMaxAmmo())
+                {
+                    Debug.Log("Ammo already full!");
+                    return;
+                }
+
                 inventory.AddAmmo(amount);
                 break;
+
 
             case ItemType.Alcohol:
                 inventory.AddAlcohol(amount);

@@ -108,11 +108,11 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.5
+  m_Radius: 0.88
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &141947075446288816
 MonoBehaviour:
@@ -127,7 +127,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PickupItem
   itemType: 0
-  amount: 2
+  amount: 6
 --- !u!1001 &3138422293077933741
 PrefabInstance:
   m_ObjectHideFlags: 0

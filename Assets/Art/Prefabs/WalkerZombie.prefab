@@ -157,7 +157,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: HoldMyBeer.AI::HoldMyBeer.AI.AIAttack
   damageAmount: 49
   attackPoint: {fileID: 8851437666667082929}
-  hitboxRadius: 2.24
+  hitboxRadius: 4.85
 --- !u!114 &8326859986795956565
 MonoBehaviour:
   m_ObjectHideFlags: 0

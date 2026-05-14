@@ -28,8 +28,11 @@ public class PlayerInventory : MonoBehaviour
         OnAmmoChange?.Invoke(currentAmmo);
         Debug.Log("Picked up ammo. Total reserve ammo: " + currentAmmo);
     }
+    public bool HasMaxAmmo()
+    {
+        return currentAmmo >= maxAmmo;
+    }
 
-    
     public void AddAlcohol(int amount)
     {
         currentAlcohol += amount;

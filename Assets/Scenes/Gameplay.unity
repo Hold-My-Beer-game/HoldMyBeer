@@ -446,6 +446,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AmmoPickup_5
       objectReference: {fileID: 0}
+    - target: {fileID: 8390986279677083872, guid: 2484b748bae586e42abf45490854f37c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -507,6 +511,10 @@ PrefabInstance:
     - target: {fileID: 8390986279677083872, guid: 2484b748bae586e42abf45490854f37c, type: 3}
       propertyPath: m_Name
       value: AmmoPickup_31
+      objectReference: {fileID: 0}
+    - target: {fileID: 8390986279677083872, guid: 2484b748bae586e42abf45490854f37c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1342,6 +1350,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AmmoPickup_57
       objectReference: {fileID: 0}
+    - target: {fileID: 8390986279677083872, guid: 2484b748bae586e42abf45490854f37c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1551,6 +1563,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AmmoPickup_61
       objectReference: {fileID: 0}
+    - target: {fileID: 8390986279677083872, guid: 2484b748bae586e42abf45490854f37c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1612,6 +1628,10 @@ PrefabInstance:
     - target: {fileID: 8390986279677083872, guid: 2484b748bae586e42abf45490854f37c, type: 3}
       propertyPath: m_Name
       value: AmmoPickup
+      objectReference: {fileID: 0}
+    - target: {fileID: 8390986279677083872, guid: 2484b748bae586e42abf45490854f37c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1896,6 +1916,10 @@ PrefabInstance:
     - target: {fileID: 8390986279677083872, guid: 2484b748bae586e42abf45490854f37c, type: 3}
       propertyPath: m_Name
       value: AmmoPickup_8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8390986279677083872, guid: 2484b748bae586e42abf45490854f37c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2333,6 +2357,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AmmoPickup_26
       objectReference: {fileID: 0}
+    - target: {fileID: 8390986279677083872, guid: 2484b748bae586e42abf45490854f37c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2370,6 +2398,10 @@ PrefabInstance:
     - target: {fileID: 3115154455460407890, guid: 3689297e53f863a469987b7266dc82d6, type: 3}
       propertyPath: damage
       value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 3115154455460407890, guid: 3689297e53f863a469987b7266dc82d6, type: 3}
+      propertyPath: shootCooldown
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 3115154455460407890, guid: 3689297e53f863a469987b7266dc82d6, type: 3}
       propertyPath: muzzleDuration
@@ -2413,7 +2445,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7752177087658608780, guid: 3689297e53f863a469987b7266dc82d6, type: 3}
       propertyPath: maxAmmo
-      value: 50
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7752177087658608780, guid: 3689297e53f863a469987b7266dc82d6, type: 3}
       propertyPath: currentAmmo
@@ -10726,6 +10758,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AmmoPickup_34
       objectReference: {fileID: 0}
+    - target: {fileID: 8390986279677083872, guid: 2484b748bae586e42abf45490854f37c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -11885,6 +11921,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AmmoPickup_25
       objectReference: {fileID: 0}
+    - target: {fileID: 8390986279677083872, guid: 2484b748bae586e42abf45490854f37c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -12148,6 +12188,10 @@ PrefabInstance:
     - target: {fileID: 8390986279677083872, guid: 2484b748bae586e42abf45490854f37c, type: 3}
       propertyPath: m_Name
       value: AmmoPickup_45
+      objectReference: {fileID: 0}
+    - target: {fileID: 8390986279677083872, guid: 2484b748bae586e42abf45490854f37c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -12807,6 +12851,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AmmoPickup_48
       objectReference: {fileID: 0}
+    - target: {fileID: 8390986279677083872, guid: 2484b748bae586e42abf45490854f37c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -13039,6 +13087,10 @@ PrefabInstance:
     - target: {fileID: 8390986279677083872, guid: 2484b748bae586e42abf45490854f37c, type: 3}
       propertyPath: m_Name
       value: AmmoPickup_44
+      objectReference: {fileID: 0}
+    - target: {fileID: 8390986279677083872, guid: 2484b748bae586e42abf45490854f37c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -13430,6 +13482,10 @@ PrefabInstance:
     - target: {fileID: 8390986279677083872, guid: 2484b748bae586e42abf45490854f37c, type: 3}
       propertyPath: m_Name
       value: AmmoPickup_19
+      objectReference: {fileID: 0}
+    - target: {fileID: 8390986279677083872, guid: 2484b748bae586e42abf45490854f37c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -14920,6 +14976,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AmmoPickup_9
       objectReference: {fileID: 0}
+    - target: {fileID: 8390986279677083872, guid: 2484b748bae586e42abf45490854f37c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -15094,6 +15154,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AmmoPickup_22
       objectReference: {fileID: 0}
+    - target: {fileID: 8390986279677083872, guid: 2484b748bae586e42abf45490854f37c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -15186,6 +15250,10 @@ PrefabInstance:
     - target: {fileID: 8390986279677083872, guid: 2484b748bae586e42abf45490854f37c, type: 3}
       propertyPath: m_Name
       value: AmmoPickup_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8390986279677083872, guid: 2484b748bae586e42abf45490854f37c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -15493,6 +15561,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AmmoPickup_3
       objectReference: {fileID: 0}
+    - target: {fileID: 8390986279677083872, guid: 2484b748bae586e42abf45490854f37c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -15585,6 +15657,10 @@ PrefabInstance:
     - target: {fileID: 8390986279677083872, guid: 2484b748bae586e42abf45490854f37c, type: 3}
       propertyPath: m_Name
       value: AmmoPickup_50
+      objectReference: {fileID: 0}
+    - target: {fileID: 8390986279677083872, guid: 2484b748bae586e42abf45490854f37c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -15961,6 +16037,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AmmoPickup_32
       objectReference: {fileID: 0}
+    - target: {fileID: 8390986279677083872, guid: 2484b748bae586e42abf45490854f37c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -16054,6 +16134,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AmmoPickup_14
       objectReference: {fileID: 0}
+    - target: {fileID: 8390986279677083872, guid: 2484b748bae586e42abf45490854f37c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -16115,6 +16199,10 @@ PrefabInstance:
     - target: {fileID: 8390986279677083872, guid: 2484b748bae586e42abf45490854f37c, type: 3}
       propertyPath: m_Name
       value: AmmoPickup_36
+      objectReference: {fileID: 0}
+    - target: {fileID: 8390986279677083872, guid: 2484b748bae586e42abf45490854f37c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -16208,6 +16296,10 @@ PrefabInstance:
     - target: {fileID: 8390986279677083872, guid: 2484b748bae586e42abf45490854f37c, type: 3}
       propertyPath: m_Name
       value: AmmoPickup_38
+      objectReference: {fileID: 0}
+    - target: {fileID: 8390986279677083872, guid: 2484b748bae586e42abf45490854f37c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -16554,6 +16646,10 @@ PrefabInstance:
     - target: {fileID: 8390986279677083872, guid: 2484b748bae586e42abf45490854f37c, type: 3}
       propertyPath: m_Name
       value: AmmoPickup_23
+      objectReference: {fileID: 0}
+    - target: {fileID: 8390986279677083872, guid: 2484b748bae586e42abf45490854f37c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -17066,6 +17162,10 @@ PrefabInstance:
     - target: {fileID: 8390986279677083872, guid: 2484b748bae586e42abf45490854f37c, type: 3}
       propertyPath: m_Name
       value: AmmoPickup_13
+      objectReference: {fileID: 0}
+    - target: {fileID: 8390986279677083872, guid: 2484b748bae586e42abf45490854f37c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -17801,6 +17901,10 @@ PrefabInstance:
     - target: {fileID: 8390986279677083872, guid: 2484b748bae586e42abf45490854f37c, type: 3}
       propertyPath: m_Name
       value: AmmoPickup_4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8390986279677083872, guid: 2484b748bae586e42abf45490854f37c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -18738,6 +18842,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AmmoPickup_58
       objectReference: {fileID: 0}
+    - target: {fileID: 8390986279677083872, guid: 2484b748bae586e42abf45490854f37c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -18950,6 +19058,10 @@ PrefabInstance:
     - target: {fileID: 8390986279677083872, guid: 2484b748bae586e42abf45490854f37c, type: 3}
       propertyPath: m_Name
       value: AmmoPickup_49
+      objectReference: {fileID: 0}
+    - target: {fileID: 8390986279677083872, guid: 2484b748bae586e42abf45490854f37c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -19221,6 +19333,10 @@ PrefabInstance:
     - target: {fileID: 8390986279677083872, guid: 2484b748bae586e42abf45490854f37c, type: 3}
       propertyPath: m_Name
       value: AmmoPickup_7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8390986279677083872, guid: 2484b748bae586e42abf45490854f37c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -19582,6 +19698,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AmmoPickup_11
       objectReference: {fileID: 0}
+    - target: {fileID: 8390986279677083872, guid: 2484b748bae586e42abf45490854f37c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -19643,6 +19763,10 @@ PrefabInstance:
     - target: {fileID: 8390986279677083872, guid: 2484b748bae586e42abf45490854f37c, type: 3}
       propertyPath: m_Name
       value: AmmoPickup_16
+      objectReference: {fileID: 0}
+    - target: {fileID: 8390986279677083872, guid: 2484b748bae586e42abf45490854f37c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -21059,6 +21183,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AmmoPickup_53
       objectReference: {fileID: 0}
+    - target: {fileID: 8390986279677083872, guid: 2484b748bae586e42abf45490854f37c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -21359,6 +21487,10 @@ PrefabInstance:
     - target: {fileID: 8390986279677083872, guid: 2484b748bae586e42abf45490854f37c, type: 3}
       propertyPath: m_Name
       value: AmmoPickup_2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8390986279677083872, guid: 2484b748bae586e42abf45490854f37c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -22612,6 +22744,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AmmoPickup_55
       objectReference: {fileID: 0}
+    - target: {fileID: 8390986279677083872, guid: 2484b748bae586e42abf45490854f37c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -22673,6 +22809,10 @@ PrefabInstance:
     - target: {fileID: 8390986279677083872, guid: 2484b748bae586e42abf45490854f37c, type: 3}
       propertyPath: m_Name
       value: AmmoPickup
+      objectReference: {fileID: 0}
+    - target: {fileID: 8390986279677083872, guid: 2484b748bae586e42abf45490854f37c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -22913,6 +23053,10 @@ PrefabInstance:
     - target: {fileID: 8390986279677083872, guid: 2484b748bae586e42abf45490854f37c, type: 3}
       propertyPath: m_Name
       value: AmmoPickup_18
+      objectReference: {fileID: 0}
+    - target: {fileID: 8390986279677083872, guid: 2484b748bae586e42abf45490854f37c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -23493,6 +23637,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AmmoPickup_17
       objectReference: {fileID: 0}
+    - target: {fileID: 8390986279677083872, guid: 2484b748bae586e42abf45490854f37c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -23554,6 +23702,10 @@ PrefabInstance:
     - target: {fileID: 8390986279677083872, guid: 2484b748bae586e42abf45490854f37c, type: 3}
       propertyPath: m_Name
       value: AmmoPickup_12
+      objectReference: {fileID: 0}
+    - target: {fileID: 8390986279677083872, guid: 2484b748bae586e42abf45490854f37c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -24031,6 +24183,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AmmoPickup_52
       objectReference: {fileID: 0}
+    - target: {fileID: 8390986279677083872, guid: 2484b748bae586e42abf45490854f37c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -24239,6 +24395,10 @@ PrefabInstance:
     - target: {fileID: 8390986279677083872, guid: 2484b748bae586e42abf45490854f37c, type: 3}
       propertyPath: m_Name
       value: AmmoPickup_2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8390986279677083872, guid: 2484b748bae586e42abf45490854f37c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -24872,6 +25032,10 @@ PrefabInstance:
     - target: {fileID: 8390986279677083872, guid: 2484b748bae586e42abf45490854f37c, type: 3}
       propertyPath: m_Name
       value: AmmoPickup_40
+      objectReference: {fileID: 0}
+    - target: {fileID: 8390986279677083872, guid: 2484b748bae586e42abf45490854f37c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -25851,6 +26015,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AmmoPickup_10
       objectReference: {fileID: 0}
+    - target: {fileID: 8390986279677083872, guid: 2484b748bae586e42abf45490854f37c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -26005,6 +26173,10 @@ PrefabInstance:
     - target: {fileID: 8390986279677083872, guid: 2484b748bae586e42abf45490854f37c, type: 3}
       propertyPath: m_Name
       value: AmmoPickup_41
+      objectReference: {fileID: 0}
+    - target: {fileID: 8390986279677083872, guid: 2484b748bae586e42abf45490854f37c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -26223,6 +26395,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AmmoPickup_28
       objectReference: {fileID: 0}
+    - target: {fileID: 8390986279677083872, guid: 2484b748bae586e42abf45490854f37c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -26377,6 +26553,10 @@ PrefabInstance:
     - target: {fileID: 8390986279677083872, guid: 2484b748bae586e42abf45490854f37c, type: 3}
       propertyPath: m_Name
       value: AmmoPickup_54
+      objectReference: {fileID: 0}
+    - target: {fileID: 8390986279677083872, guid: 2484b748bae586e42abf45490854f37c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -26595,6 +26775,10 @@ PrefabInstance:
     - target: {fileID: 1057745706562798327, guid: 2d79ff169d1efae48950657eacd899f4, type: 3}
       propertyPath: m_Name
       value: AlcoholPickup
+      objectReference: {fileID: 0}
+    - target: {fileID: 1057745706562798327, guid: 2d79ff169d1efae48950657eacd899f4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2025321276527187315, guid: 2d79ff169d1efae48950657eacd899f4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -27078,6 +27262,10 @@ PrefabInstance:
     - target: {fileID: 8390986279677083872, guid: 2484b748bae586e42abf45490854f37c, type: 3}
       propertyPath: m_Name
       value: AmmoPickup_42
+      objectReference: {fileID: 0}
+    - target: {fileID: 8390986279677083872, guid: 2484b748bae586e42abf45490854f37c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -27606,6 +27794,10 @@ PrefabInstance:
     - target: {fileID: 8390986279677083872, guid: 2484b748bae586e42abf45490854f37c, type: 3}
       propertyPath: m_Name
       value: AmmoPickup_29
+      objectReference: {fileID: 0}
+    - target: {fileID: 8390986279677083872, guid: 2484b748bae586e42abf45490854f37c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
