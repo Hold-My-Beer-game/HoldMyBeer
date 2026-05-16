@@ -55,7 +55,7 @@ public class AudioManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Method to set a local parameter in an FMOD Event, through its Event Instance
+    /// Method to set a local parameter in an FMOD Event, through its Event Instance. Other events that share the same parameter will not be affected.
     /// </summary>
     public void SetParameter(EventInstance eventName, string parameterName, float parameterValue) 
     {
@@ -63,7 +63,7 @@ public class AudioManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Method to set a global parameter in FMOD, that impacts all events that have that parameter
+    /// Method to set a global parameter in FMOD, that impacts all events that have that parameter.
     /// </summary>
     public void SetGlobalParameter(string parameterName, float parameterValue) 
     {
