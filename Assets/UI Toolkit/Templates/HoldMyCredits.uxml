@@ -1,0 +1,15 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI%20Toolkit/HoldMyStyle.uss?fileID=7433441132597879392&amp;guid=d9d9ea3cedfdfa0409e472d927d34c51&amp;type=3#HoldMyStyle"/>
+    <ui:GroupBox text="" name="credits-groupbox" class="credits-groupbox" style="-unity-text-align: middle-center; -unity-text-generator: advanced; -unity-text-auto-size: best-fit 10px 100px; justify-content: space-around; background-color: rgb(0, 0, 0); flex-grow: 1;">
+        <ui:Label text="Credits" name="credits-title" class="credits-title"/>
+        <ui:VisualElement name="VisualElement" style="flex-grow: 1;">
+            <ui:Label text="Dev Team" name="DevTeam-header" class="credits-header"/>
+            <ui:Label text="aironnegl" name="aironnegl" class="credits-element" style="color: rgb(182, 0, 255);"/>
+            <ui:Label text="CocaCopa" name="CocaCopa" class="credits-element" style="color: rgb(1, 255, 255);"/>
+            <ui:Label text="plumende" name="plumende" class="credits-element" style="color: rgb(137, 52, 255);"/>
+            <ui:Label text="SinisterGibbon" name="SinisterGibbon" class="credits-element" style="color: rgb(222, 140, 255);"/>
+            <ui:Label text="TheLoneGameDev" name="TheLoneGameDev" class="credits-element" style="color: rgb(36, 133, 255);"/>
+        </ui:VisualElement>
+    </ui:GroupBox>
+    <ui:Button text="" name="credits-exit-btn" class="menu-exit-btn" style="position: absolute; align-self: flex-end; top: 2%; right: 2%;"/>
+</ui:UXML>

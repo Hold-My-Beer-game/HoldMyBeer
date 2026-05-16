@@ -1,0 +1,17 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI%20Toolkit/HoldMyStyle.uss?fileID=7433441132597879392&amp;guid=d9d9ea3cedfdfa0409e472d927d34c51&amp;type=3#HoldMyStyle"/>
+    <ui:VisualElement name="bg" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/UI%20Toolkit/Sprites/battle_friend_message_bg.png?fileID=21300000&amp;guid=aa62dbf9aebf3df42b99618db791f3cf&amp;type=3#battle_friend_message_bg&quot;); -unity-background-scale-mode: stretch-to-fill; margin-top: 0%; margin-right: 0%; margin-bottom: 0%; margin-left: 0%; background-position-x: center; background-position-y: center; -unity-background-image-tint-color: rgb(91, 119, 67); display: flex; align-items: stretch; padding-top: 5%; padding-right: 5%; padding-bottom: 5%; padding-left: 5%; -unity-slice-scale: 2px;">
+        <ui:Button text="" name="settings-exit-btn"/>
+        <ui:GroupBox name="settings-group" text="Settings" style="aspect-ratio: auto; flex-direction: column; justify-content: space-between; flex-grow: 1;">
+            <ui:GroupBox name="sound-settings-group" text="Sound" style="flex-grow: 1; justify-content: space-around;">
+                <ui:Slider label="Master Volume" value="0" high-value="100" name="master-slider"/>
+                <ui:Slider label="Music Volume" value="50" high-value="100" name="music-slider"/>
+                <ui:Slider label="SFX Volume" value="100" high-value="100" name="sfx-slider"/>
+            </ui:GroupBox>
+            <ui:GroupBox name="graphic-settings-group" text="Graphics" style="flex-grow: 1; justify-content: space-around;">
+                <ui:RadioButtonGroup label="Quality" name="quality-radio-group" choices="Low,Mid,High"/>
+                <ui:Slider label="Camera Sensitivity" value="0" high-value="100" name="sensitivity-slider"/>
+            </ui:GroupBox>
+        </ui:GroupBox>
+    </ui:VisualElement>
+</ui:UXML>

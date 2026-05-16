@@ -1,0 +1,16 @@
+{
+  "name": "CocaCopa.StateMachine.Core",
+  "rootNamespace": "CocaCopa.StateMachine.Core",
+  "references": [
+    "CocaCopa.StateMachine.Contracts"
+  ],
+  "includePlatforms": [],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": true,
+  "precompiledReferences": [],
+  "autoReferenced": false,
+  "defineConstraints": [],
+  "versionDefines": [],
+  "noEngineReferences": false
+}
