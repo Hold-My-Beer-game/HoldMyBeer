@@ -43,7 +43,6 @@ public class AudioManager : MonoBehaviour
 
     private void Start() 
     {
-        InitializeMusic(MusicEvents.instance.Aggression);
         InitializeAmbience(SFXEvents.instance.WindAmbience);
     }
 
