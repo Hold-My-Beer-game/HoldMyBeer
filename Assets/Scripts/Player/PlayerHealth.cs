@@ -31,6 +31,10 @@ public class PlayerHealth : MonoBehaviour
         {
             Die();
         }
+        else
+        {
+            AudioManager.instance.PlayOneShotEvent(SFXEvents.instance.PlayerDamaged, transform.position);
+        }
     }
 
     public void Heal(float heal)
