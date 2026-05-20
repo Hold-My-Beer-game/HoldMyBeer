@@ -69,6 +69,7 @@ public class PlayerAttack : MonoBehaviour
             }
             else
             {
+                AudioManager.instance.PlayOneShotEvent(SFXEvents.instance.DryFire, transform.position); // Play one shot sound when no bullets left
                 Debug.Log("No more ammo");
                 // Play dry fire animation by name
                 // if (animator != null)
@@ -156,6 +157,7 @@ public class PlayerAttack : MonoBehaviour
         isShootingBlocked = true;
 
         Debug.Log("Reloading...");
+        AudioManager.instance.PlayOneShotEvent(SFXEvents.instance.ShotgunReload, transform.position);
 
         // Call reload animation by name
         if (animator != null)

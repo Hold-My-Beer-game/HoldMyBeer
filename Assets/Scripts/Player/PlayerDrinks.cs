@@ -45,6 +45,7 @@ public class PlayerDrink : MonoBehaviour
     private IEnumerator DrinkRoutine()
     {
         isDrinking = true;
+        AudioManager.instance.PlayOneShotEvent(SFXEvents.instance.PlayerDrink, transform.position);
 
         // Call drink animation by name
         if (animator != null)

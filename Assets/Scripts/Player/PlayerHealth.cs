@@ -1,3 +1,4 @@
+using FMOD.Studio;
 using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -13,14 +14,19 @@ public class PlayerHealth : MonoBehaviour
 
     public event Action<float> OnHealthChange;
 
+    private EventInstance heartbeat;
+
     void Start()
     {
         currentHealth = maxHealth;
         OnHealthChange?.Invoke(currentHealth);
+        heartbeat = AudioManager.instance.CreateEventInstance(SFXEvents.instance.LowHpHeartbeat);
+        heartbeat.start();
     }
 
     public void TakeDamage(float damage)
     {
+        AudioManager.instance.PlayOneShotEvent(SFXEvents.instance.PlayerDamaged, transform.position);
         currentHealth -= damage;
         currentHealth = Mathf.Clamp(currentHealth, 0f, maxHealth);
         OnHealthChange?.Invoke(currentHealth);
@@ -31,10 +37,10 @@ public class PlayerHealth : MonoBehaviour
         {
             Die();
         }
-        else
-        {
-            AudioManager.instance.PlayOneShotEvent(SFXEvents.instance.PlayerDamaged, transform.position);
-        }
+    }
+
+    public void Update() {
+        AudioManager.instance.SetParameter(heartbeat, "PlayerHealth", currentHealth);
     }
 
     public void Heal(float heal)

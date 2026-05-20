@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using FMOD.Studio;
 
 [RequireComponent(typeof(CharacterController))]
 public class FirstPersonController : MonoBehaviour
@@ -39,9 +40,9 @@ public class FirstPersonController : MonoBehaviour
     public float fovSmoothness = 8f;
 
 
-    [Header("Footsteps")]
-    public AudioSource footstepAudio;
-    public float stepInterval = 0.5f;
+    //[Header("Footsteps")]
+    //public AudioSource footstepAudio;
+    //public float stepInterval = 0.5f;
 
     private CharacterController controller;
     private float yVelocity;
@@ -53,6 +54,9 @@ public class FirstPersonController : MonoBehaviour
     private Vector2 lookInput;
 
     private float stepTimer;
+
+    // audio
+    private EventInstance playerFootsteps;
 
     void Start()
     {
@@ -70,6 +74,8 @@ public class FirstPersonController : MonoBehaviour
             standingCollider.enabled = true;
             crouchingCollider.enabled = false;
         }
+        // Initialize the event instance for player footsteps audio
+        playerFootsteps = AudioManager.instance.CreateEventInstance(SFXEvents.instance.PlayerSteps);
     }
 
     void Update()
@@ -226,19 +232,29 @@ public class FirstPersonController : MonoBehaviour
 
         float movement = Mathf.Abs(moveInput.x) + Mathf.Abs(moveInput.y);
 
+        if (isCrouching) 
+        {
+            // If crouching decrease frequency of steps
+            AudioManager.instance.SetParameter(playerFootsteps, "MovementStatus", (float) FMODParameters.MovementStatus.CROUCHING);
+        }
+        else 
+        {
+            // If not crouching, set original frequency of steps
+            AudioManager.instance.SetParameter(playerFootsteps, "MovementStatus", (float) FMODParameters.MovementStatus.WALKING);
+        }
+
         if (movement > 0.1f)
         {
-            stepTimer -= Time.deltaTime;
-
-            if (stepTimer <= 0f)
+            PLAYBACK_STATE playbackState;
+            playerFootsteps.getPlaybackState(out playbackState); // Get the current state of the playerFootsteps event
+            if (playbackState.Equals(PLAYBACK_STATE.STOPPED))
             {
-                footstepAudio.Play();
-                stepTimer = stepInterval;
+                playerFootsteps.start(); // Play if there is movement and the event is not already playing
             }
         }
         else
         {
-            stepTimer = 0f;
+            playerFootsteps.stop(STOP_MODE.ALLOWFADEOUT); // Stop if no movement, but allow fade out for smoother audio transition
         }
     }
 }
