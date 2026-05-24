@@ -14,33 +14,35 @@ namespace HoldMyBeer.UI {
 
         private UINavigation nav;
         private IPlayerStateRead playerReadState;
-        
+
         private HUDState hudState;
         internal HUDState HUDState => hudState;
 
         private void Awake() {
             registry.Init();
-            
+
             nav = new UINavigation(registry.Map, startScreen);
 
             VisualElement root = registry.Root;
-
-            // Scene-specific wiring
+            
+            // settingsReadState = settingsState
+            SettingsController settings = new SettingsController(nav);
 
             if (startScreen == UIScreen.MainMenu) {
                 MainMenuController menu = new MainMenuController(nav);
-                SettingsState settingsState = new SettingsState();
-                SettingsController settings = new SettingsController(settingsState, nav);
                 CreditsController credits = new CreditsController(nav);
 
                 UIBinding.BindMainMenu(root, menu);
                 UIBinding.BindSettings(root, settings);
                 UIBinding.BindAbout(root, credits);
             }
+            else if (startScreen == UIScreen.Endgame) {
+                GameFlowController flow = new GameFlowController(nav);
+                UIBinding.BindPause(root, flow);
+                UIBinding.BindEndgame(root, flow);
+                
+            }
             else {
-                SettingsState settingsState = new SettingsState();
-                SettingsController settings = new SettingsController(settingsState, nav);
-
                 GameFlowController flow = new GameFlowController(nav);
 
                 hudState = new HUDState();
@@ -49,11 +51,10 @@ namespace HoldMyBeer.UI {
                 hud.Init();
                 hudView.Bind(hudState);
                 if (tester != null) { tester.SetState(hudState); }
-                
+
                 UIBinding.BindPause(root, flow);
                 UIBinding.BindEndgame(root, flow);
                 UIBinding.BindSettings(root, settings);
-                
             }
         }
     }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using HoldMyBeer.Zombies.Contracts;
 using UnityEngine;
@@ -29,6 +30,9 @@ public class PlayerAttack : MonoBehaviour
     private bool isReloading = false;
     private bool isShootingBlocked = false;
     private PlayerInventory inventory;
+    
+    public event Action<int> OnLoadChange;
+    
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -39,6 +43,9 @@ public class PlayerAttack : MonoBehaviour
         currentAmmoInMagazine = loadAmount;
         // inventory.CurrentAmmo -= loadAmount;
         inventory.RemoveAmmo(loadAmount);
+        
+        OnLoadChange?.Invoke(currentAmmoInMagazine);
+        
     }
 
     // Update is called once per frame
@@ -99,7 +106,8 @@ public class PlayerAttack : MonoBehaviour
     private void Shoot()
     {
         currentAmmoInMagazine--;
-
+        OnLoadChange?.Invoke(currentAmmoInMagazine);
+        
         // Call shoot animation by name
         if (animator != null)
         {
@@ -174,6 +182,7 @@ public class PlayerAttack : MonoBehaviour
         int toLoad = Mathf.Min(needed, inventory.CurrentAmmo);
 
         currentAmmoInMagazine += toLoad;
+        OnLoadChange?.Invoke(currentAmmoInMagazine);
         // inventory.CurrentAmmo -= toLoad;
         inventory.RemoveAmmo(toLoad);
 

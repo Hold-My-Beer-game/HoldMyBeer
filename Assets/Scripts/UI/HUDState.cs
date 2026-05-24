@@ -16,6 +16,7 @@ namespace HoldMyBeer.UI {
         public string InteractText;
 
         public int Ammo;
+        public int LoadedAmmo;
 
         // Event-driven update signal (single channel)
         public event Action OnChanged;
