@@ -2485,7 +2485,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8654213478443349989, guid: 3689297e53f863a469987b7266dc82d6, type: 3}
       propertyPath: deathSceneName
-      value: StartScene
+      value: DeathScene
       objectReference: {fileID: 0}
     - target: {fileID: 8901039757522793332, guid: 3689297e53f863a469987b7266dc82d6, type: 3}
       propertyPath: m_LocalScale.x

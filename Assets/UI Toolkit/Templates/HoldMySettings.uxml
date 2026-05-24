@@ -4,13 +4,13 @@
         <ui:Button text="" name="settings-exit-btn"/>
         <ui:GroupBox name="settings-group" text="Settings" style="aspect-ratio: auto; flex-direction: column; justify-content: space-between; flex-grow: 1;">
             <ui:GroupBox name="sound-settings-group" text="Sound" style="flex-grow: 1; justify-content: space-around;">
-                <ui:Slider label="Master Volume" value="0" high-value="100" name="master-slider"/>
-                <ui:Slider label="Music Volume" value="50" high-value="100" name="music-slider"/>
+                <ui:Slider label="Master Volume" value="100" high-value="100" name="master-slider"/>
+                <ui:Slider label="Music Volume" value="100" high-value="1" name="music-slider"/>
                 <ui:Slider label="SFX Volume" value="100" high-value="100" name="sfx-slider"/>
             </ui:GroupBox>
-            <ui:GroupBox name="graphic-settings-group" text="Graphics" style="flex-grow: 1; justify-content: space-around;">
+            <ui:GroupBox name="graphic-settings-group" text="Graphics" enabled="false" style="flex-grow: 1; justify-content: space-around;">
                 <ui:RadioButtonGroup label="Quality" name="quality-radio-group" choices="Low,Mid,High"/>
-                <ui:Slider label="Camera Sensitivity" value="0" high-value="100" name="sensitivity-slider"/>
+                <ui:Slider label="Camera Sensitivity" value="0.5" high-value="1" name="sensitivity-slider"/>
             </ui:GroupBox>
         </ui:GroupBox>
     </ui:VisualElement>
