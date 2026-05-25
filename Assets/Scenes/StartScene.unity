@@ -213,6 +213,83 @@ MonoBehaviour:
     elementName: Settings
   - id: 2
     elementName: About
+--- !u!1001 &301961365
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 732393256405745761, guid: f368dae50b90ed54996b1f56758a5092, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 87.68704
+      objectReference: {fileID: 0}
+    - target: {fileID: 732393256405745761, guid: f368dae50b90ed54996b1f56758a5092, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 732393256405745761, guid: f368dae50b90ed54996b1f56758a5092, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -27.21429
+      objectReference: {fileID: 0}
+    - target: {fileID: 732393256405745761, guid: f368dae50b90ed54996b1f56758a5092, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 732393256405745761, guid: f368dae50b90ed54996b1f56758a5092, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 732393256405745761, guid: f368dae50b90ed54996b1f56758a5092, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 732393256405745761, guid: f368dae50b90ed54996b1f56758a5092, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 732393256405745761, guid: f368dae50b90ed54996b1f56758a5092, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 732393256405745761, guid: f368dae50b90ed54996b1f56758a5092, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 732393256405745761, guid: f368dae50b90ed54996b1f56758a5092, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2395229853368983020, guid: f368dae50b90ed54996b1f56758a5092, type: 3}
+      propertyPath: m_Name
+      value: AudioManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 7980552033930856259, guid: f368dae50b90ed54996b1f56758a5092, type: 3}
+      propertyPath: <sound>k__BackingField.Path
+      value: event:/Tension
+      objectReference: {fileID: 0}
+    - target: {fileID: 7980552033930856259, guid: f368dae50b90ed54996b1f56758a5092, type: 3}
+      propertyPath: <sound>k__BackingField.Guid.Data1
+      value: -1364710471
+      objectReference: {fileID: 0}
+    - target: {fileID: 7980552033930856259, guid: f368dae50b90ed54996b1f56758a5092, type: 3}
+      propertyPath: <sound>k__BackingField.Guid.Data2
+      value: 1286205274
+      objectReference: {fileID: 0}
+    - target: {fileID: 7980552033930856259, guid: f368dae50b90ed54996b1f56758a5092, type: 3}
+      propertyPath: <sound>k__BackingField.Guid.Data3
+      value: 1385207706
+      objectReference: {fileID: 0}
+    - target: {fileID: 7980552033930856259, guid: f368dae50b90ed54996b1f56758a5092, type: 3}
+      propertyPath: <sound>k__BackingField.Guid.Data4
+      value: 859473204
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f368dae50b90ed54996b1f56758a5092, type: 3}
 --- !u!1 &1499394172
 GameObject:
   m_ObjectHideFlags: 0
@@ -305,6 +382,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1499394176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1499394172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: FMODUnity::FMODUnity.StudioListener
+  nonRigidbodyVelocity: 0
+  attenuationObject: {fileID: 1499394172}
 --- !u!1 &1589708852
 GameObject:
   m_ObjectHideFlags: 0
@@ -539,3 +630,4 @@ SceneRoots:
   - {fileID: 1589708854}
   - {fileID: 218255679}
   - {fileID: 1773735577}
+  - {fileID: 301961365}

@@ -3,6 +3,7 @@ using System.Collections;
 using HoldMyBeer.Zombies.Contracts;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using HoldMyBeer.Audio;
 
 public class PlayerAttack : MonoBehaviour
 {
@@ -76,6 +77,7 @@ public class PlayerAttack : MonoBehaviour
             }
             else
             {
+                AudioManager.instance.PlayOneShotEvent(SFXEvents.instance.DryFire, transform.position); // Play one shot sound when no bullets left
                 Debug.Log("No more ammo");
                 // Play dry fire animation by name
                 // if (animator != null)
@@ -107,6 +109,7 @@ public class PlayerAttack : MonoBehaviour
     {
         currentAmmoInMagazine--;
         OnLoadChange?.Invoke(currentAmmoInMagazine);
+        AudioManager.instance.PlayOneShotEvent(SFXEvents.instance.ShotgunFire, transform.position);
         
         // Call shoot animation by name
         if (animator != null)
@@ -164,6 +167,7 @@ public class PlayerAttack : MonoBehaviour
         isShootingBlocked = true;
 
         Debug.Log("Reloading...");
+        AudioManager.instance.PlayOneShotEvent(SFXEvents.instance.ShotgunReload, transform.position);
 
         // Call reload animation by name
         if (animator != null)

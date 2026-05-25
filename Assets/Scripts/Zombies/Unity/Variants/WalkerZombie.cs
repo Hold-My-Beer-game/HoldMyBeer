@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace HoldMyBeer.Zombies.Unity {
     [RequireComponent(typeof(WalkerContext))]
-    internal class WalkerZombie : MonoBehaviour, IStateMachineComposer, IEnemy, IScreamAffected {
+    public class WalkerZombie : MonoBehaviour, IStateMachineComposer, IEnemy, IScreamAffected {
         [Header("Pathing")]
         [SerializeField] [Min(0.01f)] private float pathRefreshInterval;
         [SerializeField] [Min(0.01f)] private float stopDistance;
