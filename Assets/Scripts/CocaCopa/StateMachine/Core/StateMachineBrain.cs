@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace CocaCopa.StateMachine {
     /// <summary>
@@ -9,6 +10,26 @@ namespace CocaCopa.StateMachine {
 
         private readonly StateMachine movementMachine = new();
         private readonly StateMachine combatMachine = new();
+
+        public event Action<IState> OnStateEnterMovement {
+            add => movementMachine.OnStateEnter += value;
+            remove => movementMachine.OnStateEnter -= value;
+        }
+
+        public event Action<IState> OnStateExitMovement {
+            add => movementMachine.OnStateExit += value;
+            remove => movementMachine.OnStateExit -= value;
+        }
+
+        public event Action<IState> OnStateEnterCombat {
+            add => combatMachine.OnStateEnter += value;
+            remove => combatMachine.OnStateEnter -= value;
+        }
+
+        public event Action<IState> OnStateExitCombat {
+            add => combatMachine.OnStateExit += value;
+            remove => combatMachine.OnStateExit -= value;
+        }
 
         public string CurrentMovementStateID => movementMachine.StateID;
         public string CurrentCombatStateID => combatMachine.StateID;

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -39,7 +40,7 @@ namespace HoldMyBeer.UI {
 
             state = newState;
             root = document.rootVisualElement;
-            VisualElement hudRoot = root.Q<VisualElement>("HUD");
+            var hudRoot = root.Q<VisualElement>("HUD");
             if (hudRoot == null) { throw new Exception("HUDRoot is null"); }
 
             // Cache UI elements once 
@@ -79,22 +80,12 @@ namespace HoldMyBeer.UI {
         // VISUAL SYSTEM
         // -------------
         private void UpdateVitals() {
-            // switch (state.Drunkness) {
-            //     case <= 0:
-            //         bottle.style.opacity = EMPTY_OPACITY * flicker;
-            //         break;
-            //     case <= FLICKER_THRESHOLD:
-            //         flicker = 1f + Mathf.Sin(Time.time * FLICKER_FREQ) * FLICKER_AMP;
-            //         bottle.style.opacity = state.Drunkness * flicker;
-            //         break;
-            // }
-
             if (state.Drunkness <= 0) {
                 float flicker = 1f + Mathf.Sin(Time.time * FLICKER_FREQ) * FLICKER_AMP;
-                bottle.style.opacity = state.Drunkness * flicker;
+                bottle.style.opacity = EMPTY_OPACITY * flicker;
             }
 
-            bottleLabel.text = state.Drunkness.ToString();
+            bottleLabel.text = state.Drunkness.ToString(CultureInfo.InvariantCulture);
             blood.style.opacity = 1f - state.Health;
         }
 
@@ -118,7 +109,7 @@ namespace HoldMyBeer.UI {
             bullets.Clear();
 
             for (int i = 0; i < state.Ammo; i++) {
-                VisualElement bullet = new VisualElement();
+                var bullet = new VisualElement();
                 bullet.AddToClassList("bullet");
 
                 bullets.Add(bullet);
