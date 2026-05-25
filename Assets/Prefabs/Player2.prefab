@@ -1826,6 +1826,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
   maxHealth: 100
   currentHealth: 0
+  deathSceneName: 
 --- !u!136 &4668058612216095278
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1892,8 +1893,6 @@ MonoBehaviour:
   sprintFOV: 80
   normalFOV: 60
   fovSmoothness: 8
-  footstepAudio: {fileID: 541008621785820159}
-  stepInterval: 0.63
 --- !u!143 &8306326185813697538
 CharacterController:
   m_ObjectHideFlags: 0
@@ -2329,6 +2328,7 @@ GameObject:
   - component: {fileID: 7962976584739884220}
   - component: {fileID: 4360000936970953549}
   - component: {fileID: 221789000663225945}
+  - component: {fileID: -5262725292253533288}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2410,6 +2410,20 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3609024346103152187}
   m_Enabled: 1
+--- !u!114 &-5262725292253533288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3609024346103152187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: FMODUnity::FMODUnity.StudioListener
+  nonRigidbodyVelocity: 0
+  attenuationObject: {fileID: 0}
 --- !u!1 &3801613622753603342
 GameObject:
   m_ObjectHideFlags: 0
@@ -2925,6 +2939,7 @@ GameObject:
   - component: {fileID: 4504734813570266126}
   - component: {fileID: 1892229009128786635}
   - component: {fileID: 4329878407658848880}
+  - component: {fileID: 1348972536804337875}
   m_Layer: 0
   m_Name: Camera
   m_TagString: MainCamera
@@ -3007,6 +3022,20 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4791643894694684897}
   m_Enabled: 1
+--- !u!114 &1348972536804337875
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4791643894694684897}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: FMODUnity::FMODUnity.StudioListener
+  nonRigidbodyVelocity: 0
+  attenuationObject: {fileID: 0}
 --- !u!1 &4837020005161851840
 GameObject:
   m_ObjectHideFlags: 0

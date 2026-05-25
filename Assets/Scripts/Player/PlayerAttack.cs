@@ -3,6 +3,7 @@ using System.Collections;
 using HoldMyBeer.Zombies.Contracts;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using HoldMyBeer.Audio;
 
 public class PlayerAttack : MonoBehaviour
 {
@@ -108,6 +109,7 @@ public class PlayerAttack : MonoBehaviour
     {
         currentAmmoInMagazine--;
         OnLoadChange?.Invoke(currentAmmoInMagazine);
+        AudioManager.instance.PlayOneShotEvent(SFXEvents.instance.ShotgunFire, transform.position);
         
         // Call shoot animation by name
         if (animator != null)

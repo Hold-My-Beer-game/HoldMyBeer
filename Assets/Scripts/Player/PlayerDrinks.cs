@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Collections;
+using HoldMyBeer.Audio;
 
 public class PlayerDrink : MonoBehaviour
 {

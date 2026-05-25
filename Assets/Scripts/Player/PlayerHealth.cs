@@ -2,6 +2,7 @@ using FMOD.Studio;
 using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using HoldMyBeer.Audio;
 
 public class PlayerHealth : MonoBehaviour
 {

@@ -1,3 +1,5 @@
+using HoldMyBeer.Audio;
+
 namespace HoldMyBeer.UI {
     public class SettingsController {
         private readonly UINavigation nav;
@@ -7,17 +9,15 @@ namespace HoldMyBeer.UI {
         }
 
         public void SetMaster(float v) {
-            // 
-            // AudioManager.instance.
+            AudioManager.instance.MasterVolume = v;
         }
 
         public void SetMusic(float v) {
-            // AudioManager.instance.
-            
+            AudioManager.instance.MusicVolume = v;
         }
 
         public void SetSfx(float v) {
-            // AudioManager.instance.
+            AudioManager.instance.SFXVolume = v;
         }
 
         // public void SetQuality(int i) {
