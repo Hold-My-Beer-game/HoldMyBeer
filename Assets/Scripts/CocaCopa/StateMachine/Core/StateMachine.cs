@@ -11,6 +11,9 @@ namespace CocaCopa.StateMachine {
 
         private IState currentState;
 
+        internal event Action<IState> OnStateEnter;
+        internal event Action<IState> OnStateExit;
+
         internal string StateID => currentState?.Id ?? "Null";
 
         internal void ForceState(IState stateId) {
@@ -123,8 +126,10 @@ namespace CocaCopa.StateMachine {
         private void SwitchState(IState nextState) {
             ExitAllStateTransitions(currentState);
             currentState.Exit();
+            OnStateExit?.Invoke(currentState);
             currentState = nextState;
             currentState.Enter();
+            OnStateEnter?.Invoke(currentState);
             EnterAllStateTransitions(currentState);
         }
 

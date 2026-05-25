@@ -2,7 +2,8 @@
     "name": "HoldMyBeer.UI",
     "rootNamespace": "HoldMyBeer.UI",
     "references": [
-        "CocaCopa.SceneManagement.Unity"
+        "CocaCopa.SceneManagement.Unity",
+        "HoldMyBeer.Audio"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

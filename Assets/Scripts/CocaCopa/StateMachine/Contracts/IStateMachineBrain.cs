@@ -1,8 +1,30 @@
-﻿namespace CocaCopa.StateMachine {
+﻿using System;
+
+namespace CocaCopa.StateMachine {
     /// <summary>
     /// Provides consumer-facing control over the layered AI state machines.
     /// </summary>
     public interface IStateMachineBrain {
+        /// <summary>
+        /// Raised when the state machine 'enters' a new movement state
+        /// </summary>
+        event Action<IState> OnStateEnterMovement;
+
+        /// <summary>
+        /// Raised when the state machine 'exits' a new movement state
+        /// </summary>
+        event Action<IState> OnStateExitMovement;
+
+        /// <summary>
+        /// Raised when the state machine 'enters' a new combat state
+        /// </summary>
+        event Action<IState> OnStateEnterCombat;
+
+        /// <summary>
+        /// Raised when the state machine 'exit' a new combat state
+        /// </summary>
+        event Action<IState> OnStateExitCombat;
+
         /// <summary>
         /// Gets the ID of the currently active movement state.
         /// </summary>

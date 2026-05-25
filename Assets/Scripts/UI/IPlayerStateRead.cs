@@ -14,5 +14,6 @@ namespace HoldMyBeer.UI {
         /// </summary>
         public event Action<bool, string> OnInteract;
         public event Action<int> OnAmmoChange;
+        public event Action<int> OnLoadChange;
     }
 }
