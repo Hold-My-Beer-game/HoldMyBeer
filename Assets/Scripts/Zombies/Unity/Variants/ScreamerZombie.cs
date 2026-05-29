@@ -21,6 +21,45 @@ namespace HoldMyBeer.Zombies.Unity {
         private ScreamerHideState hideState;
         private DeathState deathState;
 
+        public enum ZombieState {
+            Eating, Alert, Scream, Run, Dead
+        }
+
+        private ZombieState currState;
+
+        public event Action<GameObject, ZombieState> OnStateChange;
+
+        private void Awake() {
+            currState = ZombieState.Eating;
+            OnStateChange?.Invoke(gameObject, currState);
+        }
+
+        private void Start() {
+            StateManagement();
+        }
+
+        private void StateManagement() {
+            context.Animator.OnZombieStandUpStart += () => {
+                currState = ZombieState.Alert;
+                OnStateChange?.Invoke(gameObject, currState);
+            };
+
+            context.Animator.OnZombieScreamStart += () => {
+                currState = ZombieState.Scream;
+                OnStateChange?.Invoke(gameObject, currState);
+            };
+
+            context.Animator.OnZombieRunStart += () => {
+                currState = ZombieState.Run;
+                OnStateChange?.Invoke(gameObject, currState);
+            };
+
+            context.Animator.OnZombieDeathStart += () => {
+                currState = ZombieState.Dead;
+                OnStateChange?.Invoke(gameObject, currState);
+            };
+        }
+
         public StateSetup Compose(IStateMachineBrain brainRef) {
             brain = brainRef;
             context = GetComponent<ScreamerContext>();

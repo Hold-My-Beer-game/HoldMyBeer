@@ -30,7 +30,7 @@ namespace HoldMyBeer.Zombies.Unity {
         private PatrolAreaState patrolState;
 
         public enum ZombieState {
-            Idle, Walk, Aggro
+            Idle, Walk, Aggro, Dead
         }
 
         private ZombieState currState;
@@ -42,6 +42,10 @@ namespace HoldMyBeer.Zombies.Unity {
         }
 
         private void StateChangeManagement() {
+            context.Animator.OnDeathAnimationStart += () => {
+                currState = ZombieState.Dead;
+                OnStateChange?.Invoke(gameObject, currState);
+            };
             context.Animator.OnIdleAnimationStart += () => {
                 currState = ZombieState.Idle;
                 OnStateChange?.Invoke(gameObject, currState);

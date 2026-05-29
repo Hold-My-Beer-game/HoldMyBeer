@@ -19,6 +19,7 @@ namespace HoldMyBeer.Zombies.Unity {
 
         internal event Action OnWalkAnimationStart;
         internal event Action OnIdleAnimationStart;
+        internal event Action OnDeathAnimationStart;
 
         internal event Action NormalAttackOnDamagePos;
 
@@ -52,6 +53,7 @@ namespace HoldMyBeer.Zombies.Unity {
             animator.Play(deathState, 0, 0f);
             enabled = false;
             currentAnimSpeed = 0f;
+            OnDeathAnimationStart?.Invoke();
         }
 
         /// <summary>
