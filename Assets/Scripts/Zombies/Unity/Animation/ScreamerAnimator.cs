@@ -13,10 +13,14 @@ namespace HoldMyBeer.Zombies.Unity {
         [Header("Parameters")]
         [SerializeField] [AnimatorParameter] private string standUpTrigger;
 
-        internal Action OnZombieScream;
+        internal event Action OnZombieStandUpStart;
+        internal event Action OnZombieScreamStart;
+        internal event Action OnZombieRunStart;
+        internal event Action OnZombieDeathStart;
 
         internal void PlayStandUp() {
             animator.SetTrigger(standUpTrigger);
+            OnZombieStandUpStart?.Invoke();
         }
 
         internal float GetScreamStatePercentage() {
@@ -28,7 +32,7 @@ namespace HoldMyBeer.Zombies.Unity {
         /// Meant to be called through an animation event via Unity's animation system
         /// </summary>
         private void ScreamAnimationOnPosition() {
-            OnZombieScream?.Invoke();
+            OnZombieScreamStart?.Invoke();
         }
 
         internal override void PlayIdle() { }
@@ -39,6 +43,7 @@ namespace HoldMyBeer.Zombies.Unity {
 
         internal override void PlayRun() {
             animator.CrossFade(runState, 0.25f, 0);
+            OnZombieRunStart?.Invoke();
         }
 
         internal override void PlayHit() {
@@ -47,6 +52,7 @@ namespace HoldMyBeer.Zombies.Unity {
 
         internal override void PlayDeath() {
             animator.Play(deathState, 0, 0f);
+            OnZombieDeathStart?.Invoke();
         }
     }
 }
