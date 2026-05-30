@@ -201,12 +201,19 @@ MonoBehaviour:
       Data3: -2076979792
       Data4: 1684850422
     Path: event:/Zombie/MonkeyZombie
+  <ScreamerRun>k__BackingField:
+    Guid:
+      Data1: -1618280610
+      Data2: 1160313469
+      Data3: 421696954
+      Data4: -1495887300
+    Path: event:/Zombie/ScreamerRun
   <ZombieDeath>k__BackingField:
     Guid:
-      Data1: -1873730569
-      Data2: 1160253524
-      Data3: 1205822862
-      Data4: -291957843
+      Data1: -204132479
+      Data2: 1255601084
+      Data3: -1357626982
+      Data4: 476739501
     Path: event:/Zombie/ZombieDeath
   <ZombieEat>k__BackingField:
     Guid:

@@ -21,6 +21,7 @@ public class SFXEvents : MonoBehaviour
     [field: Header("Zombie SFX")]
 
     [field: SerializeField] public EventReference ScreamerZombie { get; private set; }
+    [field: SerializeField] public EventReference ScreamerRun { get; private set; }
     [field: SerializeField] public EventReference ZombieDeath { get; private set; }
     [field: SerializeField] public EventReference ZombieEat { get; private set; }
     [field: SerializeField] public EventReference ZombieMovement { get; private set; }

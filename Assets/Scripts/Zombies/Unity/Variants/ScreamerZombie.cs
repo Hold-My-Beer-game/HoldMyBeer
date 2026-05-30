@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace HoldMyBeer.Zombies.Unity {
     [RequireComponent(typeof(ScreamerContext))]
-    internal class ScreamerZombie : MonoBehaviour, IStateMachineComposer, IEnemy {
+    public class ScreamerZombie : MonoBehaviour, IStateMachineComposer, IEnemy {
         [Header("Scream Settings")]
         [SerializeField] private Transform screamOrigin;
         [SerializeField] private LayerMask screamMask;
@@ -31,11 +31,11 @@ namespace HoldMyBeer.Zombies.Unity {
 
         private void Awake() {
             currState = ZombieState.Eating;
-            OnStateChange?.Invoke(gameObject, currState);
         }
 
         private void Start() {
             StateManagement();
+            OnStateChange?.Invoke(gameObject, currState);
         }
 
         private void StateManagement() {
