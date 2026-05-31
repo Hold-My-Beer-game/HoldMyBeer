@@ -5,6 +5,7 @@ using FMODUnity;
 using FMOD.Studio;
 using Unity.Properties;
 using HoldMyBeer.Zombies.Unity;
+using System;
 
 namespace HoldMyBeer.Audio {
     public class AudioManager : MonoBehaviour
@@ -17,9 +18,9 @@ namespace HoldMyBeer.Audio {
         [Range(0, 1)]
         public float SFXVolume = 1.0f;
 
-        private Bus masterBus;
-        private Bus musicBus;
-        private Bus sfxBus;
+        private VCA masterVCA;
+        private VCA musicVCA;
+        private VCA sfxVCA;
 
         private List<EventInstance> eventInstances;
         private List<StudioEventEmitter> eventEmitters;
@@ -38,9 +39,11 @@ namespace HoldMyBeer.Audio {
             eventInstances = new List<EventInstance>(); // Create new event Instances variable list
             eventEmitters = new List<StudioEventEmitter>(); // Create new event Emitters Instances variable list
 
-            masterBus = RuntimeManager.GetBus("bus:/"); // Initialize buses for audio 
-            musicBus = RuntimeManager.GetBus("bus:/Music");
-            sfxBus = RuntimeManager.GetBus("bus:/SFX");
+            masterVCA = RuntimeManager.GetVCA("VCA:/Master"); // Initialize VCAs for audio 
+            musicVCA = RuntimeManager.GetVCA("VCA:/Music");
+            sfxVCA = RuntimeManager.GetVCA("VCA:/SFX");
+
+            ScreamerAudio();
         }
 
         private void Start() 
@@ -51,17 +54,17 @@ namespace HoldMyBeer.Audio {
 
         private void Update() 
         {
-            masterBus.setVolume(Mathf.Clamp01(MasterVolume)); // Update master, music and sfx volume in case they were changed in the inspector
-            musicBus.setVolume(Mathf.Clamp01(MusicVolume));
-            sfxBus.setVolume(Mathf.Clamp01(SFXVolume));
+            masterVCA.setVolume(Mathf.Clamp01(MasterVolume)); // Update master, music and sfx volume in case they were changed in the inspector
+            musicVCA.setVolume(Mathf.Clamp01(MusicVolume));
+            sfxVCA.setVolume(Mathf.Clamp01(SFXVolume));
         }
 
         private void WalkerAudio()
         {
-            var walkers = FindObjectsByType<WalkerZombie>(FindObjectsSortMode.None);
-            foreach (var walker in walkers) 
+            WalkerZombie[] walkers = FindObjectsByType<WalkerZombie>(FindObjectsSortMode.None);
+            foreach (WalkerZombie walker in walkers) 
             {
-                var walkerSteps = CreateEventEmitter(SFXEvents.instance.ZombieMovement, walker.gameObject);
+                var walkerSteps = ConfigureEmitter(SFXEvents.instance.ZombieMovement, walker.gameObject);
                 walkerSteps.Play();
                 walker.OnStateChange += (gameObject, state) => 
                 {
@@ -79,7 +82,71 @@ namespace HoldMyBeer.Audio {
                             walkerSteps.SetParameter("MovementStatus", (float) FMODParameters.MovementStatus.WALKING);
                             walkerSteps.SetParameter("MentalityStatus", (float) FMODParameters.MentalityStatus.AGGRO);
                             break;
+                        case WalkerZombie.ZombieState.Dead:
+                            walkerSteps.AllowFadeout = false;
+                            walkerSteps.Stop();
+                            PlayOneShotEventObj(SFXEvents.instance.ZombieDeath, walker.gameObject);
+                            break;
                     }
+                };
+
+                walker.OnTakeDamage += (gameObject) =>
+                {
+                    PlayOneShotEventObj(SFXEvents.instance.BulletHit, walker.gameObject);
+                };
+            }
+        }
+
+        private void ScreamerAudio()
+        {
+            // Finds all screamers in the scene.
+            ScreamerZombie[] screamers = FindObjectsByType<ScreamerZombie>(
+            FindObjectsInactive.Include,
+            FindObjectsSortMode.None
+            );
+
+            // The amount of times this will run is equal to the number of screamers in the game.
+            // Each iteration belongs to a unique screamer.
+            // Inside the foreach, run whatever you want to run per screamer zombie.
+            // The switch case is also run per screamer.
+            foreach (ScreamerZombie screamer in screamers) {
+                // gameObject -> The screamer that raised the event.
+                // state -> The state of the screamer.
+                var screamerSteps = ConfigureEmitterMultiple(SFXEvents.instance.ScreamerRun, screamer.gameObject, 0);
+                var screamerEat = ConfigureEmitterMultiple(SFXEvents.instance.ZombieEat, screamer.gameObject, 1);
+                var screamerHiss = ConfigureEmitterMultiple(SFXEvents.instance.ScreamerZombie, screamer.gameObject, 2);
+
+                screamerEat.AllowFadeout = true;
+                screamerSteps.AllowFadeout = false;
+                screamerHiss.AllowFadeout = false;
+
+                screamer.OnStateChange += (gameObject, state) => {
+                    switch (state) {
+                        case ScreamerZombie.ZombieState.Eating:
+                            screamerEat.Play();
+                            break;
+                        case ScreamerZombie.ZombieState.Alert:
+                            screamerEat.Stop();
+                            break;
+                        case ScreamerZombie.ZombieState.Scream:
+                            screamerHiss.Play();
+                            break;
+                        case ScreamerZombie.ZombieState.Run:
+                            screamerSteps.Play();
+                            break;
+                        case ScreamerZombie.ZombieState.Dead:
+                            screamerSteps.Stop();
+                            screamerEat.Stop();
+                            screamerHiss.Stop();
+                            PlayOneShotEventObj(SFXEvents.instance.ZombieDeath, screamer.gameObject);
+                            break;
+                        default: throw new ArgumentOutOfRangeException();
+                    }
+                };
+
+                screamer.OnTakeDamage += (gameObject) =>
+                {
+                    PlayOneShotEventObj(SFXEvents.instance.BulletHit, screamer.gameObject);
                 };
             }
         }
@@ -113,11 +180,19 @@ namespace HoldMyBeer.Audio {
         }
 
         /// <summary>
-        /// Method to play one shot sound events, such as 2D and 3D actions. The event plays once.
+        /// Method to play one shot sound events, such as 2D and 3D actions using 3D position coordinates. The event plays once.
         /// </summary>
         public void PlayOneShotEvent(EventReference sound, Vector3 pos) 
         {
             RuntimeManager.PlayOneShot(sound, pos);
+        }
+
+        /// <summary>
+        /// Method to play one shot sound events, such as 2D and 3D actions using a game object as reference. The event plays once.
+        /// </summary>
+        public void PlayOneShotEventObj(EventReference reference, GameObject obj)
+        {
+            RuntimeManager.PlayOneShotAttached(reference, obj);
         }
 
         /// <summary>
@@ -130,11 +205,66 @@ namespace HoldMyBeer.Audio {
             return eventInstance;
         }
 
-        public StudioEventEmitter CreateEventEmitter(EventReference eventReference, GameObject emitterObj) 
-        { 
+        /// <summary>
+        /// Modifies a StudioEventEmitter instance from an existing object. You start it with emitter.Play() and change parameters with emitter.SetParameter().
+        /// </summary>
+        /// <param name="eventReference">EventReference variable</param>
+        /// <param name="emitterObj">GameObject variable of the object that plays the sound</param>
+        /// <returns>StudioEventEmitter emitter</returns>
+        public StudioEventEmitter ConfigureEmitter(EventReference eventReference, GameObject emitterObj) 
+        {
+            if (emitterObj == null)
+            {
+                Debug.LogError("Emitter object is null.");
+                return null;
+            }
+
             StudioEventEmitter emitter = emitterObj.GetComponent<StudioEventEmitter>(); // Get the emitter off the Game Object
+
+            if (emitter == null)
+            {
+                Debug.LogError($"No StudioEventEmitter found on {emitterObj.name}.");
+                return null;
+            }
+
             emitter.EventReference = eventReference; // Overwrite the emitters reference that is passed to this method
             eventEmitters.Add(emitter); // Add the emitter to the list queue for clean up
+            return emitter;
+        }
+
+        /// <summary>
+        /// Modifies a StudioEventEmitter instance from an existing object that has multiple StudioEventEmitter instances on it. You choose the desired instance with an index.
+        /// Order is: 0, for highest on the inspector
+        /// 1, for second highest etc.
+        /// </summary>
+        /// <param name="eventReference"></param>
+        /// <param name="emitterObj"></param>
+        /// <param name="emitterIndex"></param>
+        /// <returns>Returns StudioEventEmitter Object</returns>
+        /// <exception cref="ArgumentOutOfRangeException"></exception>
+        public StudioEventEmitter ConfigureEmitterMultiple(EventReference eventReference, GameObject emitterObj, int emitterIndex)
+        {
+            if (emitterObj == null)
+            {
+                Debug.LogError("Emitter object is null.");
+                return null;
+            }
+
+            StudioEventEmitter[] emitters = emitterObj.GetComponents<StudioEventEmitter>(); // Get the emitters off the Game Object
+
+            if (emitterIndex < 0 || emitterIndex >= emitters.Length)
+            {
+                throw new ArgumentOutOfRangeException(
+                    nameof(emitterIndex),
+                    $"Emitter index {emitterIndex} is invalid on {emitterObj.name}. It has {emitters.Length} emitters."
+                );
+            }
+
+            StudioEventEmitter emitter = emitters[emitterIndex];
+            emitter.EventReference = eventReference; // Overwrite the emitters reference that is passed to this method
+
+            eventEmitters.Add(emitter); // Add the emitter to the list queue for clean up
+
             return emitter;
         }
 

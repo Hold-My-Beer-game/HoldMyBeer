@@ -27,8 +27,11 @@ public class PlayerHealth : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        AudioManager.instance.PlayOneShotEvent(SFXEvents.instance.PlayerDamaged, transform.position);
         currentHealth -= damage;
+        if (currentHealth > 0f)
+        {
+            AudioManager.instance.PlayOneShotEvent(SFXEvents.instance.PlayerDamaged, transform.position);
+        }
         currentHealth = Mathf.Clamp(currentHealth, 0f, maxHealth);
         OnHealthChange?.Invoke(currentHealth);
 
