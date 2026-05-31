@@ -61,8 +61,8 @@ namespace HoldMyBeer.Audio {
 
         private void WalkerAudio()
         {
-            var walkers = FindObjectsByType<WalkerZombie>(FindObjectsSortMode.None);
-            foreach (var walker in walkers) 
+            WalkerZombie[] walkers = FindObjectsByType<WalkerZombie>(FindObjectsSortMode.None);
+            foreach (WalkerZombie walker in walkers) 
             {
                 var walkerSteps = ConfigureEmitter(SFXEvents.instance.ZombieMovement, walker.gameObject);
                 walkerSteps.Play();
@@ -89,6 +89,11 @@ namespace HoldMyBeer.Audio {
                             break;
                     }
                 };
+
+                walker.OnTakeDamage += (gameObject) =>
+                {
+                    PlayOneShotEventObj(SFXEvents.instance.BulletHit, walker.gameObject);
+                };
             }
         }
 
@@ -109,9 +114,11 @@ namespace HoldMyBeer.Audio {
                 // state -> The state of the screamer.
                 var screamerSteps = ConfigureEmitterMultiple(SFXEvents.instance.ScreamerRun, screamer.gameObject, 0);
                 var screamerEat = ConfigureEmitterMultiple(SFXEvents.instance.ZombieEat, screamer.gameObject, 1);
+                var screamerHiss = ConfigureEmitterMultiple(SFXEvents.instance.ScreamerZombie, screamer.gameObject, 2);
 
                 screamerEat.AllowFadeout = true;
                 screamerSteps.AllowFadeout = false;
+                screamerHiss.AllowFadeout = false;
 
                 screamer.OnStateChange += (gameObject, state) => {
                     switch (state) {
@@ -122,17 +129,24 @@ namespace HoldMyBeer.Audio {
                             screamerEat.Stop();
                             break;
                         case ScreamerZombie.ZombieState.Scream:
-                            PlayOneShotEventObj(SFXEvents.instance.ScreamerZombie, screamer.gameObject);
+                            screamerHiss.Play();
                             break;
                         case ScreamerZombie.ZombieState.Run:
                             screamerSteps.Play();
                             break;
                         case ScreamerZombie.ZombieState.Dead:
                             screamerSteps.Stop();
+                            screamerEat.Stop();
+                            screamerHiss.Stop();
                             PlayOneShotEventObj(SFXEvents.instance.ZombieDeath, screamer.gameObject);
                             break;
                         default: throw new ArgumentOutOfRangeException();
                     }
+                };
+
+                screamer.OnTakeDamage += (gameObject) =>
+                {
+                    PlayOneShotEventObj(SFXEvents.instance.BulletHit, screamer.gameObject);
                 };
             }
         }

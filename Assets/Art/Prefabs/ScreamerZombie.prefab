@@ -178,6 +178,7 @@ GameObject:
   - component: {fileID: 4635686603072751390}
   - component: {fileID: 1348076070768804794}
   - component: {fileID: -5700446162090722012}
+  - component: {fileID: -8757488878684646985}
   m_Layer: 0
   m_Name: ScreamerZombie
   m_TagString: Untagged
@@ -383,6 +384,37 @@ MonoBehaviour:
   OverrideAttenuation: 1
   OverrideMinDistance: 3
   OverrideMaxDistance: 32
+--- !u!114 &-8757488878684646985
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7924361410937531655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: FMODUnity::FMODUnity.StudioEventEmitter
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -446571499
+      Data2: 1264882654
+      Data3: -2076979792
+      Data4: 1684850422
+    Path: event:/Zombie/MonkeyZombie
+  Event: 
+  EventPlayTrigger: 0
+  EventStopTrigger: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 1
+  OverrideMinDistance: 3
+  OverrideMaxDistance: 40
 --- !u!1001 &4097320492833118295
 PrefabInstance:
   m_ObjectHideFlags: 0
