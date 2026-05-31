@@ -36,6 +36,7 @@ namespace HoldMyBeer.Zombies.Unity {
         private ZombieState currState;
 
         public event Action<GameObject, ZombieState> OnStateChange;
+        public event Action<GameObject> OnTakeDamage;
 
         private void Start() {
             StateChangeManagement();
@@ -140,6 +141,7 @@ namespace HoldMyBeer.Zombies.Unity {
                 brain.ForceMovementState(deathState);
             }
             context.Animator.PlayHit();
+            OnTakeDamage?.Invoke(gameObject);
         }
 
         public void React(Vector3 screamPos, Vector3 targetPos) {
