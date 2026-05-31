@@ -39,7 +39,7 @@ namespace HoldMyBeer.Audio {
             eventInstances = new List<EventInstance>(); // Create new event Instances variable list
             eventEmitters = new List<StudioEventEmitter>(); // Create new event Emitters Instances variable list
 
-            masterVCA = RuntimeManager.GetVCA("VCA:/Master"); // Initialize buses for audio 
+            masterVCA = RuntimeManager.GetVCA("VCA:/Master"); // Initialize VCAs for audio 
             musicVCA = RuntimeManager.GetVCA("VCA:/Music");
             sfxVCA = RuntimeManager.GetVCA("VCA:/SFX");
 
@@ -85,7 +85,7 @@ namespace HoldMyBeer.Audio {
                         case WalkerZombie.ZombieState.Dead:
                             walkerSteps.AllowFadeout = false;
                             walkerSteps.Stop();
-                            RuntimeManager.PlayOneShotAttached(SFXEvents.instance.ZombieDeath, walker.gameObject);
+                            PlayOneShotEventObj(SFXEvents.instance.ZombieDeath, walker.gameObject);
                             break;
                     }
                 };
@@ -119,18 +119,17 @@ namespace HoldMyBeer.Audio {
                             screamerEat.Play();
                             break;
                         case ScreamerZombie.ZombieState.Alert:
-                            Debug.Log($"STOP EAT emitter ID: {screamerEat.GetInstanceID()}");
                             screamerEat.Stop();
                             break;
                         case ScreamerZombie.ZombieState.Scream:
-                            RuntimeManager.PlayOneShotAttached(SFXEvents.instance.ScreamerZombie, screamer.gameObject);
+                            PlayOneShotEventObj(SFXEvents.instance.ScreamerZombie, screamer.gameObject);
                             break;
                         case ScreamerZombie.ZombieState.Run:
                             screamerSteps.Play();
                             break;
                         case ScreamerZombie.ZombieState.Dead:
                             screamerSteps.Stop();
-                            RuntimeManager.PlayOneShotAttached(SFXEvents.instance.ZombieDeath, screamer.gameObject);
+                            PlayOneShotEventObj(SFXEvents.instance.ZombieDeath, screamer.gameObject);
                             break;
                         default: throw new ArgumentOutOfRangeException();
                     }
@@ -167,11 +166,19 @@ namespace HoldMyBeer.Audio {
         }
 
         /// <summary>
-        /// Method to play one shot sound events, such as 2D and 3D actions. The event plays once.
+        /// Method to play one shot sound events, such as 2D and 3D actions using 3D position coordinates. The event plays once.
         /// </summary>
         public void PlayOneShotEvent(EventReference sound, Vector3 pos) 
         {
             RuntimeManager.PlayOneShot(sound, pos);
+        }
+
+        /// <summary>
+        /// Method to play one shot sound events, such as 2D and 3D actions using a game object as reference. The event plays once.
+        /// </summary>
+        public void PlayOneShotEventObj(EventReference reference, GameObject obj)
+        {
+            RuntimeManager.PlayOneShotAttached(reference, obj);
         }
 
         /// <summary>
@@ -185,7 +192,7 @@ namespace HoldMyBeer.Audio {
         }
 
         /// <summary>
-        /// Creates a StudioEventEmitter instance. You start it with emitter.Play() and change parameters with emitter.SetParameter().
+        /// Modifies a StudioEventEmitter instance from an existing object. You start it with emitter.Play() and change parameters with emitter.SetParameter().
         /// </summary>
         /// <param name="eventReference">EventReference variable</param>
         /// <param name="emitterObj">GameObject variable of the object that plays the sound</param>
@@ -211,6 +218,16 @@ namespace HoldMyBeer.Audio {
             return emitter;
         }
 
+        /// <summary>
+        /// Modifies a StudioEventEmitter instance from an existing object that has multiple StudioEventEmitter instances on it. You choose the desired instance with an index.
+        /// Order is: 0, for highest on the inspector
+        /// 1, for second highest etc.
+        /// </summary>
+        /// <param name="eventReference"></param>
+        /// <param name="emitterObj"></param>
+        /// <param name="emitterIndex"></param>
+        /// <returns>Returns StudioEventEmitter Object</returns>
+        /// <exception cref="ArgumentOutOfRangeException"></exception>
         public StudioEventEmitter ConfigureEmitterMultiple(EventReference eventReference, GameObject emitterObj, int emitterIndex)
         {
             if (emitterObj == null)
@@ -219,7 +236,7 @@ namespace HoldMyBeer.Audio {
                 return null;
             }
 
-            StudioEventEmitter[] emitters = emitterObj.GetComponents<StudioEventEmitter>(); // Get the emitter off the Game Object
+            StudioEventEmitter[] emitters = emitterObj.GetComponents<StudioEventEmitter>(); // Get the emitters off the Game Object
 
             if (emitterIndex < 0 || emitterIndex >= emitters.Length)
             {
