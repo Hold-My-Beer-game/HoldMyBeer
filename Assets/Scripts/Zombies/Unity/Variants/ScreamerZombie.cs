@@ -28,6 +28,7 @@ namespace HoldMyBeer.Zombies.Unity {
         private ZombieState currState;
 
         public event Action<GameObject, ZombieState> OnStateChange;
+        public event Action<GameObject> OnTakeDamage;
 
         private void Awake() {
             currState = ZombieState.Eating;
@@ -98,6 +99,7 @@ namespace HoldMyBeer.Zombies.Unity {
                 brain.RemoveAllTransitions();
                 brain.ForceMovementState(deathState);
             }
+            OnTakeDamage?.Invoke(gameObject);
         }
 
         private void OnDrawGizmos() {
