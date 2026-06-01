@@ -322,3 +322,17 @@ MonoBehaviour:
       Data3: -452042067
       Data4: -1986117695
     Path: event:/Dancing in the 90's
+  <Intro>k__BackingField:
+    Guid:
+      Data1: -812666320
+      Data2: 1167629163
+      Data3: -1713477220
+      Data4: -1332763585
+    Path: event:/Intro
+  <Outro>k__BackingField:
+    Guid:
+      Data1: 217349338
+      Data2: 1326058375
+      Data3: -1498994559
+      Data4: -1845712842
+    Path: event:/Outro

@@ -12,11 +12,11 @@ namespace HoldMyBeer.Audio {
     {
         [Header("Volume")]
         [Range(0, 1)]
-        public float MasterVolume = 1.0f;
+        public float MasterVolume;
         [Range(0, 1)]
-        public float MusicVolume = 1.0f;
+        public float MusicVolume;
         [Range(0, 1)]
-        public float SFXVolume = 1.0f;
+        public float SFXVolume;
 
         private VCA masterVCA;
         private VCA musicVCA;
