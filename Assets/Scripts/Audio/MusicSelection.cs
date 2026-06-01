@@ -39,7 +39,7 @@ namespace HoldMyBeer.Audio
 
             musicActive = !musicActive; // Toggles music state
 
-            if (fadeCoroutine != null) // Checks if a fade is already happenin. If yes, it stops it.
+            if (fadeCoroutine != null) // Checks if a fade is already happening. If yes, it stops it.
             {
                 StopCoroutine(fadeCoroutine);
             }
