@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 6387976818136856138}
   - component: {fileID: 6402322368787012660}
   - component: {fileID: 7810918728325547667}
+  - component: {fileID: 4599042597624290542}
+  - component: {fileID: 5329993003182676810}
   m_Layer: 0
   m_Name: 'Club '
   m_TagString: Untagged
@@ -112,3 +114,46 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.009569393, y: 0.008489379, z: 0.0062428555}
   m_Center: {x: -0.0000023602443, y: 0.0042057326, z: -0.00061793305}
+--- !u!114 &4599042597624290542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 139588508484704500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: FMODUnity::FMODUnity.StudioEventEmitter
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 597472657
+      Data2: 1226487984
+      Data3: -452042067
+      Data4: -1986117695
+    Path: event:/Dancing in the 90's
+  Event: 
+  EventPlayTrigger: 0
+  EventStopTrigger: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 1
+  OverrideMinDistance: 25
+  OverrideMaxDistance: 118
+--- !u!114 &5329993003182676810
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 139588508484704500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a2ddd975d2d62d469d3fe03d1b5e834, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'

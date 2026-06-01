@@ -17,21 +17,21 @@ public class PlayerHealth : MonoBehaviour
 
     private EventInstance heartbeat;
 
+    private EventInstance playerDmg;
+
     void Start()
     {
         currentHealth = maxHealth;
         OnHealthChange?.Invoke(currentHealth);
         heartbeat = AudioManager.instance.CreateEventInstance(SFXEvents.instance.LowHpHeartbeat);
+        playerDmg = AudioManager.instance.CreateEventInstance(SFXEvents.instance.PlayerDamaged);
         heartbeat.start();
     }
 
     public void TakeDamage(float damage)
     {
         currentHealth -= damage;
-        if (currentHealth > 0f)
-        {
-            AudioManager.instance.PlayOneShotEvent(SFXEvents.instance.PlayerDamaged, transform.position);
-        }
+        playerDmg.start();
         currentHealth = Mathf.Clamp(currentHealth, 0f, maxHealth);
         OnHealthChange?.Invoke(currentHealth);
 
