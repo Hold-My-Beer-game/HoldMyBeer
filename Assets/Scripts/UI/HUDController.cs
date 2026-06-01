@@ -7,11 +7,9 @@ namespace HoldMyBeer.UI {
     internal class HUDController {
         private readonly HUDState state;
 
-        // todo HUD interface
         private IPlayerStateRead playerStateRead;
 
         public void Init() {
-            // view.Bind(state);
 
             if (playerStateRead == null) { return; }
             playerStateRead.OnHealthChange += SetHealth;
@@ -19,6 +17,7 @@ namespace HoldMyBeer.UI {
             playerStateRead.OnGoalChange += SetGoal;
             playerStateRead.OnInteract += SetInteract;
             playerStateRead.OnAmmoChange += SetAmmo;
+            playerStateRead.OnLoadChange += SetLoadedAmmo;
         }
 
         public HUDController(HUDState state, IPlayerStateRead playerStateReadRef) {
@@ -35,9 +34,10 @@ namespace HoldMyBeer.UI {
 
         internal void SetDrunkness(float value) {
             // state.Drunkness = Mathf.Clamp01(v);
-            const int maxSteps = 8;
-            if (value > maxSteps) { value = maxSteps; }
-            state.Drunkness = value / maxSteps;
+            // const int maxSteps = 8;
+            // if (value > maxSteps) { value = maxSteps; }
+            // state.Drunkness = value / maxSteps;
+            state.Drunkness = value;
             state.Notify();
         }
 
@@ -54,6 +54,11 @@ namespace HoldMyBeer.UI {
 
         internal void SetAmmo(int current) {
             state.Ammo = current;
+            state.Notify();
+        }
+
+        internal void SetLoadedAmmo(int current) {
+            state.LoadedAmmo = current;
             state.Notify();
         }
     }

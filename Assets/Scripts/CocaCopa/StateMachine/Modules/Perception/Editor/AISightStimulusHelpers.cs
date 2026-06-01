@@ -24,7 +24,7 @@ namespace CocaCopa.StateMachine.Editor {
         private static void DrawSightRangeSlider(string label, SerializedProperty minProperty, SerializedProperty maxProperty) {
             float min = -minProperty.floatValue;
             float max = maxProperty.floatValue;
-            MinMaxSlider(new GUIContent(label), ref min, ref max, -90, 90);
+            MinMaxSlider(new GUIContent(label), ref min, ref max, -180, 180);
             min = Mathf.Min(min, 0f);
             minProperty.floatValue = Mathf.Abs(min);
             maxProperty.floatValue = Mathf.Max(max, 0f);

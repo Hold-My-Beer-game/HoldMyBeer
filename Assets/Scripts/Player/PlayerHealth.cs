@@ -1,6 +1,8 @@
+using FMOD.Studio;
 using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using HoldMyBeer.Audio;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -13,15 +15,23 @@ public class PlayerHealth : MonoBehaviour
 
     public event Action<float> OnHealthChange;
 
+    private EventInstance heartbeat;
+
+    private EventInstance playerDmg;
+
     void Start()
     {
         currentHealth = maxHealth;
         OnHealthChange?.Invoke(currentHealth);
+        heartbeat = AudioManager.instance.CreateEventInstance(SFXEvents.instance.LowHpHeartbeat);
+        playerDmg = AudioManager.instance.CreateEventInstance(SFXEvents.instance.PlayerDamaged);
+        heartbeat.start();
     }
 
     public void TakeDamage(float damage)
     {
         currentHealth -= damage;
+        playerDmg.start();
         currentHealth = Mathf.Clamp(currentHealth, 0f, maxHealth);
         OnHealthChange?.Invoke(currentHealth);
 
@@ -31,6 +41,10 @@ public class PlayerHealth : MonoBehaviour
         {
             Die();
         }
+    }
+
+    public void Update() {
+        AudioManager.instance.SetParameter(heartbeat, "PlayerHealth", currentHealth);
     }
 
     public void Heal(float heal)

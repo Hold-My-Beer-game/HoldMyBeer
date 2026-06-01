@@ -6,7 +6,7 @@
             <ui:Label text="Dev Team" name="DevTeam-header" class="credits-header"/>
             <ui:Label text="aironnegl" name="aironnegl" class="credits-element" style="color: rgb(182, 0, 255);"/>
             <ui:Label text="CocaCopa" name="CocaCopa" class="credits-element" style="color: rgb(1, 255, 255);"/>
-            <ui:Label text="plumende" name="plumende" class="credits-element" style="color: rgb(137, 52, 255);"/>
+            <ui:Label text="MoonMoon" name="moonmoon" class="credits-element" style="color: rgb(137, 52, 255);"/>
             <ui:Label text="SinisterGibbon" name="SinisterGibbon" class="credits-element" style="color: rgb(222, 140, 255);"/>
             <ui:Label text="TheLoneGameDev" name="TheLoneGameDev" class="credits-element" style="color: rgb(36, 133, 255);"/>
         </ui:VisualElement>

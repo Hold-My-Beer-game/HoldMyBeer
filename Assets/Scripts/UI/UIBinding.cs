@@ -16,10 +16,10 @@ namespace HoldMyBeer.UI {
             VisualElement view = root.Q("Pause");
             if (view == null) return;
 
-            view.Q<Button>("RestartButton")?.RegisterCallback<ClickEvent>(_ => c.Restart());
-            view.Q<Button>("MainMenuButton")?.RegisterCallback<ClickEvent>(_ => c.MainMenu());
-            view.Q<Button>("SettingsButton")?.RegisterCallback<ClickEvent>(_ => c.Settings());
-            view.Q<Button>("QuitButton")?.RegisterCallback<ClickEvent>(_ => c.Quit());
+            view.Q<Button>("reload-btn")?.RegisterCallback<ClickEvent>(_ => c.Restart());
+            view.Q<Button>("mainmenu-btn")?.RegisterCallback<ClickEvent>(_ => c.MainMenu());
+            view.Q<Button>("settings-btn")?.RegisterCallback<ClickEvent>(_ => c.Settings());
+            view.Q<Button>("quit-btn")?.RegisterCallback<ClickEvent>(_ => c.Quit());
             // todo pause exit button
         }
 
@@ -27,10 +27,10 @@ namespace HoldMyBeer.UI {
             VisualElement view = root.Q("Endgame");
             if (view == null) return;
 
-            view.Q<Button>("RestartButton")?.RegisterCallback<ClickEvent>(_ => c.Restart());
-            view.Q<Button>("MainMenuButton")?.RegisterCallback<ClickEvent>(_ => c.MainMenu());
-            view.Q<Button>("SettingsButton")?.RegisterCallback<ClickEvent>(_ => c.Settings());
-            view.Q<Button>("QuitButton")?.RegisterCallback<ClickEvent>(_ => c.Quit());
+            view.Q<Button>("reload-btn")?.RegisterCallback<ClickEvent>(_ => c.Restart());
+            view.Q<Button>("mainmenu-btn")?.RegisterCallback<ClickEvent>(_ => c.MainMenu());
+            view.Q<Button>("settings-btn")?.RegisterCallback<ClickEvent>(_ => c.Settings());
+            view.Q<Button>("quit-btn")?.RegisterCallback<ClickEvent>(_ => c.Quit());
         }
 
         public static void BindSettings(VisualElement root, SettingsController c) {
@@ -40,8 +40,8 @@ namespace HoldMyBeer.UI {
             view.Q<Slider>("master-slider")?.RegisterValueChangedCallback(e => c.SetMaster(e.newValue));
             view.Q<Slider>("music-slider")?.RegisterValueChangedCallback(e => c.SetMusic(e.newValue));
             view.Q<Slider>("sfx-slider")?.RegisterValueChangedCallback(e => c.SetSfx(e.newValue));
-            view.Q<RadioButtonGroup>("quality-radio-group")?.RegisterValueChangedCallback(e => c.SetQuality(e.newValue));
-            view.Q<Slider>("sensitivity-slider")?.RegisterValueChangedCallback(e => c.SetSensitivity(e.newValue));
+            // view.Q<RadioButtonGroup>("quality-radio-group")?.RegisterValueChangedCallback(e => c.SetQuality(e.newValue));
+            // view.Q<Slider>("sensitivity-slider")?.RegisterValueChangedCallback(e => c.SetSensitivity(e.newValue));
             
             view.Q<Button>("settings-exit-btn")?.RegisterCallback<ClickEvent>(_ => c.Back());
         }

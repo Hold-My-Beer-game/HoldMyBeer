@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace HoldMyBeer.Zombies.Unity {
     [RequireComponent(typeof(WalkerContext))]
-    internal class WalkerZombie : MonoBehaviour, IStateMachineComposer, IEnemy, IScreamAffected {
+    public class WalkerZombie : MonoBehaviour, IStateMachineComposer, IEnemy, IScreamAffected {
         [Header("Pathing")]
         [SerializeField] [Min(0.01f)] private float pathRefreshInterval;
         [SerializeField] [Min(0.01f)] private float stopDistance;
@@ -23,7 +23,51 @@ namespace HoldMyBeer.Zombies.Unity {
         private IStateMachineBrain brain;
         private WalkerContext context;
         private SearchTargetState searchState;
-        private WalkerDeathState deathState;
+        private DeathState deathState;
+        private IdleCombatState idleCombatState;
+        private IdleMovementState idleMovementState;
+        private ChaseTargetState chaseState;
+        private PatrolAreaState patrolState;
+
+        public enum ZombieState {
+            Idle, Walk, Aggro, Dead
+        }
+
+        private ZombieState currState;
+
+        public event Action<GameObject, ZombieState> OnStateChange;
+        public event Action<GameObject> OnTakeDamage;
+
+        private void Start() {
+            StateChangeManagement();
+        }
+
+        private void StateChangeManagement() {
+            context.Animator.OnDeathAnimationStart += () => {
+                currState = ZombieState.Dead;
+                OnStateChange?.Invoke(gameObject, currState);
+            };
+            context.Animator.OnIdleAnimationStart += () => {
+                currState = ZombieState.Idle;
+                OnStateChange?.Invoke(gameObject, currState);
+            };
+            context.Animator.OnWalkAnimationStart += () => {
+                if (currState != ZombieState.Aggro) {
+                    currState = ZombieState.Walk;
+                    OnStateChange?.Invoke(gameObject, currState);
+                }
+            };
+            brain.OnStateEnterMovement += (state) => {
+                if (state.Id == chaseState.Id) {
+                    currState = ZombieState.Aggro;
+                    OnStateChange?.Invoke(gameObject, currState);
+                }
+                if (state.Id == searchState.Id) {
+                    currState = ZombieState.Walk;
+                    OnStateChange?.Invoke(gameObject, currState);
+                }
+            };
+        }
 
         public StateSetup Compose(IStateMachineBrain brainRef) {
             brain = brainRef;
@@ -45,11 +89,11 @@ namespace HoldMyBeer.Zombies.Unity {
         /// </summary>
         /// <returns>The entry (default) state for the movement layer</returns>
         private IState MovementLayer() {
-            var idleState = new IdleMovementState(context);
-            var patrolState = new PatrolAreaState(context, MoveMode.Walk, timeBeforeMoving, stopDistance);
-            var chaseState = new ChaseTargetState(context, MoveMode.Walk, pathRefreshInterval, stopDistance);
+            idleMovementState = new IdleMovementState(context);
+            patrolState = new PatrolAreaState(context, MoveMode.Walk, timeBeforeMoving, stopDistance);
+            chaseState = new ChaseTargetState(context, MoveMode.Walk, pathRefreshInterval, stopDistance);
             searchState = new SearchTargetState(context, MoveMode.Walk, stopDistance);
-            deathState = new WalkerDeathState(context);
+            deathState = new DeathState(context);
 
             var delayedSeenToChase = new DelayedSightTransition(context, requiredSightTime, chaseState);
             var instantSeenToChase = new StateTransition(() => context.SightStimulus.CanSee(context.Target.Col), chaseState);
@@ -58,7 +102,7 @@ namespace HoldMyBeer.Zombies.Unity {
             var searchToPatrol = new StateTransition(() => searchState.OnLastKnownPos, patrolState);
 
             brain.AddMovementTransition(patrolState, delayedSeenToChase);
-            brain.AddMovementTransition(idleState, delayedSeenToChase);
+            brain.AddMovementTransition(idleMovementState, delayedSeenToChase);
             brain.AddMovementTransition(chaseState, chaseToSearch);
             brain.AddMovementTransition(searchState, searchToPatrol, instantSeenToChase);
 
@@ -70,7 +114,7 @@ namespace HoldMyBeer.Zombies.Unity {
         /// </summary>
         /// <returns>The entry (default) state for the combat layer</returns>
         private IState CombatLayer() {
-            var idleCombatState = new IdleCombatState();
+            idleCombatState = new IdleCombatState();
             var normalAttackState = new WalkerNormalAttackState(context, normalAttackCooldown);
 
             var toNormalAttack = new StateTransition(IsNormalAttackValid, normalAttackState);
@@ -93,9 +137,11 @@ namespace HoldMyBeer.Zombies.Unity {
             if (context.Health.CurrentHealth.Equals(0f)) {
                 brain.RemoveAllTransitions();
                 context.Animator.PlayDeath();
+                brain.ForceCombatState(idleCombatState);
                 brain.ForceMovementState(deathState);
             }
             context.Animator.PlayHit();
+            OnTakeDamage?.Invoke(gameObject);
         }
 
         public void React(Vector3 screamPos, Vector3 targetPos) {

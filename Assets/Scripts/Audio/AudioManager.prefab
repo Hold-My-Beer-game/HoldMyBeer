@@ -1,0 +1,338 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2395229853368983020
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 732393256405745761}
+  - component: {fileID: 468940279888541938}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &732393256405745761
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2395229853368983020}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 89.79282, y: 2.23272, z: -24.79718}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 939446783255944164}
+  - {fileID: 1379432299536436439}
+  - {fileID: 6724511912131887521}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &468940279888541938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2395229853368983020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6dc27d3ca734d014499aa15fa06c51c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AudioManager
+  MasterVolume: 1
+  MusicVolume: 1
+  SFXVolume: 1
+--- !u!1 &4009182038639246469
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6724511912131887521}
+  - component: {fileID: 7980552033930856259}
+  m_Layer: 0
+  m_Name: MusicSelection
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6724511912131887521
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4009182038639246469}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 732393256405745761}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7980552033930856259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4009182038639246469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 584c7799461e65a4c9978494df71f07d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MenuMusic
+  <sound>k__BackingField:
+    Guid:
+      Data1: 976731585
+      Data2: 1109228276
+      Data3: -918248830
+      Data4: -18036465
+    Path: event:/Aggression
+--- !u!1 &4904901093516477267
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1379432299536436439}
+  - component: {fileID: 7270411986765338106}
+  m_Layer: 0
+  m_Name: SFXEvents
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1379432299536436439
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4904901093516477267}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 732393256405745761}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7270411986765338106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4904901093516477267}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d663b2c28ffcece44880708436022253, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SFXEvents
+  <PlayerSteps>k__BackingField:
+    Guid:
+      Data1: -1500083365
+      Data2: 1171183063
+      Data3: -412112507
+      Data4: 1496974141
+    Path: event:/Player/PlayerMovement
+  <PlayerDrink>k__BackingField:
+    Guid:
+      Data1: 708726433
+      Data2: 1235689669
+      Data3: -399931210
+      Data4: 2054499179
+    Path: event:/Player/PlayerDrink
+  <PlayerDamaged>k__BackingField:
+    Guid:
+      Data1: 1107199776
+      Data2: 1241060083
+      Data3: 1139863695
+      Data4: -1523503963
+    Path: event:/Player/PlayerDamaged
+  <BulletHit>k__BackingField:
+    Guid:
+      Data1: 1515892392
+      Data2: 1223467325
+      Data3: 1143183750
+      Data4: -1141995351
+    Path: event:/Shotgun/BulletHitBody
+  <DryFire>k__BackingField:
+    Guid:
+      Data1: -1081146339
+      Data2: 1083068295
+      Data3: 552253322
+      Data4: -316226370
+    Path: event:/Shotgun/ShotgunDryFire
+  <ShotgunFire>k__BackingField:
+    Guid:
+      Data1: 1019930738
+      Data2: 1090233865
+      Data3: 1743192244
+      Data4: -211686364
+    Path: event:/Shotgun/ShotgunFire
+  <ShotgunReload>k__BackingField:
+    Guid:
+      Data1: 75127948
+      Data2: 1228035414
+      Data3: 1825971131
+      Data4: 121074782
+    Path: event:/Shotgun/ShotgunReload
+  <ScreamerZombie>k__BackingField:
+    Guid:
+      Data1: -446571499
+      Data2: 1264882654
+      Data3: -2076979792
+      Data4: 1684850422
+    Path: event:/Zombie/MonkeyZombie
+  <ScreamerRun>k__BackingField:
+    Guid:
+      Data1: -1618280610
+      Data2: 1160313469
+      Data3: 421696954
+      Data4: -1495887300
+    Path: event:/Zombie/ScreamerRun
+  <ZombieDeath>k__BackingField:
+    Guid:
+      Data1: -204132479
+      Data2: 1255601084
+      Data3: -1357626982
+      Data4: 476739501
+    Path: event:/Zombie/ZombieDeath
+  <ZombieEat>k__BackingField:
+    Guid:
+      Data1: 346267722
+      Data2: 1263220180
+      Data3: -410802509
+      Data4: 782854423
+    Path: event:/Zombie/ZombieEat
+  <ZombieMovement>k__BackingField:
+    Guid:
+      Data1: -985905743
+      Data2: 1262311094
+      Data3: 1517961377
+      Data4: 952924987
+    Path: event:/Zombie/ZombieMovement
+  <ZombieScream>k__BackingField:
+    Guid:
+      Data1: -1561848260
+      Data2: 1290312554
+      Data3: 1795072396
+      Data4: -851333879
+    Path: event:/Zombie/ZombieScream
+  <LowHpHeartbeat>k__BackingField:
+    Guid:
+      Data1: 1473804659
+      Data2: 1210855117
+      Data3: -926448202
+      Data4: 1831559722
+    Path: event:/Heartbeat
+  <LightBreak>k__BackingField:
+    Guid:
+      Data1: 1027975955
+      Data2: 1195049291
+      Data3: 1898541456
+      Data4: -1305308779
+    Path: event:/LightBreak
+  <WindAmbience>k__BackingField:
+    Guid:
+      Data1: 1826040397
+      Data2: 1240412587
+      Data3: -950321757
+      Data4: 1836689667
+    Path: event:/Wind
+--- !u!1 &8508068240151841687
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 939446783255944164}
+  - component: {fileID: 6520090110132191106}
+  m_Layer: 0
+  m_Name: MusicEvents
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &939446783255944164
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8508068240151841687}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 732393256405745761}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6520090110132191106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8508068240151841687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 770e8cf4a5d478344935e0e055201f87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MusicEvents
+  <Tension>k__BackingField:
+    Guid:
+      Data1: -1364710471
+      Data2: 1286205274
+      Data3: 1385207706
+      Data4: 859473204
+    Path: event:/Tension
+  <Aggression>k__BackingField:
+    Guid:
+      Data1: 976731585
+      Data2: 1109228276
+      Data3: -918248830
+      Data4: -18036465
+    Path: event:/Aggression
+  <DancingInThe90s>k__BackingField:
+    Guid:
+      Data1: 597472657
+      Data2: 1226487984
+      Data3: -452042067
+      Data4: -1986117695
+    Path: event:/Dancing in the 90's
+  <Intro>k__BackingField:
+    Guid:
+      Data1: -812666320
+      Data2: 1167629163
+      Data3: -1713477220
+      Data4: -1332763585
+    Path: event:/Intro
+  <Outro>k__BackingField:
+    Guid:
+      Data1: 217349338
+      Data2: 1326058375
+      Data3: -1498994559
+      Data4: -1845712842
+    Path: event:/Outro

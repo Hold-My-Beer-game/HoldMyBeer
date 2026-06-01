@@ -17,6 +17,10 @@ namespace HoldMyBeer.Zombies.Unity {
 
         private float targetLocomotionSpeed;
 
+        internal event Action OnWalkAnimationStart;
+        internal event Action OnIdleAnimationStart;
+        internal event Action OnDeathAnimationStart;
+
         internal event Action NormalAttackOnDamagePos;
 
         private void Update() {
@@ -24,10 +28,14 @@ namespace HoldMyBeer.Zombies.Unity {
         }
 
         internal override void PlayIdle() {
+            if (targetLocomotionSpeed == 0f) { return; }
+            OnIdleAnimationStart?.Invoke();
             targetLocomotionSpeed = 0f;
         }
 
         internal override void PlayWalk() {
+            if (Mathf.Approximately(targetLocomotionSpeed, 1f)) { return; }
+            OnWalkAnimationStart?.Invoke();
             targetLocomotionSpeed = 1f;
         }
 
@@ -45,6 +53,7 @@ namespace HoldMyBeer.Zombies.Unity {
             animator.Play(deathState, 0, 0f);
             enabled = false;
             currentAnimSpeed = 0f;
+            OnDeathAnimationStart?.Invoke();
         }
 
         /// <summary>

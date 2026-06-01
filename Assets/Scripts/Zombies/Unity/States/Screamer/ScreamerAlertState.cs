@@ -26,7 +26,7 @@ namespace HoldMyBeer.Zombies.Unity {
         public void Enter() {
             ScreamCompleted = false;
             context.Animator.OnRootMotionDataUpdated += Animator_OnRootMotionDataUpdated;
-            context.Animator.OnZombieScream += Animator_OnZombieScream;
+            context.Animator.OnZombieScreamStart += Animator_OnZombieScream;
             context.Animator.PlayStandUp();
         }
 

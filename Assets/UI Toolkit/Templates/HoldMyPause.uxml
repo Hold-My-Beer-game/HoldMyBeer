@@ -3,7 +3,7 @@
     <ui:GroupBox name="pause-menu" style="background-image: none; -unity-background-image-tint-color: rgba(0, 0, 0, 0.7); -unity-slice-left: 1; -unity-slice-top: 1; -unity-slice-right: 1; -unity-slice-bottom: 1; flex-grow: 1; flex-shrink: 1; margin-top: 0%; margin-right: 0%; margin-bottom: 0%; margin-left: 0%; padding-top: 0%; padding-right: 0%; padding-bottom: 0%; padding-left: 0%; align-self: stretch; align-items: stretch; aspect-ratio: auto; justify-content: space-between;">
         <ui:Button text="Restart" name="reload-btn" class="pause-menu-btn" style="flex-shrink: 1;"/>
         <ui:Button text="Main Menu" name="mainmenu-btn" class="pause-menu-btn" style="flex-shrink: 1;"/>
-        <ui:Button text="Settings" name="settings-btn" enabled="false" class="pause-menu-btn"/>
+        <ui:Button text="Settings" name="settings-btn" enabled="true" class="pause-menu-btn"/>
         <ui:Button text="Quit" name="quit-btn" class="pause-menu-btn"/>
     </ui:GroupBox>
 </ui:UXML>

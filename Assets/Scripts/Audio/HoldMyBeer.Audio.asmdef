@@ -1,0 +1,17 @@
+{
+    "name": "HoldMyBeer.Audio",
+    "rootNamespace": "HoldMyBeer.Audio",
+    "references": [
+        "FMODUnity",
+        "HoldMyBeer.Zombies.Unity"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
