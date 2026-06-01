@@ -1,0 +1,1035 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8312661213391187814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Zombie/ZombieDeath
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Zombie/ZombieDeath
+  Guid:
+    Data1: -204132479
+    Data2: 1255601084
+    Data3: -1357626982
+    Data4: 476739501
+  Banks:
+  - {fileID: 57519983212800207}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 5
+  MaxDistance: 35
+  Length: 0
+--- !u!114 &-7948578518037839285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Aggression/GameStatus
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
+  Name: GameStatus
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 1675510786
+    data2: 3583533764
+  Type: 2
+  IsGlobal: 1
+  Labels:
+  - Live
+  - Paused
+  Exists: 1
+--- !u!114 &-7756644447247720494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Player/PlayerMovement
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Player/PlayerMovement
+  Guid:
+    Data1: -1500083365
+    Data2: 1171183063
+    Data3: -412112507
+    Data4: 1496974141
+  Banks:
+  - {fileID: 57519983212800207}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters:
+  - {fileID: -5247377556605893333}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1600
+--- !u!114 &-6462326684910661033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Aggression
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Aggression
+  Guid:
+    Data1: 976731585
+    Data2: 1109228276
+    Data3: -918248830
+    Data4: -18036465
+  Banks:
+  - {fileID: 8951862156988927841}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters:
+  - {fileID: -7948578518037839285}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 110000
+--- !u!114 &-6141320408709178351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Zombie/ScreamerRun
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Zombie/ScreamerRun
+  Guid:
+    Data1: -1618280610
+    Data2: 1160313469
+    Data3: 421696954
+    Data4: -1495887300
+  Banks:
+  - {fileID: 57519983212800207}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1500
+--- !u!114 &-5490667983814455402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Outro
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Outro
+  Guid:
+    Data1: 217349338
+    Data2: 1326058375
+    Data3: -1498994559
+    Data4: -1845712842
+  Banks:
+  - {fileID: 8951862156988927841}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &-5370642889590433678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Shotgun/ShotgunFire
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Shotgun/ShotgunFire
+  Guid:
+    Data1: 1019930738
+    Data2: 1090233865
+    Data3: 1743192244
+    Data4: -211686364
+  Banks:
+  - {fileID: 57519983212800207}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &-5247377556605893333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/PlayerMovement/MovementStatus
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
+  Name: MovementStatus
+  StudioPath: 
+  Min: 0
+  Max: 2
+  Default: 0
+  ID:
+    data1: 2657105991
+    data2: 3550819382
+  Type: 2
+  IsGlobal: 0
+  Labels:
+  - Idle
+  - Walking
+  - Crouching
+  Exists: 1
+--- !u!114 &-4581317187602423435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Shotgun/ShotgunDryFire
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Shotgun/ShotgunDryFire
+  Guid:
+    Data1: -1081146339
+    Data2: 1083068295
+    Data3: 552253322
+    Data4: -316226370
+  Banks:
+  - {fileID: 57519983212800207}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &-3855153310427636450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Shotgun/BulletHitBody
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Shotgun/BulletHitBody
+  Guid:
+    Data1: 1515892392
+    Data2: 1223467325
+    Data3: 1143183750
+    Data4: -1141995351
+  Banks:
+  - {fileID: 57519983212800207}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 40
+  Length: 0
+--- !u!114 &-3807213122521487769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: snapshot:/PauseMenu
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: snapshot:/PauseMenu
+  Guid:
+    Data1: 97130888
+    Data2: 1312786858
+    Data3: 162331797
+    Data4: -797965899
+  Banks:
+  - {fileID: -1587038406156667038}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 0
+--- !u!114 &-2584713714167173650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Heartbeat/PlayerHealth
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
+  Name: PlayerHealth
+  StudioPath: 
+  Min: 0
+  Max: 100
+  Default: 100
+  ID:
+    data1: 415149040
+    data2: 1119466103
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
+--- !u!114 &-1950173973987495002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Zombie/ZombieScream
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Zombie/ZombieScream
+  Guid:
+    Data1: -1561848260
+    Data2: 1290312554
+    Data3: 1795072396
+    Data4: -851333879
+  Banks:
+  - {fileID: 57519983212800207}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &-1587038406156667038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorBankRef
+  Path: Assets/FMODBanks/Desktop/Master.bank
+  Name: Master
+  StudioPath: bank:/Master
+  lastModified: 639159571971659408
+  FileSizes: []
+  Exists: 1
+--- !u!114 &-687978058788547364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Heartbeat/GameStatus
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
+  Name: GameStatus
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 1675510786
+    data2: 3583533764
+  Type: 2
+  IsGlobal: 1
+  Labels:
+  - Live
+  - Paused
+  Exists: 1
+--- !u!114 &-479581624810012293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Zombie/ZombieMovement
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Zombie/ZombieMovement
+  Guid:
+    Data1: -985905743
+    Data2: 1262311094
+    Data3: 1517961377
+    Data4: 952924987
+  Banks:
+  - {fileID: 57519983212800207}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 0
+  Parameters:
+  - {fileID: 1566112354529617619}
+  - {fileID: 1617002332699699417}
+  MinDistance: 7
+  MaxDistance: 90
+  Length: 6600
+--- !u!114 &-415806000920347689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Zombie/MonkeyZombie
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Zombie/MonkeyZombie
+  Guid:
+    Data1: -446571499
+    Data2: 1264882654
+    Data3: -2076979792
+    Data4: 1684850422
+  Banks:
+  - {fileID: 57519983212800207}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 3
+  MaxDistance: 40
+  Length: 0
+--- !u!114 &-147591032384811595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Heartbeat
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Heartbeat
+  Guid:
+    Data1: 1473804659
+    Data2: 1210855117
+    Data3: -926448202
+    Data4: 1831559722
+  Banks:
+  - {fileID: 57519983212800207}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters:
+  - {fileID: -687978058788547364}
+  - {fileID: -2584713714167173650}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 9000
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d32cf7c32a3ed8347bac48ef5ed56d82, type: 3}
+  m_Name: FMODStudioCache
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EventCache
+  EditorBanks:
+  - {fileID: 8821114791359736941}
+  - {fileID: -1587038406156667038}
+  - {fileID: 8951862156988927841}
+  - {fileID: 57519983212800207}
+  EditorEvents:
+  - {fileID: -3807213122521487769}
+  - {fileID: 725747821391291493}
+  - {fileID: 3843107037810491829}
+  - {fileID: 2968930348035793034}
+  - {fileID: -6462326684910661033}
+  - {fileID: -5490667983814455402}
+  - {fileID: 4315754359796748808}
+  - {fileID: -415806000920347689}
+  - {fileID: -4581317187602423435}
+  - {fileID: 2923071966710654591}
+  - {fileID: -1950173973987495002}
+  - {fileID: 5089474291844838838}
+  - {fileID: 527368747241907039}
+  - {fileID: 8406859406297224262}
+  - {fileID: -7756644447247720494}
+  - {fileID: -6141320408709178351}
+  - {fileID: -5370642889590433678}
+  - {fileID: -147591032384811595}
+  - {fileID: -8312661213391187814}
+  - {fileID: 4586411554652936361}
+  - {fileID: 3544085122070241926}
+  - {fileID: -3855153310427636450}
+  - {fileID: -479581624810012293}
+  EditorParameters:
+  - {fileID: 697456678148811784}
+  MasterBanks:
+  - {fileID: -1587038406156667038}
+  StringsBanks:
+  - {fileID: 8821114791359736941}
+  cacheVersion: 131859
+  cacheTime: 639159571972363960
+  SerializableEventsDict:
+  - key: snapshot:/PauseMenu
+    index: 0
+  - key: event:/Intro
+    index: 1
+  - key: event:/Dancing in the 90's
+    index: 2
+  - key: event:/Tension
+    index: 3
+  - key: event:/Aggression
+    index: 4
+  - key: event:/Outro
+    index: 5
+  - key: event:/LightBreak
+    index: 6
+  - key: event:/Zombie/MonkeyZombie
+    index: 7
+  - key: event:/Shotgun/ShotgunDryFire
+    index: 8
+  - key: event:/Player/PlayerDamaged
+    index: 9
+  - key: event:/Zombie/ZombieScream
+    index: 10
+  - key: event:/Zombie/ZombieEat
+    index: 11
+  - key: event:/Wind
+    index: 12
+  - key: event:/DoorOpen
+    index: 13
+  - key: event:/Player/PlayerMovement
+    index: 14
+  - key: event:/Zombie/ScreamerRun
+    index: 15
+  - key: event:/Shotgun/ShotgunFire
+    index: 16
+  - key: event:/Heartbeat
+    index: 17
+  - key: event:/Zombie/ZombieDeath
+    index: 18
+  - key: event:/Shotgun/ShotgunReload
+    index: 19
+  - key: event:/Player/PlayerDrink
+    index: 20
+  - key: event:/Shotgun/BulletHitBody
+    index: 21
+  - key: event:/Zombie/ZombieMovement
+    index: 22
+--- !u!114 &57519983212800207
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/SFX.bank
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorBankRef
+  Path: Assets/FMODBanks/Desktop/SFX.bank
+  Name: SFX
+  StudioPath: bank:/SFX
+  lastModified: 639159571972363960
+  FileSizes: []
+  Exists: 1
+--- !u!114 &527368747241907039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Wind
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Wind
+  Guid:
+    Data1: 1826040397
+    Data2: 1240412587
+    Data3: -950321757
+    Data4: 1836689667
+  Banks:
+  - {fileID: 57519983212800207}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters:
+  - {fileID: 972895182387483428}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 30000
+--- !u!114 &697456678148811784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/GameStatus
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
+  Name: GameStatus
+  StudioPath: parameter:/GameStatus
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 1675510786
+    data2: 3583533764
+  Type: 2
+  IsGlobal: 1
+  Labels:
+  - Live
+  - Paused
+  Exists: 1
+--- !u!114 &725747821391291493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Intro
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Intro
+  Guid:
+    Data1: -812666320
+    Data2: 1167629163
+    Data3: -1713477220
+    Data4: -1332763585
+  Banks:
+  - {fileID: 8951862156988927841}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &972895182387483428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Wind/GameStatus
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
+  Name: GameStatus
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 1675510786
+    data2: 3583533764
+  Type: 2
+  IsGlobal: 1
+  Labels:
+  - Live
+  - Paused
+  Exists: 1
+--- !u!114 &1056941786474392504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Dancing in the 90's/GameStatus
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
+  Name: GameStatus
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 1675510786
+    data2: 3583533764
+  Type: 2
+  IsGlobal: 1
+  Labels:
+  - Live
+  - Paused
+  Exists: 1
+--- !u!114 &1566112354529617619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/ZombieMovement/MentalityStatus
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
+  Name: MentalityStatus
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 550222348
+    data2: 2129173442
+  Type: 2
+  IsGlobal: 0
+  Labels:
+  - Passive
+  - Aggro
+  Exists: 1
+--- !u!114 &1617002332699699417
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/ZombieMovement/MovementStatus
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
+  Name: MovementStatus
+  StudioPath: 
+  Min: 0
+  Max: 2
+  Default: 0
+  ID:
+    data1: 2657105991
+    data2: 3550819382
+  Type: 2
+  IsGlobal: 0
+  Labels:
+  - Idle
+  - Walking
+  - Crouching
+  Exists: 1
+--- !u!114 &2923071966710654591
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Player/PlayerDamaged
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Player/PlayerDamaged
+  Guid:
+    Data1: 1107199776
+    Data2: 1241060083
+    Data3: 1139863695
+    Data4: -1523503963
+  Banks:
+  - {fileID: 57519983212800207}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &2968930348035793034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Tension
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Tension
+  Guid:
+    Data1: -1364710471
+    Data2: 1286205274
+    Data3: 1385207706
+    Data4: 859473204
+  Banks:
+  - {fileID: 8951862156988927841}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 106909
+--- !u!114 &3544085122070241926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Player/PlayerDrink
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Player/PlayerDrink
+  Guid:
+    Data1: 708726433
+    Data2: 1235689669
+    Data3: -399931210
+    Data4: 2054499179
+  Banks:
+  - {fileID: 57519983212800207}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &3843107037810491829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Dancing in the 90's
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Dancing in the 90's
+  Guid:
+    Data1: 597472657
+    Data2: 1226487984
+    Data3: -452042067
+    Data4: -1986117695
+  Banks:
+  - {fileID: 8951862156988927841}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 0
+  Parameters:
+  - {fileID: 1056941786474392504}
+  MinDistance: 2
+  MaxDistance: 30
+  Length: 164192
+--- !u!114 &4315754359796748808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/LightBreak
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/LightBreak
+  Guid:
+    Data1: 1027975955
+    Data2: 1195049291
+    Data3: 1898541456
+    Data4: -1305308779
+  Banks:
+  - {fileID: 57519983212800207}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 3.6000001
+  MaxDistance: 30
+  Length: 0
+--- !u!114 &4586411554652936361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Shotgun/ShotgunReload
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Shotgun/ShotgunReload
+  Guid:
+    Data1: 75127948
+    Data2: 1228035414
+    Data3: 1825971131
+    Data4: 121074782
+  Banks:
+  - {fileID: 57519983212800207}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1868
+--- !u!114 &5089474291844838838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Zombie/ZombieEat
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Zombie/ZombieEat
+  Guid:
+    Data1: 346267722
+    Data2: 1263220180
+    Data3: -410802509
+    Data4: 782854423
+  Banks:
+  - {fileID: 57519983212800207}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 3
+  MaxDistance: 35
+  Length: 17375
+--- !u!114 &8406859406297224262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/DoorOpen
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/DoorOpen
+  Guid:
+    Data1: 1733904463
+    Data2: 1250674253
+    Data3: 251449261
+    Data4: -971049549
+  Banks:
+  - {fileID: 57519983212800207}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &8821114791359736941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.strings.bank
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorBankRef
+  Path: Assets/FMODBanks/Desktop/Master.strings.bank
+  Name: Master.strings
+  StudioPath: bank:/Master.strings
+  lastModified: 639159571971669715
+  FileSizes:
+  - Name: 
+    Value: 2414
+  Exists: 1
+--- !u!114 &8951862156988927841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Music.bank
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorBankRef
+  Path: Assets/FMODBanks/Desktop/Music.bank
+  Name: Music
+  StudioPath: bank:/Music
+  lastModified: 639159571972243015
+  FileSizes: []
+  Exists: 1
