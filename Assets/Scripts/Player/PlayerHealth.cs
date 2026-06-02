@@ -63,6 +63,7 @@ public class PlayerHealth : MonoBehaviour
         // Unlock and show the mouse
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+        AudioManager.instance.PlayOneShotEvent(SFXEvents.instance.PlayerDeath, transform.position);
 
         SceneManager.LoadScene(deathSceneName);
     }
