@@ -24,6 +24,8 @@ public class PlayerDrink : MonoBehaviour
 
     public void OnDrink(InputValue value)
     {
+        if (!HoldMyBeer.Input.PlayerInput.Instance.Actions.Player.enabled) { return; }
+        
         if (!value.isPressed) return;
         if (isDrinking) return;
 

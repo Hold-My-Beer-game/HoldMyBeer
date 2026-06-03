@@ -1,5 +1,4 @@
 using System;
-using System.Net.NetworkInformation;
 using HoldMyBeer.Zombies.Contracts;
 using UnityEngine;
 using HoldMyBeer.UI;

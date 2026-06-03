@@ -81,6 +81,7 @@ public class FirstPersonController : MonoBehaviour
 
     void Update()
     {
+        if (!HoldMyBeer.Input.PlayerInput.Instance.Actions.Player.enabled) { return; }
         Look();
         Move();
         HandleCrouchCamera();

@@ -61,6 +61,8 @@ public class PlayerAttack : MonoBehaviour
 
     public void OnAttack(InputValue value)
     {
+        if (!HoldMyBeer.Input.PlayerInput.Instance.Actions.Player.enabled) { return; }
+        
         if (!value.isPressed) return;
         if (isReloading || isShootingBlocked) return;
 

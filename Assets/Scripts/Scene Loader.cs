@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.InputSystem;
+using HoldMyBeer.Input;
 
 public class SceneTimerLoader : MonoBehaviour
 {
@@ -13,27 +13,14 @@ public class SceneTimerLoader : MonoBehaviour
     [Header("Mouse Settings")]
     public bool unlockMouseOnLoad = true; // Toggle in Inspector
 
-    [Header("Input")]
-    public InputActionReference jumpAction;
-
     private bool hasLoaded = false;
 
-    private void OnEnable()
-    {
-        if (jumpAction != null)
-        {
-            jumpAction.action.Enable();
-            jumpAction.action.performed += OnJumpPressed;
-        }
+    private void OnEnable() {
+        PlayerInput.Instance.OnJumpKeyPressed += OnJumpPressed;
     }
 
-    private void OnDisable()
-    {
-        if (jumpAction != null)
-        {
-            jumpAction.action.performed -= OnJumpPressed;
-            jumpAction.action.Disable();
-        }
+    private void OnDisable() {
+        PlayerInput.Instance.OnJumpKeyPressed -= OnJumpPressed;
     }
 
     private void Start()
@@ -41,12 +28,12 @@ public class SceneTimerLoader : MonoBehaviour
         Invoke(nameof(LoadScene), delay);
     }
 
-    private void OnJumpPressed(InputAction.CallbackContext context)
+    private void OnJumpPressed()
     {
         LoadScene();
     }
 
-    void LoadScene()
+    private void LoadScene()
     {
         if (hasLoaded) return;
         hasLoaded = true;

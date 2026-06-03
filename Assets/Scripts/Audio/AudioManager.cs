@@ -1,9 +1,7 @@
 using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
 using FMODUnity;
 using FMOD.Studio;
-using Unity.Properties;
 using HoldMyBeer.Zombies.Unity;
 using System;
 

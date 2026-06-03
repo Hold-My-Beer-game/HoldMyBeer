@@ -1,10 +1,8 @@
 {
-    "name": "HoldMyBeer.UI",
-    "rootNamespace": "HoldMyBeer.UI",
+    "name": "HoldMyBeer.Input",
+    "rootNamespace": "HoldMyBeer.Input",
     "references": [
-        "CocaCopa.SceneManagement.Unity",
-        "HoldMyBeer.Audio",
-        "HoldMyBeer.Input"
+        "Unity.InputSystem"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

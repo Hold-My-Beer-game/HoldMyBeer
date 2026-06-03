@@ -454,7 +454,7 @@ Transform:
   m_GameObject: {fileID: 1458783380}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 79.07768, y: -0, z: 123.44199}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -470,15 +470,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 732393256405745761, guid: f368dae50b90ed54996b1f56758a5092, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 50.87881
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 732393256405745761, guid: f368dae50b90ed54996b1f56758a5092, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 732393256405745761, guid: f368dae50b90ed54996b1f56758a5092, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 100.71545
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 732393256405745761, guid: f368dae50b90ed54996b1f56758a5092, type: 3}
       propertyPath: m_LocalRotation.w
@@ -658,7 +658,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5947584503916179484, guid: 14b7276bfb611934f9c3f6ab20729d78, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 80.99506
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5947584503916179484, guid: 14b7276bfb611934f9c3f6ab20729d78, type: 3}
       propertyPath: m_LocalPosition.y
@@ -666,7 +666,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5947584503916179484, guid: 14b7276bfb611934f9c3f6ab20729d78, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 133.87746
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5947584503916179484, guid: 14b7276bfb611934f9c3f6ab20729d78, type: 3}
       propertyPath: m_LocalRotation.w
@@ -699,7 +699,7 @@ PrefabInstance:
     - target: {fileID: 6599008667957999847, guid: 14b7276bfb611934f9c3f6ab20729d78, type: 3}
       propertyPath: jumpAction
       value: 
-      objectReference: {fileID: -2099379676528639254, guid: e97a869835f9a3240af1ef8f89972d40, type: 3}
+      objectReference: {fileID: -2099379676528639254, guid: 052faaac586de48259a63d0c4782560b, type: 3}
     - target: {fileID: 6599008667957999847, guid: 14b7276bfb611934f9c3f6ab20729d78, type: 3}
       propertyPath: unlockMouseOnLoad
       value: 0

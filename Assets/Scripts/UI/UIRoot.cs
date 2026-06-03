@@ -16,6 +16,8 @@ namespace HoldMyBeer.UI {
         private IPlayerStateRead playerReadState;
 
         private HUDState hudState;
+
+        private GameFlowController gameFlow;
         internal HUDState HUDState => hudState;
 
         private void Awake() {
@@ -24,9 +26,10 @@ namespace HoldMyBeer.UI {
             nav = new UINavigation(registry.Map, startScreen);
 
             VisualElement root = registry.Root;
-            
-            // settingsReadState = settingsState
+
             SettingsController settings = new SettingsController(nav);
+
+            gameFlow = new GameFlowController(nav);
 
             if (startScreen == UIScreen.MainMenu) {
                 MainMenuController menu = new MainMenuController(nav);
@@ -37,23 +40,21 @@ namespace HoldMyBeer.UI {
                 UIBinding.BindAbout(root, credits);
             }
             else if (startScreen == UIScreen.Endgame) {
-                GameFlowController flow = new GameFlowController(nav);
-                UIBinding.BindPause(root, flow);
-                UIBinding.BindEndgame(root, flow);
-                
+                UIBinding.BindPause(root, gameFlow);
+                UIBinding.BindEndgame(root, gameFlow);
             }
             else {
-                GameFlowController flow = new GameFlowController(nav);
-
                 hudState = new HUDState();
                 playerReadState = player.GetComponent<IPlayerStateRead>();
+
                 HUDController hud = new HUDController(hudState, playerReadState);
+
                 hud.Init();
                 hudView.Bind(hudState);
                 if (tester != null) { tester.SetState(hudState); }
 
-                UIBinding.BindPause(root, flow);
-                UIBinding.BindEndgame(root, flow);
+                UIBinding.BindPause(root, gameFlow);
+                UIBinding.BindEndgame(root, gameFlow);
                 UIBinding.BindSettings(root, settings);
             }
         }
