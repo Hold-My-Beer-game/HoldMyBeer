@@ -32,7 +32,6 @@ Transform:
   m_Children:
   - {fileID: 939446783255944164}
   - {fileID: 1379432299536436439}
-  - {fileID: 6724511912131887521}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &468940279888541938
@@ -50,57 +49,6 @@ MonoBehaviour:
   MasterVolume: 1
   MusicVolume: 1
   SFXVolume: 1
---- !u!1 &4009182038639246469
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6724511912131887521}
-  - component: {fileID: 7980552033930856259}
-  m_Layer: 0
-  m_Name: MusicSelection
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &6724511912131887521
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4009182038639246469}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 732393256405745761}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7980552033930856259
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4009182038639246469}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 584c7799461e65a4c9978494df71f07d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MenuMusic
-  <sound>k__BackingField:
-    Guid:
-      Data1: 976731585
-      Data2: 1109228276
-      Data3: -918248830
-      Data4: -18036465
-    Path: event:/Aggression
 --- !u!1 &4904901093516477267
 GameObject:
   m_ObjectHideFlags: 0
@@ -166,6 +114,13 @@ MonoBehaviour:
       Data3: 1139863695
       Data4: -1523503963
     Path: event:/Player/PlayerDamaged
+  <PlayerDeath>k__BackingField:
+    Guid:
+      Data1: 1821726691
+      Data2: 1336342955
+      Data3: 379141283
+      Data4: -627357683
+    Path: event:/Player/PlayerDeath
   <BulletHit>k__BackingField:
     Guid:
       Data1: 1515892392

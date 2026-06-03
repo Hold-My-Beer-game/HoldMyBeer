@@ -460,83 +460,58 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &1827070177
-PrefabInstance:
+--- !u!1 &1928329430
+GameObject:
   m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1928329432}
+  - component: {fileID: 1928329431}
+  m_Layer: 0
+  m_Name: MusicSelection
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1928329431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1928329430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 584c7799461e65a4c9978494df71f07d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: HoldMyBeer.Audio::HoldMyBeer.Audio.MusicSelection
+  <sound>k__BackingField:
+    Guid:
+      Data1: -812666320
+      Data2: 1167629163
+      Data3: -1713477220
+      Data4: -1332763585
+    Path: event:/Intro
+  fadeDuration: 1.5
+--- !u!4 &1928329432
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1928329430}
   serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 732393256405745761, guid: f368dae50b90ed54996b1f56758a5092, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 50.87881
-      objectReference: {fileID: 0}
-    - target: {fileID: 732393256405745761, guid: f368dae50b90ed54996b1f56758a5092, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 732393256405745761, guid: f368dae50b90ed54996b1f56758a5092, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 100.71545
-      objectReference: {fileID: 0}
-    - target: {fileID: 732393256405745761, guid: f368dae50b90ed54996b1f56758a5092, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 732393256405745761, guid: f368dae50b90ed54996b1f56758a5092, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 732393256405745761, guid: f368dae50b90ed54996b1f56758a5092, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 732393256405745761, guid: f368dae50b90ed54996b1f56758a5092, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 732393256405745761, guid: f368dae50b90ed54996b1f56758a5092, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 732393256405745761, guid: f368dae50b90ed54996b1f56758a5092, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 732393256405745761, guid: f368dae50b90ed54996b1f56758a5092, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2395229853368983020, guid: f368dae50b90ed54996b1f56758a5092, type: 3}
-      propertyPath: m_Name
-      value: AudioManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 7980552033930856259, guid: f368dae50b90ed54996b1f56758a5092, type: 3}
-      propertyPath: <sound>k__BackingField.Path
-      value: event:/Intro
-      objectReference: {fileID: 0}
-    - target: {fileID: 7980552033930856259, guid: f368dae50b90ed54996b1f56758a5092, type: 3}
-      propertyPath: <sound>k__BackingField.Guid.Data1
-      value: -812666320
-      objectReference: {fileID: 0}
-    - target: {fileID: 7980552033930856259, guid: f368dae50b90ed54996b1f56758a5092, type: 3}
-      propertyPath: <sound>k__BackingField.Guid.Data2
-      value: 1167629163
-      objectReference: {fileID: 0}
-    - target: {fileID: 7980552033930856259, guid: f368dae50b90ed54996b1f56758a5092, type: 3}
-      propertyPath: <sound>k__BackingField.Guid.Data3
-      value: -1713477220
-      objectReference: {fileID: 0}
-    - target: {fileID: 7980552033930856259, guid: f368dae50b90ed54996b1f56758a5092, type: 3}
-      propertyPath: <sound>k__BackingField.Guid.Data4
-      value: -1332763585
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: f368dae50b90ed54996b1f56758a5092, type: 3}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 89.06272, y: 0, z: 11.71042}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1976193790
 GameObject:
   m_ObjectHideFlags: 0
@@ -719,4 +694,4 @@ SceneRoots:
   - {fileID: 1458783382}
   - {fileID: 4695533864141026070}
   - {fileID: 365430027}
-  - {fileID: 1827070177}
+  - {fileID: 1928329432}
