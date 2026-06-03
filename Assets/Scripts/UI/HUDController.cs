@@ -27,16 +27,11 @@ namespace HoldMyBeer.UI {
 
         // Gameplay API
         internal void SetHealth(float value) {
-            // state.Health = Mathf.Clamp01(v);
             state.Health = value / 100f;
             state.Notify();
         }
 
         internal void SetDrunkness(float value) {
-            // state.Drunkness = Mathf.Clamp01(v);
-            // const int maxSteps = 8;
-            // if (value > maxSteps) { value = maxSteps; }
-            // state.Drunkness = value / maxSteps;
             state.Drunkness = value;
             state.Notify();
         }
