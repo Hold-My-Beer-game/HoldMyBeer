@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6402322368787012660}
   - component: {fileID: 7810918728325547667}
   - component: {fileID: 4599042597624290542}
-  - component: {fileID: 5329993003182676810}
+  - component: {fileID: 7951989936881413091}
   m_Layer: 0
   m_Name: 'Club '
   m_TagString: Untagged
@@ -145,7 +145,7 @@ MonoBehaviour:
   OverrideAttenuation: 1
   OverrideMinDistance: 25
   OverrideMaxDistance: 118
---- !u!114 &5329993003182676810
+--- !u!114 &7951989936881413091
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -156,4 +156,4 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8a2ddd975d2d62d469d3fe03d1b5e834, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: '::'
+  m_EditorClassIdentifier: HoldMyBeer.Audio::HoldMyBeer.Audio.ClubAudio

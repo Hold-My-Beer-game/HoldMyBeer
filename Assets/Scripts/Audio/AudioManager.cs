@@ -69,8 +69,12 @@ namespace HoldMyBeer.Audio {
         private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
         {
             InitializeAmbience(SFXEvents.instance.WindAmbience);
-            ScreamerAudio();
-            WalkerAudio();
+            
+            if (scene.name == "Gameplay")
+            {
+                ScreamerAudio();
+                WalkerAudio();
+            }
         }
 
         private void OnSceneUnloaded(Scene scene)
