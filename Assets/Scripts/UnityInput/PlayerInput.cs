@@ -20,7 +20,7 @@ namespace HoldMyBeer.Input {
         public InputSystem_Actions Actions { get; private set; }
 
         public event Action OnJumpKeyPressed;
-        public event Action OnEscKeyPressed;
+        public event Action OnTabKeyPressed;
 
         public enum InputMap {
             Player, UI, Gameplay
@@ -52,18 +52,16 @@ namespace HoldMyBeer.Input {
         }
         private void OnPause(InputValue value) {
             if (value.isPressed) {
-                OnEscKeyPressed?.Invoke();
+                OnTabKeyPressed?.Invoke();
             }
         }
 
         public void EnableInputMap(InputMap inputMap) {
             switch (inputMap) {
-                case InputMap.Player: if (!Actions.Player.enabled) { Actions.Player.Enable(); } break;
-                case InputMap.UI: if (!Actions.UI.enabled) { Actions.UI.Enable(); } break;
+                case InputMap.Player: if (!Actions.Player.enabled) { Actions.Player.Enable(); } ToggleCursor(false); break;
+                case InputMap.UI: if (!Actions.UI.enabled) { Actions.UI.Enable(); } ToggleCursor(true); break;
                 case InputMap.Gameplay: if (!Actions.Gameplay.enabled) { Actions.Gameplay.Enable(); } break;
             }
-            Debug.Log($"Enable Input Map {inputMap}");
-            Debug.Log($"Cursor.visible = {Cursor.visible} || Cursor.lockState = {Cursor.lockState} ");
         }
 
         public void DisableInputMap(InputMap inputMap) {
@@ -72,7 +70,11 @@ namespace HoldMyBeer.Input {
                 case InputMap.UI: if (Actions.UI.enabled) { Actions.UI.Disable(); } break;
                 case InputMap.Gameplay: if (Actions.Gameplay.enabled) { Actions.Gameplay.Disable(); } break;
             }
-            Debug.Log($"Disable Input Map {inputMap}");
+        }
+        
+        public static void ToggleCursor(bool visible) {
+            Cursor.visible = visible;
+            Cursor.lockState = visible ? CursorLockMode.None : CursorLockMode.Locked;
         }
     }
 }

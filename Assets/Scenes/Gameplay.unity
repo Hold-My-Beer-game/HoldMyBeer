@@ -16546,6 +16546,8 @@ MonoBehaviour:
     elementName: Pause
   - id: 1
     elementName: Settings
+  - id: 5
+    elementName: Endgame
 --- !u!4 &1024294353
 Transform:
   m_ObjectHideFlags: 0

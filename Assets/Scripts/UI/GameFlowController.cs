@@ -1,37 +1,37 @@
 using CocaCopa.SceneManagement;
 using UnityEngine;
 using HoldMyBeer.Input;
-    
+
 namespace HoldMyBeer.UI {
     public class GameFlowController {
         private readonly UINavigation nav;
-        public bool IsPaused {get; private set;}
+        
+        private bool IsPaused {get; set;}
+        
 
         public GameFlowController(UINavigation nav) {
             this.nav = nav;
-
-            PlayerInput.Instance.OnEscKeyPressed += OnPaused;
+            PlayerInput.Instance.OnTabKeyPressed += OnPaused;
         }
-
+        
         private void OnPaused() {
             TogglePause();
         }
 
         public void Endgame() {
+            IsPaused = true;
+            Time.timeScale = 0;
+            PlayerInput.Instance.DisableInputMap(PlayerInput.InputMap.Player);
+            PlayerInput.Instance.EnableInputMap(PlayerInput.InputMap.UI);
+            
             nav.Open(UIScreen.Endgame);
         }
 
         private void TogglePause() {
             if (IsPaused) { ResumeGame();}
             else { PauseGame();}
-            ToggleCursor();
         }
         
-        private void ToggleCursor() {
-            Cursor.visible = IsPaused;
-            Cursor.lockState = IsPaused ? CursorLockMode.None : CursorLockMode.Locked;
-        }
-
         private void PauseGame() {
             if (IsPaused) { return;}
             IsPaused = true;
@@ -52,16 +52,16 @@ namespace HoldMyBeer.UI {
             Debug.Log($"TimeScale: {Time.timeScale}");
         }
 
-        public void Restart() {
+        public static void Restart() {
             Time.timeScale = 1f;
             PlayerInput.Instance.DisableInputMap(PlayerInput.InputMap.UI);
             PlayerInput.Instance.EnableInputMap(PlayerInput.InputMap.Player);
             SceneTransitionApi.TransitionToScene(2, LoadMode.Single);
         }
 
-        public void MainMenu() {
+        public static void MainMenu() {
             Time.timeScale = 1f;
-            PlayerInput.Instance.EnableInputMap(PlayerInput.InputMap.Player);
+            PlayerInput.Instance.DisableInputMap(PlayerInput.InputMap.Player);
             PlayerInput.Instance.EnableInputMap(PlayerInput.InputMap.UI);
             SceneTransitionApi.TransitionToScene(0, LoadMode.Single);
         }
@@ -70,7 +70,7 @@ namespace HoldMyBeer.UI {
             nav.Open(UIScreen.Settings);
         }
 
-        public void Quit() {
+        public static void Quit() {
             Application.Quit();
         }
     }

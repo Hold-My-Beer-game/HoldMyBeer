@@ -25,6 +25,9 @@ public class SceneTimerLoader : MonoBehaviour
 
     private void Start()
     {
+        PlayerInput.Instance.EnableInputMap(PlayerInput.InputMap.Player);
+        PlayerInput.Instance.DisableInputMap(PlayerInput.InputMap.UI);
+        
         Invoke(nameof(LoadScene), delay);
     }
 

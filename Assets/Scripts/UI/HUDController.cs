@@ -1,5 +1,3 @@
-using UnityEngine;
-
 namespace HoldMyBeer.UI {
     /// <summary>
     /// Converts gameplay systems into HUD state mutations.
@@ -7,7 +5,9 @@ namespace HoldMyBeer.UI {
     internal class HUDController {
         private readonly HUDState state;
 
-        private IPlayerStateRead playerStateRead;
+        private readonly IPlayerStateRead playerStateRead;
+
+        private readonly GameFlowController gameFlow;
 
         public void Init() {
 
@@ -18,41 +18,49 @@ namespace HoldMyBeer.UI {
             playerStateRead.OnInteract += SetInteract;
             playerStateRead.OnAmmoChange += SetAmmo;
             playerStateRead.OnLoadChange += SetLoadedAmmo;
+            playerStateRead.OnDeath += SetDead;
         }
 
-        public HUDController(HUDState state, IPlayerStateRead playerStateReadRef) {
+        
+
+        public HUDController(HUDState state, IPlayerStateRead playerStateReadRef, GameFlowController gameFlowRef) {
             this.state = state;
             playerStateRead = playerStateReadRef;
+            gameFlow = gameFlowRef;
         }
 
         // Gameplay API
-        internal void SetHealth(float value) {
+        private void SetDead() {
+            gameFlow.Endgame();
+        }
+        
+        private void SetHealth(float value) {
             state.Health = value / 100f;
             state.Notify();
         }
 
-        internal void SetDrunkness(float value) {
+        private void SetDrunkness(float value) {
             state.Drunkness = value;
             state.Notify();
         }
 
-        internal void SetGoal(string text) {
+        private void SetGoal(string text) {
             state.GoalText = text;
             state.Notify();
         }
 
-        internal void SetInteract(bool visible, string text) {
+        private void SetInteract(bool visible, string text) {
             state.InteractVisible = visible;
             state.InteractText = text;
             state.Notify();
         }
 
-        internal void SetAmmo(int current) {
+        private void SetAmmo(int current) {
             state.Ammo = current;
             state.Notify();
         }
 
-        internal void SetLoadedAmmo(int current) {
+        private void SetLoadedAmmo(int current) {
             state.LoadedAmmo = current;
             state.Notify();
         }

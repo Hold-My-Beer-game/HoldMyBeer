@@ -1,3 +1,4 @@
+using HoldMyBeer.Input;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -32,6 +33,8 @@ namespace HoldMyBeer.UI {
             gameFlow = new GameFlowController(nav);
 
             if (startScreen == UIScreen.MainMenu) {
+                PlayerInput.Instance.EnableInputMap(PlayerInput.InputMap.UI);
+
                 MainMenuController menu = new MainMenuController(nav);
                 CreditsController credits = new CreditsController(nav);
 
@@ -40,14 +43,19 @@ namespace HoldMyBeer.UI {
                 UIBinding.BindAbout(root, credits);
             }
             else if (startScreen == UIScreen.Endgame) {
+                PlayerInput.Instance.EnableInputMap(PlayerInput.InputMap.UI);
+
                 UIBinding.BindPause(root, gameFlow);
                 UIBinding.BindEndgame(root, gameFlow);
             }
             else {
+                PlayerInput.Instance.DisableInputMap(PlayerInput.InputMap.UI);
+                PlayerInput.Instance.EnableInputMap(PlayerInput.InputMap.Player);
+                
                 hudState = new HUDState();
                 playerReadState = player.GetComponent<IPlayerStateRead>();
 
-                HUDController hud = new HUDController(hudState, playerReadState);
+                HUDController hud = new HUDController(hudState, playerReadState, gameFlow);
 
                 hud.Init();
                 hudView.Bind(hudState);

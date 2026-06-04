@@ -17,11 +17,10 @@ namespace HoldMyBeer.UI {
             if (view == null) return;
 
             view.Q<Button>("return-btn")?.RegisterCallback<ClickEvent>(_ => c.ResumeGame());
-            view.Q<Button>("reload-btn")?.RegisterCallback<ClickEvent>(_ => c.Restart());
-            view.Q<Button>("mainmenu-btn")?.RegisterCallback<ClickEvent>(_ => c.MainMenu());
+            view.Q<Button>("reload-btn")?.RegisterCallback<ClickEvent>(_ => GameFlowController.Restart());
+            view.Q<Button>("mainmenu-btn")?.RegisterCallback<ClickEvent>(_ => GameFlowController.MainMenu());
             view.Q<Button>("settings-btn")?.RegisterCallback<ClickEvent>(_ => c.Settings());
-            view.Q<Button>("quit-btn")?.RegisterCallback<ClickEvent>(_ => c.Quit());
-            // todo pause exit button
+            view.Q<Button>("quit-btn")?.RegisterCallback<ClickEvent>(_ => GameFlowController.Quit());
         }
 
         public static void BindEndgame(VisualElement root, GameFlowController c) {
@@ -29,10 +28,10 @@ namespace HoldMyBeer.UI {
             if (view == null) return;
             
             view.Q<Button>("return-btn")?.SetEnabled(false);
-            view.Q<Button>("reload-btn")?.RegisterCallback<ClickEvent>(_ => c.Restart());
-            view.Q<Button>("mainmenu-btn")?.RegisterCallback<ClickEvent>(_ => c.MainMenu());
+            view.Q<Button>("reload-btn")?.RegisterCallback<ClickEvent>(_ => GameFlowController.Restart());
+            view.Q<Button>("mainmenu-btn")?.RegisterCallback<ClickEvent>(_ => GameFlowController.MainMenu());
             view.Q<Button>("settings-btn")?.RegisterCallback<ClickEvent>(_ => c.Settings());
-            view.Q<Button>("quit-btn")?.RegisterCallback<ClickEvent>(_ => c.Quit());
+            view.Q<Button>("quit-btn")?.RegisterCallback<ClickEvent>(_ => GameFlowController.Quit());
         }
 
         public static void BindSettings(VisualElement root, SettingsController c) {
