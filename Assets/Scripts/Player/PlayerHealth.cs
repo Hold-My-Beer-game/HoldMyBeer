@@ -55,7 +55,7 @@ public class PlayerHealth : MonoBehaviour
 
     private void Die()
     {
-        Debug.Log("Player died!");
+        AudioManager.instance.PlayOneShotEvent(SFXEvents.instance.PlayerDeath, transform.position);
         OnDeath?.Invoke();
     }
 }

@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using System.Collections;
 using System.Collections.Generic;
 using FMODUnity;
 using FMOD.Studio;
@@ -28,9 +30,10 @@ namespace HoldMyBeer.Audio {
 
         private void Awake() 
         {
-            if (instance != null) 
+            if (instance != null && instance != this) 
             {
                 Debug.LogError("Found more than one Audio Managers on the scene");
+                Destroy(gameObject);
             }
             instance = this;
 
@@ -40,14 +43,7 @@ namespace HoldMyBeer.Audio {
             masterVCA = RuntimeManager.GetVCA("VCA:/Master"); // Initialize VCAs for audio 
             musicVCA = RuntimeManager.GetVCA("VCA:/Music");
             sfxVCA = RuntimeManager.GetVCA("VCA:/SFX");
-
-            ScreamerAudio();
-        }
-
-        private void Start() 
-        {
-            InitializeAmbience(SFXEvents.instance.WindAmbience);
-            WalkerAudio();
+            DontDestroyOnLoad(gameObject);
         }
 
         private void Update() 
@@ -55,6 +51,30 @@ namespace HoldMyBeer.Audio {
             masterVCA.setVolume(Mathf.Clamp01(MasterVolume)); // Update master, music and sfx volume in case they were changed in the inspector
             musicVCA.setVolume(Mathf.Clamp01(MusicVolume));
             sfxVCA.setVolume(Mathf.Clamp01(SFXVolume));
+        }
+
+        private void OnEnable()
+        {
+            SceneManager.sceneLoaded += OnSceneLoaded;
+            SceneManager.sceneUnloaded += OnSceneUnloaded;
+        }
+
+        private void OnDisable()
+        {
+            SceneManager.sceneLoaded -= OnSceneLoaded;
+            SceneManager.sceneUnloaded -= OnSceneUnloaded;
+        }
+
+        private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+        {
+            InitializeAmbience(SFXEvents.instance.WindAmbience);
+            ScreamerAudio();
+            WalkerAudio();
+        }
+
+        private void OnSceneUnloaded(Scene scene)
+        {
+            CleanUp();
         }
 
         private void WalkerAudio()
@@ -208,7 +228,7 @@ namespace HoldMyBeer.Audio {
         /// </summary>
         /// <param name="eventReference">EventReference variable</param>
         /// <param name="emitterObj">GameObject variable of the object that plays the sound</param>
-        /// <returns>StudioEventEmitter emitter</returns>
+        /// <returns>StudioEventEmitter emitter and adds it for clean up.</returns>
         public StudioEventEmitter ConfigureEmitter(EventReference eventReference, GameObject emitterObj) 
         {
             if (emitterObj == null)
@@ -238,7 +258,7 @@ namespace HoldMyBeer.Audio {
         /// <param name="eventReference"></param>
         /// <param name="emitterObj"></param>
         /// <param name="emitterIndex"></param>
-        /// <returns>Returns StudioEventEmitter Object</returns>
+        /// <returns>Returns the StudioEventEmitter Object indicated by the index.</returns>
         /// <exception cref="ArgumentOutOfRangeException"></exception>
         public StudioEventEmitter ConfigureEmitterMultiple(EventReference eventReference, GameObject emitterObj, int emitterIndex)
         {

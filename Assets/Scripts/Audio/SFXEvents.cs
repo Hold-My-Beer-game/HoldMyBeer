@@ -10,6 +10,7 @@ public class SFXEvents : MonoBehaviour
     [field: SerializeField] public EventReference PlayerSteps { get; private set; }
     [field: SerializeField] public EventReference PlayerDrink { get; private set; }
     [field: SerializeField] public EventReference PlayerDamaged { get; private set; }
+    [field: SerializeField] public EventReference PlayerDeath { get; private set; }
 
     [field: Header("Shotgun SFX")]
 

@@ -290,6 +290,58 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f368dae50b90ed54996b1f56758a5092, type: 3}
+--- !u!1 &933343953
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 933343955}
+  - component: {fileID: 933343954}
+  m_Layer: 0
+  m_Name: MusicSelection
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &933343954
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 933343953}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 584c7799461e65a4c9978494df71f07d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: HoldMyBeer.Audio::HoldMyBeer.Audio.MusicSelection
+  <sound>k__BackingField:
+    Guid:
+      Data1: -1364710471
+      Data2: 1286205274
+      Data3: 1385207706
+      Data4: 859473204
+    Path: event:/Tension
+  fadeDuration: 1.5
+--- !u!4 &933343955
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 933343953}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 89.06272, y: 0, z: 11.71042}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1499394172
 GameObject:
   m_ObjectHideFlags: 0
@@ -502,3 +554,4 @@ SceneRoots:
   - {fileID: 1589708854}
   - {fileID: 218255679}
   - {fileID: 301961365}
+  - {fileID: 933343955}
