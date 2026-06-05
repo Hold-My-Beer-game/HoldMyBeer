@@ -1,3 +1,4 @@
+using System;
 using HoldMyBeer.Input;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -19,6 +20,8 @@ namespace HoldMyBeer.UI {
         private HUDState hudState;
 
         private GameFlowController gameFlow;
+
+        private HUDController hud;
         internal HUDState HUDState => hudState;
 
         private void Awake() {
@@ -29,9 +32,8 @@ namespace HoldMyBeer.UI {
             VisualElement root = registry.Root;
 
             SettingsController settings = new SettingsController(nav);
-
-            gameFlow = new GameFlowController(nav);
-
+            UIBinding.BindSettings(root, settings);
+            
             if (startScreen == UIScreen.MainMenu) {
                 PlayerInput.Instance.EnableInputMap(PlayerInput.InputMap.UI);
 
@@ -39,23 +41,17 @@ namespace HoldMyBeer.UI {
                 CreditsController credits = new CreditsController(nav);
 
                 UIBinding.BindMainMenu(root, menu);
-                UIBinding.BindSettings(root, settings);
                 UIBinding.BindAbout(root, credits);
             }
-            else if (startScreen == UIScreen.Endgame) {
-                PlayerInput.Instance.EnableInputMap(PlayerInput.InputMap.UI);
-
-                UIBinding.BindPause(root, gameFlow);
-                UIBinding.BindEndgame(root, gameFlow);
-            }
             else {
+                gameFlow = new GameFlowController(nav);
                 PlayerInput.Instance.DisableInputMap(PlayerInput.InputMap.UI);
                 PlayerInput.Instance.EnableInputMap(PlayerInput.InputMap.Player);
                 
                 hudState = new HUDState();
                 playerReadState = player.GetComponent<IPlayerStateRead>();
 
-                HUDController hud = new HUDController(hudState, playerReadState, gameFlow);
+                hud = new HUDController(hudState, playerReadState, gameFlow);
 
                 hud.Init();
                 hudView.Bind(hudState);
@@ -63,8 +59,12 @@ namespace HoldMyBeer.UI {
 
                 UIBinding.BindPause(root, gameFlow);
                 UIBinding.BindEndgame(root, gameFlow);
-                UIBinding.BindSettings(root, settings);
             }
+        }
+
+        private void OnDestroy() {
+            gameFlow?.Dispose();
+            hud?.Dispose();
         }
     }
 }

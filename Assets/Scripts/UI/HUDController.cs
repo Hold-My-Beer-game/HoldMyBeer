@@ -1,8 +1,10 @@
+using System;
+
 namespace HoldMyBeer.UI {
     /// <summary>
     /// Converts gameplay systems into HUD state mutations.
     /// </summary>
-    internal class HUDController {
+    internal class HUDController : IDisposable {
         private readonly HUDState state;
 
         private readonly IPlayerStateRead playerStateRead;
@@ -21,7 +23,15 @@ namespace HoldMyBeer.UI {
             playerStateRead.OnDeath += SetDead;
         }
 
-        
+        public void Dispose() {
+            playerStateRead.OnHealthChange -= SetHealth;
+            playerStateRead.OnAlcoholChange -= SetDrunkness;
+            playerStateRead.OnGoalChange -= SetGoal;
+            playerStateRead.OnInteract -= SetInteract;
+            playerStateRead.OnAmmoChange -= SetAmmo;
+            playerStateRead.OnLoadChange -= SetLoadedAmmo;
+            playerStateRead.OnDeath -= SetDead;
+        }
 
         public HUDController(HUDState state, IPlayerStateRead playerStateReadRef, GameFlowController gameFlowRef) {
             this.state = state;

@@ -1,7 +1,0 @@
-<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <ui:Template name="HoldMyEndgame" src="project://database/Assets/UI%20Toolkit/Templates/HoldMyEndgame.uxml?fileID=9197481963319205126&amp;guid=2234584f07427ec42ba96b0fecb6de48&amp;type=3#HoldMyEndgame"/>
-    <ui:Template name="HoldMySettings" src="project://database/Assets/UI%20Toolkit/Templates/HoldMySettings.uxml?fileID=9197481963319205126&amp;guid=5e1d13184c92e25498616d4b3d8c827d&amp;type=3#HoldMySettings"/>
-    <Style src="project://database/Assets/UI%20Toolkit/HoldMyStyle.uss?fileID=7433441132597879392&amp;guid=d9d9ea3cedfdfa0409e472d927d34c51&amp;type=3#HoldMyStyle"/>
-    <ui:Instance template="HoldMyEndgame" name="Endgame" class="template-container" style="display: none;"/>
-    <ui:Instance template="HoldMySettings" name="Settings" class="template-container"/>
-</ui:UXML>

@@ -1,11 +1,13 @@
+using CocaCopa.Logger.API;
 using UnityEngine.UIElements;
 
 namespace HoldMyBeer.UI {
     public static class UIBinding {
+        
         public static void BindMainMenu(VisualElement root, MainMenuController c) {
             VisualElement view = root.Q("MainMenu");
             if (view == null) return;
-
+            
             view.Q<Button>("btn-NewGame")?.RegisterCallback<ClickEvent>(_ => c.StartGame());
             view.Q<Button>("btn-Settings")?.RegisterCallback<ClickEvent>(_ => c.OpenSettings());
             view.Q<Button>("btn-About")?.RegisterCallback<ClickEvent>(_ => c.OpenAbout());
@@ -25,13 +27,16 @@ namespace HoldMyBeer.UI {
 
         public static void BindEndgame(VisualElement root, GameFlowController c) {
             VisualElement view = root.Q("Endgame");
-            if (view == null) return;
-            
-            view.Q<Button>("return-btn")?.SetEnabled(false);
-            view.Q<Button>("reload-btn")?.RegisterCallback<ClickEvent>(_ => GameFlowController.Restart());
-            view.Q<Button>("mainmenu-btn")?.RegisterCallback<ClickEvent>(_ => GameFlowController.MainMenu());
-            view.Q<Button>("settings-btn")?.RegisterCallback<ClickEvent>(_ => c.Settings());
-            view.Q<Button>("quit-btn")?.RegisterCallback<ClickEvent>(_ => GameFlowController.Quit());
+            if (view == null) {
+                Log.Info("NULL Endgame view", LogColor.White);
+                return;
+            }
+
+            view.Q<Button>("return-btn").RemoveFromHierarchy();
+            view.Q<Button>("reload-btn").RegisterCallback<ClickEvent>(_ => GameFlowController.Restart());
+            view.Q<Button>("mainmenu-btn").RegisterCallback<ClickEvent>(_ => GameFlowController.MainMenu());
+            view.Q<Button>("settings-btn").RegisterCallback<ClickEvent>(_ => c.Settings());
+            view.Q<Button>("quit-btn").RegisterCallback<ClickEvent>(_ => GameFlowController.Quit());
         }
 
         public static void BindSettings(VisualElement root, SettingsController c) {
