@@ -161,6 +161,7 @@
 
 .pause-menu-btn:enabled:hover {
     letter-spacing: 6px;
+    color: rgb(255, 59, 59);
 }
 
 .pause-menu-btn:active {
@@ -255,8 +256,6 @@
 .menu-exit-btn:active {
     opacity: 0.7;
 }
-
-
 
 .credits-title {
     -unity-font-definition: url("project://database/Assets/UI%20Toolkit/Fonts/Butcherman-Regular.ttf?fileID=12800000&guid=6cee90d00cf06594fa86a9689cb0d43b&type=3#Butcherman-Regular");

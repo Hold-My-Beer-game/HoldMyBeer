@@ -1,13 +1,15 @@
-using UnityEngine;
+using System;
 
 namespace HoldMyBeer.UI {
     /// <summary>
     /// Converts gameplay systems into HUD state mutations.
     /// </summary>
-    internal class HUDController {
+    internal class HUDController : IDisposable {
         private readonly HUDState state;
 
-        private IPlayerStateRead playerStateRead;
+        private readonly IPlayerStateRead playerStateRead;
+
+        private readonly GameFlowController gameFlow;
 
         public void Init() {
 
@@ -18,46 +20,57 @@ namespace HoldMyBeer.UI {
             playerStateRead.OnInteract += SetInteract;
             playerStateRead.OnAmmoChange += SetAmmo;
             playerStateRead.OnLoadChange += SetLoadedAmmo;
+            playerStateRead.OnDeath += SetDead;
         }
 
-        public HUDController(HUDState state, IPlayerStateRead playerStateReadRef) {
+        public void Dispose() {
+            playerStateRead.OnHealthChange -= SetHealth;
+            playerStateRead.OnAlcoholChange -= SetDrunkness;
+            playerStateRead.OnGoalChange -= SetGoal;
+            playerStateRead.OnInteract -= SetInteract;
+            playerStateRead.OnAmmoChange -= SetAmmo;
+            playerStateRead.OnLoadChange -= SetLoadedAmmo;
+            playerStateRead.OnDeath -= SetDead;
+        }
+
+        public HUDController(HUDState state, IPlayerStateRead playerStateReadRef, GameFlowController gameFlowRef) {
             this.state = state;
             playerStateRead = playerStateReadRef;
+            gameFlow = gameFlowRef;
         }
 
         // Gameplay API
-        internal void SetHealth(float value) {
-            // state.Health = Mathf.Clamp01(v);
+        private void SetDead() {
+            gameFlow.Endgame();
+        }
+        
+        private void SetHealth(float value) {
             state.Health = value / 100f;
             state.Notify();
         }
 
-        internal void SetDrunkness(float value) {
-            // state.Drunkness = Mathf.Clamp01(v);
-            // const int maxSteps = 8;
-            // if (value > maxSteps) { value = maxSteps; }
-            // state.Drunkness = value / maxSteps;
+        private void SetDrunkness(float value) {
             state.Drunkness = value;
             state.Notify();
         }
 
-        internal void SetGoal(string text) {
+        private void SetGoal(string text) {
             state.GoalText = text;
             state.Notify();
         }
 
-        internal void SetInteract(bool visible, string text) {
+        private void SetInteract(bool visible, string text) {
             state.InteractVisible = visible;
             state.InteractText = text;
             state.Notify();
         }
 
-        internal void SetAmmo(int current) {
+        private void SetAmmo(int current) {
             state.Ammo = current;
             state.Notify();
         }
 
-        internal void SetLoadedAmmo(int current) {
+        private void SetLoadedAmmo(int current) {
             state.LoadedAmmo = current;
             state.Notify();
         }

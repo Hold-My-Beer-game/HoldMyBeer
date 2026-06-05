@@ -33,7 +33,7 @@ namespace HoldMyBeer.UI {
         }
 
         private void Show(UIScreen screen, bool record) {
-            Debug.Log($"null: {screens==null} length: {screens?.Count}");
+            Debug.Log($"null: {screens==null} | length: {screens?.Count}");
             foreach (KeyValuePair<UIScreen, VisualElement> kv in screens) {
                 if (kv.Value == null) continue;
 
