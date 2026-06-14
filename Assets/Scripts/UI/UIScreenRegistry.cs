@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.UIElements;
 using System.Collections.Generic;
@@ -34,11 +33,8 @@ namespace HoldMyBeer.UI {
                     Debug.LogError($"UIScreenRegistry: '{s.elementName}' not found");
                     continue;
                 }
-
                 map[s.id] = el;
             }
-            
-            Debug.Log(map.Count);
         }
     }
 }

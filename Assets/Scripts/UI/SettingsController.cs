@@ -3,21 +3,28 @@ using HoldMyBeer.Audio;
 namespace HoldMyBeer.UI {
     public class SettingsController {
         private readonly UINavigation nav;
+        public float masterVolume;
+        public float musicVolume;
+        public float sfxVolume;
         
         public SettingsController(UINavigation nav) {
             this.nav = nav;
+            masterVolume = AudioManager.instance.MasterVolume;
+            musicVolume = AudioManager.instance.MusicVolume;
+            sfxVolume = AudioManager.instance.SFXVolume;
         }
 
         public void SetMaster(float v) {
-            AudioManager.instance.MasterVolume = v;
+            masterVolume = AudioManager.instance.MasterVolume = v;
         }
+        
 
         public void SetMusic(float v) {
-            AudioManager.instance.MusicVolume = v;
+            musicVolume = AudioManager.instance.MusicVolume = v;
         }
 
         public void SetSfx(float v) {
-            AudioManager.instance.SFXVolume = v;
+            sfxVolume = AudioManager.instance.SFXVolume = v;
         }
 
         // public void SetQuality(int i) {

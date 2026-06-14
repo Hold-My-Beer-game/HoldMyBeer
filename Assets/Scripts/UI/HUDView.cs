@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using UnityEngine;
 using UnityEngine.UIElements;
+using HoldMyBeer.Input;
 
 namespace HoldMyBeer.UI {
     /// <summary>
@@ -16,7 +17,7 @@ namespace HoldMyBeer.UI {
         private bool initialized;
 
         private VisualElement root;
-
+        
         // UI references cache
         private VisualElement bottle;
         private Label bottleLabel;
@@ -26,6 +27,7 @@ namespace HoldMyBeer.UI {
         private VisualElement ammoContainer;
         private VisualElement shotgun;
         private Label healLabel;
+        private Label controlsLabel;
 
         // Ammo cache
         private readonly List<VisualElement> bullets = new();
@@ -54,10 +56,14 @@ namespace HoldMyBeer.UI {
             ammoContainer = hudRoot.Q<VisualElement>("AmmoContainer") ?? throw new NullReferenceException("AmmoContainer");
             shotgun = hudRoot.Q<VisualElement>("Shotgun") ?? throw new NullReferenceException("Shotgun");
             healLabel = hudRoot.Q<Label>("HealLabel") ?? throw new NullReferenceException("HealLabel");
-
+            controlsLabel = hudRoot.Q<Label>("ControlsLabel") ?? throw new NullReferenceException("ControlsLabel");
+            
+            PlayerInput.Instance.OnJumpKeyPressed += HideControls;
+            
             BuildAmmoVisuals();
 
             state.OnChanged += Refresh;
+            
             Refresh();
         }
 
@@ -155,6 +161,14 @@ namespace HoldMyBeer.UI {
                 bool empty = i >= state.Ammo;
                 bullets[i].EnableInClassList("empty", empty);
             }
+        }
+
+        private void HideControls() {
+            controlsLabel.style.display = DisplayStyle.None;
+        }
+
+        public void ShowControls() {
+            controlsLabel.style.display = DisplayStyle.Flex;
         }
     }
 }

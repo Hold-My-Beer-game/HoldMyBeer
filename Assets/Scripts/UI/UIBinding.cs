@@ -41,11 +41,16 @@ namespace HoldMyBeer.UI {
 
         public static void BindSettings(VisualElement root, SettingsController c) {
             VisualElement view = root.Q("Settings");
-            if (view == null) return;
+            if (view == null) { return; }
 
             view.Q<Slider>("master-slider")?.RegisterValueChangedCallback(e => c.SetMaster(e.newValue));
             view.Q<Slider>("music-slider")?.RegisterValueChangedCallback(e => c.SetMusic(e.newValue));
             view.Q<Slider>("sfx-slider")?.RegisterValueChangedCallback(e => c.SetSfx(e.newValue));
+
+            view.Q<Slider>("master-slider").value = c.masterVolume;
+            view.Q<Slider>("music-slider").value = c.musicVolume;
+            view.Q<Slider>("sfx-slider").value = c.sfxVolume;
+            
             // view.Q<RadioButtonGroup>("quality-radio-group")?.RegisterValueChangedCallback(e => c.SetQuality(e.newValue));
             // view.Q<Slider>("sensitivity-slider")?.RegisterValueChangedCallback(e => c.SetSensitivity(e.newValue));
             

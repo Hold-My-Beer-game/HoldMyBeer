@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using System;
-using CocaCopa.Logger.API;
 
 namespace HoldMyBeer.Input {
     public class PlayerInput : MonoBehaviour {
@@ -31,7 +30,7 @@ namespace HoldMyBeer.Input {
         private void Awake() {
             KeepAlive();
             Init();
-            Actions.Gameplay.Pause.performed += _ => {OnTabKeyPressed?.Invoke(); Log.Info("TAB pressed", LogColor.Orange); };
+            Actions.Gameplay.Pause.performed += _ => {OnTabKeyPressed?.Invoke(); };
         }
 
         private void Init() {
@@ -53,12 +52,6 @@ namespace HoldMyBeer.Input {
                 OnJumpKeyPressed?.Invoke();
             }
         }
-        // private void OnPause(InputValue value) {
-        //     if (value.isPressed) {
-        //         OnTabKeyPressed?.Invoke();
-        //         Log.Info("TAB key pressed", LogColor.Orange);
-        //     }
-        // }
 
         public void EnableInputMap(InputMap inputMap) {
             switch (inputMap) {

@@ -1,4 +1,4 @@
-using System;
+using HoldMyBeer.Audio;
 using HoldMyBeer.Input;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -11,7 +11,6 @@ namespace HoldMyBeer.UI {
         [SerializeField] private UIScreenRegistry registry;
         [SerializeField] private UIScreen startScreen;
         [SerializeField] private HUDView hudView;
-        [SerializeField] private HUDTester tester;
         [SerializeField] private Transform player;
 
         private UINavigation nav;
@@ -33,6 +32,9 @@ namespace HoldMyBeer.UI {
 
             SettingsController settings = new SettingsController(nav);
             UIBinding.BindSettings(root, settings);
+            settings.SetMaster(AudioManager.instance.MasterVolume);
+            settings.SetMusic(AudioManager.instance.MusicVolume);
+            settings.SetSfx(AudioManager.instance.SFXVolume);
             
             if (startScreen == UIScreen.MainMenu) {
                 PlayerInput.Instance.EnableInputMap(PlayerInput.InputMap.UI);
@@ -55,8 +57,9 @@ namespace HoldMyBeer.UI {
 
                 hud.Init();
                 hudView.Bind(hudState);
-                if (tester != null) { tester.SetState(hudState); }
 
+                hudView.ShowControls();
+                
                 UIBinding.BindPause(root, gameFlow);
                 UIBinding.BindEndgame(root, gameFlow);
             }

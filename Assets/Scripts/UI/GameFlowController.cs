@@ -1,8 +1,10 @@
 using System;
-using CocaCopa.Logger.API;
+// using CocaCopa.Logger.API;
 using CocaCopa.SceneManagement;
 using UnityEngine;
 using HoldMyBeer.Input;
+using HoldMyBeer.Audio;
+
 
 namespace HoldMyBeer.UI {
     public class GameFlowController : IDisposable {
@@ -30,7 +32,7 @@ namespace HoldMyBeer.UI {
         private void TogglePause() {
             if (IsPaused) { ResumeGame();}
             else { PauseGame();}
-            Log.Info($"Pause toggled: {IsPaused}", LogColor.Magenta);
+            // Log.Info($"Pause toggled: {IsPaused}", LogColor.Magenta);
         }
         
         private void PauseGame() {
@@ -39,7 +41,10 @@ namespace HoldMyBeer.UI {
             Time.timeScale = 0;
             PlayerInput.Instance.DisableInputMap(PlayerInput.InputMap.Player);
             PlayerInput.Instance.EnableInputMap(PlayerInput.InputMap.UI);
-            Log.Info("Game paused", LogColor.Yellow);
+            
+            AudioManager.instance.SetGlobalParameter("GameStatus", (float)FMODParameters.GameStatus.PAUSED);
+            
+            // Log.Info("Game paused", LogColor.Yellow);
             nav.Open(UIScreen.Pause);
         }
 
@@ -49,7 +54,10 @@ namespace HoldMyBeer.UI {
             Time.timeScale = 1f;
             PlayerInput.Instance.DisableInputMap(PlayerInput.InputMap.UI);
             PlayerInput.Instance.EnableInputMap(PlayerInput.InputMap.Player);
-            Log.Info("Game resumed", LogColor.Blue);
+            
+            AudioManager.instance.SetGlobalParameter("GameStatus", (float)FMODParameters.GameStatus.LIVE);
+            
+            // Log.Info("Game resumed", LogColor.Blue);
             nav.Back();
         }
 
@@ -74,7 +82,5 @@ namespace HoldMyBeer.UI {
         public static void Quit() {
             Application.Quit();
         }
-
-        
     }
 }
