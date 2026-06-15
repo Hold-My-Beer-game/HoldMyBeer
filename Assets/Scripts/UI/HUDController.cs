@@ -74,5 +74,7 @@ namespace HoldMyBeer.UI {
             state.LoadedAmmo = current;
             state.Notify();
         }
+        
+        
     }
 }
