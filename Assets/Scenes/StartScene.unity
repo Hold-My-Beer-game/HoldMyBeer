@@ -191,7 +191,6 @@ MonoBehaviour:
   registry: {fileID: 218255681}
   startScreen: 0
   hudView: {fileID: 0}
-  tester: {fileID: 0}
   player: {fileID: 0}
 --- !u!114 &218255681
 MonoBehaviour:
