@@ -30,6 +30,15 @@ namespace HoldMyBeer.Audio
             musicEventInstance.start();
         }
 
+        public void StopMusic()
+        {
+            if (musicEventInstance.isValid())
+            {
+                musicEventInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+                musicEventInstance.release();
+            }
+        }
+
         /// <summary>
         /// A method that checks the state of the background music, when the player enters the collider, and uses the appropriate coroutine.
         /// </summary>

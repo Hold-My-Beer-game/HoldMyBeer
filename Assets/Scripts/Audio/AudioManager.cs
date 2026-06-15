@@ -291,7 +291,7 @@ namespace HoldMyBeer.Audio {
             return emitter;
         }
 
-        private void CleanUp() 
+        public void CleanUp()
         { 
             // Stop and release any created instances
             foreach (EventInstance eventInstance in eventInstances) 
