@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using UnityEngine;
 using UnityEngine.UIElements;
+using HoldMyBeer.Input;
 
 namespace HoldMyBeer.UI {
     /// <summary>
@@ -16,7 +17,7 @@ namespace HoldMyBeer.UI {
         private bool initialized;
 
         private VisualElement root;
-
+        
         // UI references cache
         private VisualElement bottle;
         private Label bottleLabel;
@@ -25,11 +26,14 @@ namespace HoldMyBeer.UI {
         private Label interactLabel;
         private VisualElement ammoContainer;
         private VisualElement shotgun;
+        private Label healLabel;
+        private Label controlsLabel;
 
         // Ammo cache
         private readonly List<VisualElement> bullets = new();
 
-        private const int FLICKER_THRESHOLD = 1;
+        private const float FLICKER_THRESHOLD = 0.3f;
+        private const float HEALTH_THRESHOLD = 0.75f;
         private const float FLICKER_FREQ = 4f;
         private const float FLICKER_AMP = 0.8f;
         private const float EMPTY_OPACITY = 0.3f;
@@ -51,10 +55,15 @@ namespace HoldMyBeer.UI {
             interactLabel = hudRoot.Q<Label>("InteractLabel") ?? throw new NullReferenceException("InteractLabel");
             ammoContainer = hudRoot.Q<VisualElement>("AmmoContainer") ?? throw new NullReferenceException("AmmoContainer");
             shotgun = hudRoot.Q<VisualElement>("Shotgun") ?? throw new NullReferenceException("Shotgun");
-
+            healLabel = hudRoot.Q<Label>("HealLabel") ?? throw new NullReferenceException("HealLabel");
+            controlsLabel = hudRoot.Q<Label>("ControlsLabel") ?? throw new NullReferenceException("ControlsLabel");
+            
+            PlayerInput.Instance.OnJumpKeyPressed += HideControls;
+            
             BuildAmmoVisuals();
 
             state.OnChanged += Refresh;
+            
             Refresh();
         }
 
@@ -80,11 +89,17 @@ namespace HoldMyBeer.UI {
         // VISUAL SYSTEM
         // -------------
         private void UpdateVitals() {
+            float flicker = 1f + Mathf.Sin(Time.time * FLICKER_FREQ) * FLICKER_AMP;
+
+
+            healLabel.style.opacity = state.Health > HEALTH_THRESHOLD ? 0f : 1f;
+            
+            if (state.Health <= FLICKER_THRESHOLD) {healLabel.style.opacity = EMPTY_OPACITY * flicker; }
+            
             if (state.Drunkness <= 0) {
-                float flicker = 1f + Mathf.Sin(Time.time * FLICKER_FREQ) * FLICKER_AMP;
                 bottle.style.opacity = EMPTY_OPACITY * flicker;
             }
-
+            
             bottleLabel.text = state.Drunkness.ToString(CultureInfo.InvariantCulture);
             blood.style.opacity = 1f - state.Health;
         }
@@ -146,6 +161,14 @@ namespace HoldMyBeer.UI {
                 bool empty = i >= state.Ammo;
                 bullets[i].EnableInClassList("empty", empty);
             }
+        }
+
+        private void HideControls() {
+            controlsLabel.style.display = DisplayStyle.None;
+        }
+
+        public void ShowControls() {
+            controlsLabel.style.display = DisplayStyle.Flex;
         }
     }
 }

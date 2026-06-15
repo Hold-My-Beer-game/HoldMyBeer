@@ -3,6 +3,7 @@ using System;
 namespace HoldMyBeer.UI {
     public interface IPlayerStateRead {
         public event Action<float> OnHealthChange;
+        public event Action OnDeath;
         public event Action<float> OnAlcoholChange;
         public event Action<string> OnGoalChange;
         /// <summary>

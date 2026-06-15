@@ -1,4 +1,3 @@
-using System;
 using HoldMyBeer.Zombies.Contracts;
 using UnityEngine;
 
