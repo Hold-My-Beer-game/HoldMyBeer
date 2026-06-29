@@ -1,0 +1,17 @@
+{
+    "name": "HoldMyBeer.Input",
+    "rootNamespace": "HoldMyBeer.Input",
+    "references": [
+        "Unity.InputSystem",
+        "CocaCopa.Logger.API"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

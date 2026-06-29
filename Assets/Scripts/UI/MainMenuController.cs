@@ -1,5 +1,6 @@
 using UnityEngine;
 using CocaCopa.SceneManagement;
+using HoldMyBeer.Input;
 
 namespace HoldMyBeer.UI {
     public class MainMenuController {
@@ -10,7 +11,8 @@ namespace HoldMyBeer.UI {
         }
 
         public void StartGame() {
-            // TODO: call IAppActions.StartGame()
+            PlayerInput.Instance.DisableInputMap(PlayerInput.InputMap.Player);
+            PlayerInput.Instance.EnableInputMap(PlayerInput.InputMap.UI);
             SceneTransitionApi.TransitionToScene(1, LoadMode.Single);
         }
 
@@ -23,7 +25,6 @@ namespace HoldMyBeer.UI {
         }
 
         public void Quit() {
-            // TODO: call IAppActions.Quit()
             Application.Quit();
         }
     }

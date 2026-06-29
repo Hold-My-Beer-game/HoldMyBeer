@@ -39,7 +39,8 @@ public class PlayerInteract : MonoBehaviour
         currentPickup = pickup;
 
         bool canInteract = currentPickup != null;
-        string interactMsg = canInteract ? "Pickup E" : string.Empty;
+  
+        string interactMsg = canInteract ? "[E] Pickup " + currentPickup.itemType : string.Empty;
 
         OnPlayerInteract?.Invoke(canInteract, interactMsg);
     }
@@ -52,6 +53,8 @@ public class PlayerInteract : MonoBehaviour
 
     public void OnInteract(InputValue value)
     {
+        if (!HoldMyBeer.Input.PlayerInput.Instance.Actions.Player.enabled) { return; }
+        
         if (!value.isPressed) {
             return;
         }

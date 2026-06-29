@@ -4,7 +4,6 @@ using System.Collections;
 using System.Collections.Generic;
 using FMODUnity;
 using FMOD.Studio;
-using Unity.Properties;
 using HoldMyBeer.Zombies.Unity;
 using System;
 
@@ -36,15 +35,16 @@ namespace HoldMyBeer.Audio {
                 Debug.LogError("Found more than one Audio Managers on the scene");
                 Destroy(gameObject);
             }
-            instance = this;
+            else {
+                instance = this;
+                DontDestroyOnLoad(gameObject);
+                eventInstances = new List<EventInstance>(); // Create new event Instances variable list
+                eventEmitters = new List<StudioEventEmitter>(); // Create new event Emitters Instances variable list
 
-            eventInstances = new List<EventInstance>(); // Create new event Instances variable list
-            eventEmitters = new List<StudioEventEmitter>(); // Create new event Emitters Instances variable list
-
-            masterVCA = RuntimeManager.GetVCA("VCA:/Master"); // Initialize VCAs for audio 
-            musicVCA = RuntimeManager.GetVCA("VCA:/Music");
-            sfxVCA = RuntimeManager.GetVCA("VCA:/SFX");
-            DontDestroyOnLoad(gameObject);
+                masterVCA = RuntimeManager.GetVCA("VCA:/Master"); // Initialize VCAs for audio 
+                musicVCA = RuntimeManager.GetVCA("VCA:/Music");
+                sfxVCA = RuntimeManager.GetVCA("VCA:/SFX");
+            }
         }
 
         private void Update() 
@@ -69,8 +69,12 @@ namespace HoldMyBeer.Audio {
         private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
         {
             InitializeAmbience(SFXEvents.instance.WindAmbience);
-            ScreamerAudio();
-            WalkerAudio();
+            
+            if (scene.name == "Gameplay")
+            {
+                ScreamerAudio();
+                WalkerAudio();
+            }
         }
 
         private void OnSceneUnloaded(Scene scene)
@@ -287,7 +291,7 @@ namespace HoldMyBeer.Audio {
             return emitter;
         }
 
-        private void CleanUp() 
+        public void CleanUp()
         { 
             // Stop and release any created instances
             foreach (EventInstance eventInstance in eventInstances) 
@@ -307,6 +311,7 @@ namespace HoldMyBeer.Audio {
 
         private void OnDestroy() 
         {
+            if (instance != this) return;
             CleanUp();
         }
     }

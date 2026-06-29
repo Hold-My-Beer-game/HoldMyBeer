@@ -1,5 +1,4 @@
 using System;
-using System.Net.NetworkInformation;
 using HoldMyBeer.Zombies.Contracts;
 using UnityEngine;
 using HoldMyBeer.UI;
@@ -22,6 +21,8 @@ namespace Player {
         public event Action<bool, string> OnInteract;
         public event Action<int> OnAmmoChange;
         public event Action<int> OnLoadChange;
+        
+        public event Action OnDeath;
 
         private void Awake() {
             health = GetComponent<PlayerHealth>() ?? throw new NullReferenceException($"{ScriptName} {nameof(health)}");
@@ -31,10 +32,12 @@ namespace Player {
             attack = GetComponent<PlayerAttack>() ?? throw new NullReferenceException($"{ScriptName} {nameof(attack)}");
             
             health.OnHealthChange += (amount) => OnHealthChange?.Invoke(amount);
+            health.OnDeath += ( ) => OnDeath?.Invoke();
             inventory.OnAlcoholChange += (amount) => OnAlcoholChange?.Invoke(amount);
             interact.OnPlayerInteract += (canInteract, msg) => OnInteract?.Invoke(canInteract, msg);
             inventory.OnAmmoChange += (amount) => OnAmmoChange?.Invoke((int)amount);
             attack.OnLoadChange += (amount) => OnLoadChange?.Invoke((int)amount); 
+            
         }
 
         public void TakeDamage(float value) {

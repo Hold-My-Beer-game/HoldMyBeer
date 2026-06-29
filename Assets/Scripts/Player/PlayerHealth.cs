@@ -1,7 +1,6 @@
 using FMOD.Studio;
 using System;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using HoldMyBeer.Audio;
 
 public class PlayerHealth : MonoBehaviour
@@ -10,17 +9,18 @@ public class PlayerHealth : MonoBehaviour
     public float maxHealth = 100f;
     public float currentHealth;
 
-    [Header("Death Settings")]
-    public string deathSceneName;
-
     public event Action<float> OnHealthChange;
+    public event Action OnDeath;
 
     private EventInstance heartbeat;
 
     private EventInstance playerDmg;
 
+    private MusicSelection music;
+
     void Start()
     {
+        music = FindFirstObjectByType<MusicSelection>();
         currentHealth = maxHealth;
         OnHealthChange?.Invoke(currentHealth);
         heartbeat = AudioManager.instance.CreateEventInstance(SFXEvents.instance.LowHpHeartbeat);
@@ -31,7 +31,6 @@ public class PlayerHealth : MonoBehaviour
     public void TakeDamage(float damage)
     {
         currentHealth -= damage;
-        playerDmg.start();
         currentHealth = Mathf.Clamp(currentHealth, 0f, maxHealth);
         OnHealthChange?.Invoke(currentHealth);
 
@@ -39,7 +38,14 @@ public class PlayerHealth : MonoBehaviour
 
         if (currentHealth <= 0f)
         {
+            AudioManager.instance.PlayOneShotEvent(SFXEvents.instance.PlayerDeath, transform.position);
+            AudioManager.instance.CleanUp();
+            music.StopMusic();
             Die();
+        }
+        else
+        {
+            playerDmg.start();
         }
     }
 
@@ -58,13 +64,6 @@ public class PlayerHealth : MonoBehaviour
 
     private void Die()
     {
-        Debug.Log("Player died!");
-
-        // Unlock and show the mouse
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
-        AudioManager.instance.PlayOneShotEvent(SFXEvents.instance.PlayerDeath, transform.position);
-
-        SceneManager.LoadScene(deathSceneName);
+        OnDeath?.Invoke();
     }
 }

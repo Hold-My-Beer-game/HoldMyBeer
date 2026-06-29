@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using UnityEngine;
 using UnityEngine.UIElements;
 
 namespace HoldMyBeer.UI {
@@ -33,7 +32,6 @@ namespace HoldMyBeer.UI {
         }
 
         private void Show(UIScreen screen, bool record) {
-            Debug.Log($"null: {screens==null} length: {screens?.Count}");
             foreach (KeyValuePair<UIScreen, VisualElement> kv in screens) {
                 if (kv.Value == null) continue;
 
