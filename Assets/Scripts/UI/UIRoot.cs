@@ -14,6 +14,7 @@ namespace HoldMyBeer.UI {
         [SerializeField] private Transform player;
 
         private UINavigation nav;
+        private VisualElement root;
         private IPlayerStateRead playerReadState;
 
         private HUDState hudState;
@@ -28,16 +29,11 @@ namespace HoldMyBeer.UI {
 
             nav = new UINavigation(registry.Map, startScreen);
 
-            VisualElement root = registry.Root;
-
-            SettingsController settings = new SettingsController(nav);
-            UIBinding.BindSettings(root, settings);
-            settings.SetMaster(AudioManager.instance.MasterVolume);
-            settings.SetMusic(AudioManager.instance.MusicVolume);
-            settings.SetSfx(AudioManager.instance.SFXVolume);
-            
+            root = registry.Root;
+           
             if (startScreen == UIScreen.MainMenu) {
                 PlayerInput.Instance.EnableInputMap(PlayerInput.InputMap.UI);
+                PlayerInput.Instance.DisableInputMap(PlayerInput.InputMap.Player);
 
                 MainMenuController menu = new MainMenuController(nav);
                 CreditsController credits = new CreditsController(nav);
@@ -65,9 +61,18 @@ namespace HoldMyBeer.UI {
             }
         }
 
+        private void Start() {
+            SettingsController settings = new SettingsController(nav);
+            UIBinding.BindSettings(root, settings);
+            settings.SetMaster(AudioManager.instance.MasterVolume);
+            settings.SetMusic(AudioManager.instance.MusicVolume);
+            settings.SetSfx(AudioManager.instance.SFXVolume);
+        }
+
         private void OnDestroy() {
             gameFlow?.Dispose();
             hud?.Dispose();
         }
+        
     }
 }
