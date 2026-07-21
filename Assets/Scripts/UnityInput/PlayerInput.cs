@@ -59,7 +59,6 @@ namespace HoldMyBeer.Input {
                 case InputMap.UI: if (!Actions.UI.enabled) { Actions.UI.Enable(); } ToggleCursor(true); break;
                 case InputMap.Gameplay: if (!Actions.Gameplay.enabled) { Actions.Gameplay.Enable(); } break;
             }
-            
         }
 
         public void DisableInputMap(InputMap inputMap) {

@@ -91,14 +91,11 @@ namespace HoldMyBeer.UI {
         private void UpdateVitals() {
             float flicker = 1f + Mathf.Sin(Time.time * FLICKER_FREQ) * FLICKER_AMP;
 
-
             healLabel.style.opacity = state.Health > HEALTH_THRESHOLD ? 0f : 1f;
             
             if (state.Health <= FLICKER_THRESHOLD) {healLabel.style.opacity = EMPTY_OPACITY * flicker; }
             
-            if (state.Drunkness <= 0) {
-                bottle.style.opacity = EMPTY_OPACITY * flicker;
-            }
+            if (state.Drunkness <= 0) { bottle.style.opacity = EMPTY_OPACITY * flicker; }
             
             bottleLabel.text = state.Drunkness.ToString(CultureInfo.InvariantCulture);
             blood.style.opacity = 1f - state.Health;
@@ -107,9 +104,7 @@ namespace HoldMyBeer.UI {
         // -----------
         // TEXT SYSTEM
         // -----------
-        private void UpdateText() {
-            goalLabel.text = state.GoalText;
-        }
+        private void UpdateText() { goalLabel.text = state.GoalText; }
 
         private void UpdateInteract() {
             interactLabel.text = state.InteractText;
